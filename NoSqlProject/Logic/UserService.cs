@@ -23,10 +23,7 @@ namespace Logic
         {
             return userDAO.getMatchedUser(email, password);
         }
-        public List<User> GetUserByEmail(string email)
-        {
-            return userDAO.GetUserByEmail(email);
-        }
+
         public User getUserById(string id)
         {
             return userDAO.getUserById(id);
@@ -35,5 +32,6 @@ namespace Logic
         {
             userDAO.addUser(user);
         }
+
     }
 }

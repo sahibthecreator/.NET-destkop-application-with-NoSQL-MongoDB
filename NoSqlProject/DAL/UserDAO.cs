@@ -26,10 +26,6 @@ namespace DAL
         {
             return collectionUsers.Find(x => x.Email == email && x.Password == password).ToList<User>();
         }
-        public List<User> GetUserByEmail(string email)
-        {
-            return collectionUsers.Find(x => x.Email == email).ToList<User>();
-        }
 
         public User getUserById(string id)
         {
@@ -40,7 +36,6 @@ namespace DAL
         {
             collectionUsers.InsertOne(user);
         }
-
 
     }
 }

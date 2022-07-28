@@ -33,14 +33,13 @@ namespace Model
 
         [BsonElement("type")]
         public UserType Type { get; set; }
-        public User(string firstName, string lastName, string location, string phone, string email, string password, string type)
+        public User(string firstName, string lastName, string location, string phone, string email, string type)
         {
             FirstName = firstName;
             LastName = lastName;
             Location = location;
             Phone = phone;  
             Email = email;
-            Password = password;
             Type = convertTypeToUserType(type);    
         }
 
