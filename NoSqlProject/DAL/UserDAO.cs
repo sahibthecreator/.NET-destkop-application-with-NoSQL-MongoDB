@@ -8,14 +8,18 @@ using Model;
 
 namespace DAL
 {
-    public class UserDAO : Base
+    public class UserDAO : DAO
     {
         IMongoDatabase userDb;
-        IMongoCollection<User> users;
+        IMongoCollection<User> collectionUsers;
         public UserDAO()
         {
             userDb = client.GetDatabase("Db");
-            users = userDb.GetCollection<User>("Users");
+            collectionUsers = userDb.GetCollection<User>("Users");
+        }
+        public List<User> getAllUsers()
+        {
+            return collectionUsers.AsQueryable().ToList<User>();
         }
     }
 }

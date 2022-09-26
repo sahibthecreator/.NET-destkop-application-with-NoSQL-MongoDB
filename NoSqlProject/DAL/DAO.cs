@@ -6,11 +6,11 @@ using MongoDB.Bson.Serialization;
 
 namespace DAL
 {
-    public class Base
+    public class DAO
     {
         protected MongoClient client;
 
-        public Base()
+        public DAO()
         {
             client = new MongoClient("mongodb+srv://admin:admin@cluster.70ubhms.mongodb.net/test");
         }

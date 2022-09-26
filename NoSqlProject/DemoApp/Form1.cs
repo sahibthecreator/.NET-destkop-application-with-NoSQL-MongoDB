@@ -11,10 +11,12 @@ namespace DemoApp
     public partial class Form1 : Form
     {
         private Databases databases;
+        private UserService userService;
         public Form1()
         {
             InitializeComponent();
             databases = new Databases();
+            userService = new UserService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,6 +31,7 @@ namespace DemoApp
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(userService.getAllUsers());
             
         }
     }
