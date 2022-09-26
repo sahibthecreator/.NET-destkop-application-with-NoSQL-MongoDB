@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace DAL
 {
@@ -21,5 +23,12 @@ namespace DAL
         {
             return collectionUsers.AsQueryable().ToList<User>();
         }
+        public List<User> getMatchedUser(string username, string password)
+        {
+            List<User> list =  collectionUsers.Find(x => x.Username == username && x.Password == password).ToList<User>();
+            return list;
+        }
+
+
     }
 }

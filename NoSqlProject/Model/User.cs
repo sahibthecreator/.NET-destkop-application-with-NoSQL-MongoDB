@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace Model
 {
@@ -15,18 +13,20 @@ namespace Model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        [BsonElement("Plant")]
-        public string PlantName { get; set; }
-        [BsonElement("Temperature")]
-        public string Temp { get; set; }
 
-        [BsonElement("humidity")]
-        public string Humidity { get; set; }
+        [BsonElement("name")]
+        public string Name { get; set; }
 
-        [BsonElement("CO2")]
-        public string C02 { get; set; }
+        [BsonElement("username")]
+        public string Username { get; set; }
 
-        [BsonElement("CherryTomatoes")]
-        public string CherryTomatoes { get; set; }
+        [BsonElement("password")]
+        public string Password { get; set; }
+
+        [BsonElement("email")]
+        public string Email { get; set; }
+
+        [BsonElement("type")]
+        public string Type { get; set; }
     }
 }
