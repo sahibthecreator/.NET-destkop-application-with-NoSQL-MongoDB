@@ -21,15 +21,15 @@ namespace DemoApp
         {
             var dbList = databases.Get_All_Databases();
             
-            foreach (var db in dbList)
-            {
-                listBox1.Items.Add(db.name);
-            }
+            //foreach (var db in dbList)
+            //{
+            //    listBox1.Items.Add(db.name);
+            //}
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void loginBtn_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

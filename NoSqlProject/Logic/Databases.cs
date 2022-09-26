@@ -6,10 +6,10 @@ namespace Logic
 {
     public class Databases
     {
-        private DAO dao;
+        private Base dao;
         public Databases()
         {
-            dao = new DAO();
+            dao = new Base();
         }
 
         public List<Databases_Model> Get_All_Databases()
