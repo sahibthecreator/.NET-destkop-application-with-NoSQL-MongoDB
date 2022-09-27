@@ -38,14 +38,25 @@ namespace DemoApp
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            if (userService.getMatchedUser(usernameInput.Text, passwordInput.Text).Count > 0)
+            if (userService.getMatchedUser(emailInput.Text, passwordInput.Text).Count > 0)
             {
                 Console.WriteLine("Success");
-                user = userService.getMatchedUser(usernameInput.Text, passwordInput.Text)[0];
-                AdminForm nextForm = new AdminForm();
-                this.Hide();
-                nextForm.ShowDialog();
-                this.Close();
+                user = userService.getMatchedUser(emailInput.Text, passwordInput.Text)[0];
+                if(user.Type.Equals("basic"))
+                {
+                    RegularEmployeeForm newForm = new RegularEmployeeForm();
+                    this.Hide();
+                    newForm.ShowDialog();
+                    this.Close();
+                }
+                else if(user.Type.Equals("admin"))
+                {
+                    AdminForm newForm = new AdminForm();
+                    this.Hide();
+                    newForm.ShowDialog();
+                    this.Close();
+                }
+                
             }
             else
             {

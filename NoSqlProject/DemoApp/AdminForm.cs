@@ -19,7 +19,7 @@ namespace DemoApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            label1.Text = "Welcome " + Form1.user.Name + "!";
+            //label1.Text = "Welcome " + Form1.user.Name + "!";
         }
     }
 }

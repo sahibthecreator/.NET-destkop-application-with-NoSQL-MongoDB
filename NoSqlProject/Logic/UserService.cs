@@ -19,9 +19,9 @@ namespace Logic
         {
            return userDAO.getAllUsers();
         }
-        public List<User> getMatchedUser(string username, string password)
+        public List<User> getMatchedUser(string email, string password)
         {
-            return userDAO.getMatchedUser(username, password);
+            return userDAO.getMatchedUser(email, password);
         }
 
     }

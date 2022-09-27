@@ -23,10 +23,9 @@ namespace DAL
         {
             return collectionUsers.AsQueryable().ToList<User>();
         }
-        public List<User> getMatchedUser(string username, string password)
+        public List<User> getMatchedUser(string email, string password)
         {
-            List<User> list =  collectionUsers.Find(x => x.Username == username && x.Password == password).ToList<User>();
-            return list;
+            return collectionUsers.Find(x => x.Email == email && x.Password == password).ToList<User>();
         }
 
 
