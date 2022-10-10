@@ -253,6 +253,48 @@
             "rid": "win"
           }
         }
+      },
+      "DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Model": "1.0.0",
+          "MongoDB.Driver": "2.17.1"
+        },
+        "compile": {
+          "bin/placeholder/DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL.dll": {}
+        }
+      },
+      "Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DAL": "1.0.0",
+          "Model": "1.0.0",
+          "MongoDB.Driver": "2.17.1"
+        },
+        "compile": {
+          "bin/placeholder/Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logic.dll": {}
+        }
+      },
+      "Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MongoDB.Driver": "2.17.1"
+        },
+        "compile": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model.dll": {}
+        }
       }
     }
   },
@@ -648,10 +690,27 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "DAL/1.0.0": {
+      "type": "project",
+      "path": "../DAL/DAL.csproj",
+      "msbuildProject": "../DAL/DAL.csproj"
+    },
+    "Logic/1.0.0": {
+      "type": "project",
+      "path": "../Logic/Logic.csproj",
+      "msbuildProject": "../Logic/Logic.csproj"
+    },
+    "Model/1.0.0": {
+      "type": "project",
+      "path": "../Model/Model.csproj",
+      "msbuildProject": "../Model/Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Logic >= 1.0.0",
+      "Model >= 1.0.0",
       "MongoDB.Driver >= 2.17.1"
     ]
   },
@@ -689,7 +748,14 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\Logic\\Logic.csproj": {
+              "projectPath": "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\Logic\\Logic.csproj"
+            },
+            "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\Model\\Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
