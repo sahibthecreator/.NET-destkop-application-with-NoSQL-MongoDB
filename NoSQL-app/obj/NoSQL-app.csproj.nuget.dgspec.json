@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Documents\\GitHub\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj": {}
+    "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Documents\\GitHub\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj": {
+    "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Documents\\GitHub\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj",
+        "projectUniqueName": "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj",
         "projectName": "NoSQL-app",
-        "projectPath": "\\\\Mac\\Home\\Documents\\GitHub\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj",
-        "packagesPath": "C:\\Users\\sahibthecreator\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Documents\\GitHub\\NoSQL_Project2.1\\NoSQL-app\\obj\\",
+        "projectPath": "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\NoSQL-app\\NoSQL-app.csproj",
+        "packagesPath": "C:\\Users\\Aouragh Mohammed\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aouragh Mohammed\\Downloads\\NoSqlProject\\NoSQL_Project2.1\\NoSQL-app\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\sahibthecreator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Aouragh Mohammed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
@@ -39,6 +45,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.17.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
