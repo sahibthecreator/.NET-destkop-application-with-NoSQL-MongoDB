@@ -12,7 +12,7 @@ namespace DAL
 
         public DAO()
         {
-            client = new MongoClient("mongodb+srv://user2:12345@cluster0.jfozv.mongodb.net/DemoChart?retryWrites=true&w=majority");
+            client = new MongoClient("mongodb+srv://admin:admin@cluster.70ubhms.mongodb.net/test");
         }
 
         public List<Databases_Model> GetDatabases()
