@@ -42,7 +42,7 @@ namespace DemoApp
             {
                 Console.WriteLine("Success");
                 user = userService.getMatchedUser(usernameInput.Text, passwordInput.Text)[0];
-                Form2 nextForm = new Form2();
+                AdminForm nextForm = new AdminForm();
                 this.Hide();
                 nextForm.ShowDialog();
                 this.Close();
