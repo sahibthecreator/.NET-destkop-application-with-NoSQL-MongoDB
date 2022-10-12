@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace DemoApp
 {
-    public partial class AdminForm : Form
+    public partial class ServiceDeskEmployeeForm : Form
     {
-        public AdminForm()
+        public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            //label1.Text = "Welcome " + Form1.user.Name + "!";
         }
     }
 }
