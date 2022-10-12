@@ -51,7 +51,7 @@ namespace DemoApp
                 }
                 else if(user.Type.Equals("admin"))
                 {
-                    AdminForm newForm = new AdminForm();
+                    ServiceDeskEmployeeForm newForm = new ServiceDeskEmployeeForm();
                     this.Hide();
                     newForm.ShowDialog();
                     this.Close();
