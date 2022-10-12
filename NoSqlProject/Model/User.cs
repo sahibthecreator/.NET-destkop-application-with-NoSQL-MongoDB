@@ -32,6 +32,6 @@ namespace Model
         public string Phone { get; set; }
 
         [BsonElement("type")]
-        public string Type { get; set; }
+        public UserType Type { get; set; }
     }
 }

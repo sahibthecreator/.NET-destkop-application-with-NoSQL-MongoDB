@@ -28,12 +28,12 @@ namespace DemoApp
             //{
             //    listBox1.Items.Add(db.name);
             //}
-            AllocConsole(); // Open Console
+            //AllocConsole(); // Open Console
         }
         //------Console---------------------
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool AllocConsole();
+        //[DllImport("kernel32.dll", SetLastError = true)]
+        //[return: MarshalAs(UnmanagedType.Bool)]
+        //static extern bool AllocConsole();
         //------Console---------------------
 
         private void loginBtn_Click(object sender, EventArgs e)
@@ -42,14 +42,14 @@ namespace DemoApp
             {
                 Console.WriteLine("Success");
                 user = userService.getMatchedUser(emailInput.Text, passwordInput.Text)[0];
-                if(user.Type.Equals("basic"))
+                if(user.Type==UserType.basic)
                 {
                     RegularEmployeeForm newForm = new RegularEmployeeForm();
                     this.Hide();
                     newForm.ShowDialog();
                     this.Close();
                 }
-                else if(user.Type.Equals("admin"))
+                else if(user.Type.Equals(UserType.admin))
                 {
                     ServiceDeskEmployeeForm newForm = new ServiceDeskEmployeeForm();
                     this.Hide();

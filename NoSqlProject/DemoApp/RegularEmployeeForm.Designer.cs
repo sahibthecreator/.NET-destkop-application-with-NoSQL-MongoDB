@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // RegularEmployeeForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "RegularEmployeeForm";
             this.Text = "RegularEmployee";
+            this.Load += new System.EventHandler(this.RegularEmployeeForm_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

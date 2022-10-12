@@ -9,12 +9,12 @@ namespace DAL
     public class DAO
     {
         protected MongoClient client;
-        protected IMongoDatabase userDb;
+        protected IMongoDatabase Db;
 
         public DAO()
         {
             client = new MongoClient("mongodb+srv://admin:admin@cluster.70ubhms.mongodb.net/test");
-            userDb = client.GetDatabase("Db");
+            Db = client.GetDatabase("Db");
         }
 
         public List<Databases_Model> GetDatabases()

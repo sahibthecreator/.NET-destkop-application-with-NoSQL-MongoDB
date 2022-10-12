@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DAL;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
 
 namespace Logic
 {
@@ -13,6 +14,11 @@ namespace Logic
         public IncidentService()
         {
             incidentDAO = new IncidentDAO();
+        }
+
+       public List<Incident> GetAllIncidents()
+        {
+            return incidentDAO.GetAllIncidents();
         }
     }
 }

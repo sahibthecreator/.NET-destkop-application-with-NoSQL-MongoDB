@@ -151,6 +151,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegularEmployeeForm.resx">
+      <DependentUpon>RegularEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServiceDeskEmployeeForm.resx">
       <DependentUpon>ServiceDeskEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>

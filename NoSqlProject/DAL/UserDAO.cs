@@ -12,12 +12,10 @@ namespace DAL
 {
     public class UserDAO : DAO
     {
-        IMongoDatabase userDb;
         IMongoCollection<User> collectionUsers;
         public UserDAO()
         {
-            userDb = client.GetDatabase("Db");
-            collectionUsers = userDb.GetCollection<User>("Users");
+            collectionUsers = Db.GetCollection<User>("Users");
         }
         public List<User> getAllUsers()
         {
@@ -27,7 +25,6 @@ namespace DAL
         {
             return collectionUsers.Find(x => x.Email == email && x.Password == password).ToList<User>();
         }
-
 
     }
 }
