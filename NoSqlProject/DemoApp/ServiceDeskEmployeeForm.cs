@@ -15,10 +15,24 @@ namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
+        List<TextBox> textBoxes = new List<TextBox>();
+        List<ComboBox> comboBoxes = new List<ComboBox>();
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
             loadUsers("");
+            textBoxes.Add(txtFirstName);
+            textBoxes.Add(txtLastName);
+            textBoxes.Add(txtEmail);
+            textBoxes.Add(txtPhoneNumber);
+
+            comboBoxes.Add(comboType);
+            comboBoxes.Add(comboLocation);
+
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Click += new EventHandler(textBox_Click);
+            }
         }
 
         private void buttonAddNewUser_Click(object sender, EventArgs e)
@@ -101,7 +115,66 @@ namespace DemoApp
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-           
+            if (!checkTextBoxes(textBoxes) && !checkComboBoxes(comboBoxes))
+            {
+                foreach (TextBox textBox in textBoxes)
+                {
+                    if (textBox.Text == "")
+                    {
+                        textBox.ForeColor = Color.Red;
+                        textBox.Text = "Invalid input...";
+                    }
+                }
+                foreach (ComboBox comboBox in comboBoxes)
+                {
+                    if (comboBox.Text == "")
+                    {
+                        comboBox.ForeColor = Color.Red;
+                        comboBox.Text = "Invalid input...";
+                    }
+                }
+            }
+            else
+            {
+                //add user...
+            }
+        }
+
+        private bool checkTextBoxes(List<TextBox> textBoxes)
+        {
+            int count = 0;
+
+            foreach (TextBox textBox in textBoxes)
+            {
+                if (textBox.Text == "" || textBox.Text == "Invalid input")
+                    count++;
+            }
+            if (count == 0)
+                return true;
+            return false;
+        }
+
+        private bool checkComboBoxes(List<ComboBox> comboBoxes)
+        {
+            int count = 0;
+
+            foreach (ComboBox comboBox in comboBoxes)
+            {
+                if (comboBox.Text == "" || comboBox.Text == "Invalid input")
+                    count++;
+            }
+            if (count == 0)
+                return true;
+            return false;
+        }
+
+        private void textBox_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.ForeColor = Color.Black;
+                textBox.Text = "";
+            }
         }
     }
 }

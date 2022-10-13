@@ -33,8 +33,8 @@
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
             this.panelAddUser = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboLocation = new System.Windows.Forms.ComboBox();
+            this.comboType = new System.Windows.Forms.ComboBox();
             this.checkBoxYes = new System.Windows.Forms.CheckBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -118,8 +118,8 @@
             // 
             // panelAddUser
             // 
-            this.panelAddUser.Controls.Add(this.comboBox2);
-            this.panelAddUser.Controls.Add(this.comboBox1);
+            this.panelAddUser.Controls.Add(this.comboLocation);
+            this.panelAddUser.Controls.Add(this.comboType);
             this.panelAddUser.Controls.Add(this.checkBoxYes);
             this.panelAddUser.Controls.Add(this.txtPhoneNumber);
             this.panelAddUser.Controls.Add(this.txtEmail);
@@ -141,30 +141,30 @@
             this.panelAddUser.TabIndex = 8;
             this.panelAddUser.Visible = false;
             // 
-            // comboBox2
+            // comboLocation
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboLocation.FormattingEnabled = true;
+            this.comboLocation.Items.AddRange(new object[] {
             "Haarlem",
             "Amterdam",
             "Utrecht"});
-            this.comboBox2.Location = new System.Drawing.Point(337, 392);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(355, 33);
-            this.comboBox2.TabIndex = 22;
+            this.comboLocation.Location = new System.Drawing.Point(337, 392);
+            this.comboLocation.Name = "comboLocation";
+            this.comboLocation.Size = new System.Drawing.Size(355, 33);
+            this.comboLocation.TabIndex = 22;
             // 
-            // comboBox1
+            // comboType
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboType.FormattingEnabled = true;
+            this.comboType.Items.AddRange(new object[] {
             "Employee",
             "Service Desk Employee"});
-            this.comboBox1.Location = new System.Drawing.Point(337, 242);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(355, 33);
-            this.comboBox1.TabIndex = 21;
+            this.comboType.Location = new System.Drawing.Point(337, 242);
+            this.comboType.Name = "comboType";
+            this.comboType.Size = new System.Drawing.Size(355, 33);
+            this.comboType.TabIndex = 21;
             // 
             // checkBoxYes
             // 
@@ -457,7 +457,7 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.CheckBox checkBoxYes;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboLocation;
+        private System.Windows.Forms.ComboBox comboType;
     }
 }
