@@ -139,7 +139,6 @@
             this.listViewUsers.TabIndex = 5;
             this.listViewUsers.UseCompatibleStateImageBehavior = false;
             this.listViewUsers.View = System.Windows.Forms.View.Details;
-            this.listViewUsers.Click += new System.EventHandler(this.listViewUsers_Click);
             // 
             // columnHeader6
             // 
