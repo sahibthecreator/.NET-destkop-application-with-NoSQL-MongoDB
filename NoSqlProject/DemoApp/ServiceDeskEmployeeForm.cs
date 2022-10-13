@@ -25,6 +25,8 @@ namespace DemoApp
         {
             try
             {
+                panelUserManagement.Visible = false;    
+                panelAddUser.Visible = true;
 
             }
             catch (Exception exp)
@@ -89,6 +91,17 @@ namespace DemoApp
             {
                 MessageBox.Show(exp.Message);
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            panelUserManagement.Visible = true;
+            panelAddUser.Visible = false;
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
