@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Model;
 using System.Collections.ObjectModel;
 using System.Collections;
+using MongoDB.Bson.IO;
 
 namespace DAL
 {
@@ -24,6 +25,19 @@ namespace DAL
         public List<User> getMatchedUser(string email, string password)
         {
             return collectionUsers.Find(x => x.Email == email && x.Password == password).ToList<User>();
+        }
+
+        public void addUser(User user)
+        {
+            //var dynamicDoc = JsonConvert.DeserializeObject<dynamic>(JsonConvert.SerializeObject(User));
+
+            //using (JsonReader reader = new JTokenReader(dynamicDoc))
+            //{
+            //    var document = new Document();
+            //    document.LoadFrom(reader);
+            //    return document;
+            //}
+            collectionUsers.InsertOne(user);
         }
 
     }

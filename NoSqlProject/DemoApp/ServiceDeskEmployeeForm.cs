@@ -20,7 +20,7 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-            loadUsers("");
+            loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
             textBoxes.Add(txtEmail);
@@ -83,7 +83,7 @@ namespace DemoApp
         {
             try
             {
-                textBoxFilterByEmail.Text = "";
+                textBoxFilterByEmail.Text = string.Empty;
 
             }
             catch (Exception exp)
@@ -116,28 +116,17 @@ namespace DemoApp
         {
             panelUserManagement.Visible = true;
             panelAddUser.Visible = false;
+
+            clearBoxes();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             if (!validateTextBoxes(textBoxes) || !validateComboBoxes(comboBoxes))
             {
-                foreach (TextBox textBox in textBoxes)
-                {
-                    if (textBox.Text == "")
-                    {
-                        textBox.ForeColor = Color.Red;
-                        textBox.Text = "Invalid input...";
-                    }
-                }
-                foreach (ComboBox comboBox in comboBoxes)
-                {
-                    if (comboBox.Text == "")
-                    {
-                        comboBox.ForeColor = Color.Red;
-                        comboBox.Text = "Invalid input...";
-                    }
-                }
+                fillEmptyTextBoxes();
+                fillEmptyComboBoxes();
+                
                 if (!validateEmail(txtEmail.Text))
                 {
                     txtEmail.ForeColor = Color.Red;
@@ -151,7 +140,34 @@ namespace DemoApp
             }
             else
             {
-                //add user...
+                clearBoxes();
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, comboType.Text);
+                UserService userService = new UserService();
+                userService.addUser(user);
+            }
+        }
+
+        private void fillEmptyTextBoxes()
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                if (textBox.Text == string.Empty)
+                {
+                    textBox.ForeColor = Color.Red;
+                    textBox.Text = "Invalid input...";
+                }
+            }
+        }
+
+        private void fillEmptyComboBoxes()
+        {
+            foreach (ComboBox comboBox in comboBoxes)
+            {
+                if (comboBox.Text == string.Empty)
+                {
+                    comboBox.ForeColor = Color.Red;
+                    comboBox.Text = "Invalid input...";
+                }
             }
         }
 
@@ -161,7 +177,7 @@ namespace DemoApp
 
             foreach (TextBox textBox in textBoxes)
             {
-                if (textBox.Text == "" || textBox.Text == "Invalid input...")
+                if (textBox.Text == string.Empty || textBox.Text == "Invalid input...")
                     count++;
             }
             if (count == 0)
@@ -175,7 +191,7 @@ namespace DemoApp
 
             foreach (ComboBox comboBox in comboBoxes)
             {
-                if (comboBox.Text == "" || comboBox.Text == "Invalid input...")
+                if (comboBox.Text == string.Empty || comboBox.Text == "Invalid input...")
                     count++;
             }
             if (count == 0)
@@ -219,6 +235,21 @@ namespace DemoApp
             if (count == number.Length)
                 return true;
             return false;
+        }
+
+        private void clearBoxes()
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.ForeColor = Color.Black;
+                textBox.Text = String.Empty;
+            }
+            foreach (ComboBox comboBox in comboBoxes)
+            {
+
+                comboBox.ForeColor = Color.Black;
+                comboBox.Text = String.Empty; ;
+            }
         }
     }
 }
