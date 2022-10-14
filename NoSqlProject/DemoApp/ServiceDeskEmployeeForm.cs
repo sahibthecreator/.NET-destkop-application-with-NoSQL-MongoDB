@@ -140,10 +140,11 @@ namespace DemoApp
             }
             else
             {
-                clearBoxes();
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, comboType.Text);
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, comboType.Text);
                 UserService userService = new UserService();
                 userService.addUser(user);
+                clearBoxes();
+
             }
         }
 

@@ -29,14 +29,6 @@ namespace DAL
 
         public void addUser(User user)
         {
-            //var dynamicDoc = JsonConvert.DeserializeObject<dynamic>(JsonConvert.SerializeObject(User));
-
-            //using (JsonReader reader = new JTokenReader(dynamicDoc))
-            //{
-            //    var document = new Document();
-            //    document.LoadFrom(reader);
-            //    return document;
-            //}
             collectionUsers.InsertOne(user);
         }
 
