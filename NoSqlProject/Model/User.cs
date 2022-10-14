@@ -33,5 +33,20 @@ namespace Model
 
         [BsonElement("type")]
         public UserType Type { get; set; }
+        public User(string firstName, string lastName, string location, string phone, string type)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Location = location;
+            Phone = phone;  
+            Type = convertType(type);    
+        }
+
+        private UserType convertType(string type)
+        {
+            if (type == "Employee")
+                return UserType.basic;
+            return UserType.admin;
+        }
     }
 }
