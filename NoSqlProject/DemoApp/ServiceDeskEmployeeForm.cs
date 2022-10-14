@@ -33,6 +33,11 @@ namespace DemoApp
             {
                 textBox.Click += new EventHandler(textBox_Click);
             }
+
+            foreach (ComboBox comboBox in comboBoxes)
+            {
+                comboBox.Click += new EventHandler(comboBox_Click);
+            }
         }
 
         private void buttonAddNewUser_Click(object sender, EventArgs e)
@@ -115,7 +120,7 @@ namespace DemoApp
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (!checkTextBoxes(textBoxes) && !checkComboBoxes(comboBoxes))
+            if (!validateTextBoxes(textBoxes) || !validateComboBoxes(comboBoxes))
             {
                 foreach (TextBox textBox in textBoxes)
                 {
@@ -133,6 +138,16 @@ namespace DemoApp
                         comboBox.Text = "Invalid input...";
                     }
                 }
+                if (!validateEmail(txtEmail.Text))
+                {
+                    txtEmail.ForeColor = Color.Red;
+                    txtEmail.Text = "Invalid input...";
+                }
+                if (!validatePhoneNumber(txtPhoneNumber.Text))
+                {
+                    txtPhoneNumber.ForeColor = Color.Red;
+                    txtPhoneNumber.Text = "Invalid input...";
+                }
             }
             else
             {
@@ -140,13 +155,13 @@ namespace DemoApp
             }
         }
 
-        private bool checkTextBoxes(List<TextBox> textBoxes)
+        private bool validateTextBoxes(List<TextBox> textBoxes)
         {
             int count = 0;
 
             foreach (TextBox textBox in textBoxes)
             {
-                if (textBox.Text == "" || textBox.Text == "Invalid input")
+                if (textBox.Text == "" || textBox.Text == "Invalid input...")
                     count++;
             }
             if (count == 0)
@@ -154,13 +169,13 @@ namespace DemoApp
             return false;
         }
 
-        private bool checkComboBoxes(List<ComboBox> comboBoxes)
+        private bool validateComboBoxes(List<ComboBox> comboBoxes)
         {
             int count = 0;
 
             foreach (ComboBox comboBox in comboBoxes)
             {
-                if (comboBox.Text == "" || comboBox.Text == "Invalid input")
+                if (comboBox.Text == "" || comboBox.Text == "Invalid input...")
                     count++;
             }
             if (count == 0)
@@ -170,11 +185,40 @@ namespace DemoApp
 
         private void textBox_Click(object sender, EventArgs e)
         {
-            foreach (TextBox textBox in textBoxes)
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "Invalid input...")
+                tb.Text = string.Empty;
+            tb.ForeColor = Color.Black;
+        }
+
+        private void comboBox_Click(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            if (cb.Text == "Invalid input...")
+                cb.Text = string.Empty;
+            cb.ForeColor = Color.Black;
+        }
+
+        private bool validateEmail(string email)
+        {
+            if (email.Contains("@gmail.com"))
+                return true;
+            return false;
+        }
+        private bool validatePhoneNumber(string number)
+        {
+            int count = 0;
+            if (number.Length == 10)
             {
-                textBox.ForeColor = Color.Black;
-                textBox.Text = "";
+                foreach (char c in number)
+                {
+                    if (c <= '9' && c >= '0')
+                        count++;
+                }
             }
+            if (count == number.Length)
+                return true;
+            return false;
         }
     }
 }
