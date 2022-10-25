@@ -104,8 +104,8 @@
             // 
             // tabPageUserManagement
             // 
-            this.tabPageUserManagement.Controls.Add(this.panelUserManagement);
             this.tabPageUserManagement.Controls.Add(this.panelAddUser);
+            this.tabPageUserManagement.Controls.Add(this.panelUserManagement);
             this.tabPageUserManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageUserManagement.Name = "tabPageUserManagement";
             this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
