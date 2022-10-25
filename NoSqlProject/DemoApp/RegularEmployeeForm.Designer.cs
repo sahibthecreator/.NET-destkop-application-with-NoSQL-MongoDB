@@ -30,18 +30,18 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtSubject = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txtDeadline = new System.Windows.Forms.TextBox();
-            this.comboBoxType = new System.Windows.Forms.ComboBox();
-            this.lblCreatNewIncident = new System.Windows.Forms.Label();
-            this.lblSubject = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.Label();
-            this.lblDeadline = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblDeadline = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblSubject = new System.Windows.Forms.Label();
+            this.lblCreatNewIncident = new System.Windows.Forms.Label();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.txtDeadline = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSubject = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -51,10 +51,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(-4, 2);
+            this.tabControl1.Location = new System.Drawing.Point(-3, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1059, 512);
+            this.tabControl1.Size = new System.Drawing.Size(794, 416);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -70,47 +71,95 @@
             this.tabPage1.Controls.Add(this.txtDeadline);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.txtSubject);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1051, 474);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(786, 383);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Report Incident";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // btnSubmit
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1051, 474);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Dashbord";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.btnSubmit.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(520, 146);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(84, 41);
+            this.btnSubmit.TabIndex = 10;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = false;
             // 
-            // txtSubject
+            // btnCancel
             // 
-            this.txtSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubject.Location = new System.Drawing.Point(394, 116);
-            this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(197, 27);
-            this.txtSubject.TabIndex = 0;
+            this.btnCancel.BackColor = System.Drawing.Color.Crimson;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(520, 94);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 41);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // lblDeadline
             // 
-            this.textBox2.Location = new System.Drawing.Point(394, 257);
-            this.textBox2.MaximumSize = new System.Drawing.Size(0, 90);
-            this.textBox2.MinimumSize = new System.Drawing.Size(0, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(197, 90);
-            this.textBox2.TabIndex = 1;
+            this.lblDeadline.AutoSize = true;
+            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeadline.Location = new System.Drawing.Point(128, 175);
+            this.lblDeadline.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDeadline.Name = "lblDeadline";
+            this.lblDeadline.Size = new System.Drawing.Size(68, 17);
+            this.lblDeadline.TabIndex = 8;
+            this.lblDeadline.Text = "Deadline:";
             // 
-            // txtDeadline
+            // txtDescription
             // 
-            this.txtDeadline.Location = new System.Drawing.Point(394, 205);
-            this.txtDeadline.Name = "txtDeadline";
-            this.txtDeadline.Size = new System.Drawing.Size(197, 30);
-            this.txtDeadline.TabIndex = 2;
+            this.txtDescription.AutoSize = true;
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(128, 209);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(83, 17);
+            this.txtDescription.TabIndex = 7;
+            this.txtDescription.Text = "Description:";
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.Location = new System.Drawing.Point(128, 135);
+            this.lblType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(113, 17);
+            this.lblType.TabIndex = 6;
+            this.lblType.Text = "Type of incident:";
+            // 
+            // lblSubject
+            // 
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubject.Location = new System.Drawing.Point(128, 98);
+            this.lblSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Size = new System.Drawing.Size(128, 17);
+            this.lblSubject.TabIndex = 5;
+            this.lblSubject.Text = "Subject of incident:";
+            // 
+            // lblCreatNewIncident
+            // 
+            this.lblCreatNewIncident.AutoSize = true;
+            this.lblCreatNewIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatNewIncident.Location = new System.Drawing.Point(126, 30);
+            this.lblCreatNewIncident.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCreatNewIncident.Name = "lblCreatNewIncident";
+            this.lblCreatNewIncident.Size = new System.Drawing.Size(326, 31);
+            this.lblCreatNewIncident.TabIndex = 4;
+            this.lblCreatNewIncident.Text = "Create new incident ticket";
             // 
             // comboBoxType
             // 
@@ -120,91 +169,57 @@
             "Software",
             "Hardware",
             "Service"});
-            this.comboBoxType.Location = new System.Drawing.Point(394, 158);
+            this.comboBoxType.Location = new System.Drawing.Point(296, 128);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(197, 28);
+            this.comboBoxType.Size = new System.Drawing.Size(149, 25);
             this.comboBoxType.TabIndex = 3;
             // 
-            // lblCreatNewIncident
+            // txtDeadline
             // 
-            this.lblCreatNewIncident.AutoSize = true;
-            this.lblCreatNewIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatNewIncident.Location = new System.Drawing.Point(168, 37);
-            this.lblCreatNewIncident.Name = "lblCreatNewIncident";
-            this.lblCreatNewIncident.Size = new System.Drawing.Size(406, 39);
-            this.lblCreatNewIncident.TabIndex = 4;
-            this.lblCreatNewIncident.Text = "Create new incident ticket";
+            this.txtDeadline.Location = new System.Drawing.Point(296, 167);
+            this.txtDeadline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeadline.Name = "txtDeadline";
+            this.txtDeadline.Size = new System.Drawing.Size(149, 26);
+            this.txtDeadline.TabIndex = 2;
             // 
-            // lblSubject
+            // textBox2
             // 
-            this.lblSubject.AutoSize = true;
-            this.lblSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubject.Location = new System.Drawing.Point(170, 121);
-            this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(152, 20);
-            this.lblSubject.TabIndex = 5;
-            this.lblSubject.Text = "Subject of incident:";
+            this.textBox2.Location = new System.Drawing.Point(296, 209);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.MaximumSize = new System.Drawing.Size(4, 90);
+            this.textBox2.MinimumSize = new System.Drawing.Size(4, 90);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(4, 26);
+            this.textBox2.TabIndex = 1;
             // 
-            // lblType
+            // txtSubject
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(170, 166);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(132, 20);
-            this.lblType.TabIndex = 6;
-            this.lblType.Text = "Type of incident:";
+            this.txtSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubject.Location = new System.Drawing.Point(296, 94);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.Size = new System.Drawing.Size(149, 23);
+            this.txtSubject.TabIndex = 0;
             // 
-            // txtDescription
+            // tabPage2
             // 
-            this.txtDescription.AutoSize = true;
-            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(171, 257);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(100, 20);
-            this.txtDescription.TabIndex = 7;
-            this.txtDescription.Text = "Description:";
-            // 
-            // lblDeadline
-            // 
-            this.lblDeadline.AutoSize = true;
-            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeadline.Location = new System.Drawing.Point(171, 215);
-            this.lblDeadline.Name = "lblDeadline";
-            this.lblDeadline.Size = new System.Drawing.Size(80, 20);
-            this.lblDeadline.TabIndex = 8;
-            this.lblDeadline.Text = "Deadline:";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.Crimson;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(693, 116);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(112, 50);
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.BackColor = System.Drawing.Color.GreenYellow;
-            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(693, 180);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(112, 50);
-            this.btnSubmit.TabIndex = 10;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(786, 383);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Dashbord";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // RegularEmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RegularEmployeeForm";
             this.Text = "RegularEmployee";
             this.Load += new System.EventHandler(this.RegularEmployeeForm_Load);

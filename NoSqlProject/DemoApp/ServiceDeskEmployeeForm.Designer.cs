@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageDashboard = new System.Windows.Forms.TabPage();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
             this.panelAddUser = new System.Windows.Forms.Panel();
@@ -60,10 +59,23 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPageDashboard = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCreateIncident = new System.Windows.Forms.Button();
+            this.textBoxFilterByEmailTickets = new System.Windows.Forms.TextBox();
+            this.listViewTickets = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
+            this.tabPageIncidentManagement.SuspendLayout();
             this.tabPageUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -72,45 +84,32 @@
             this.tabControl1.Controls.Add(this.tabPageUserManagement);
             this.tabControl1.Controls.Add(this.tabPageDashboard);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 4);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControl1.Location = new System.Drawing.Point(0, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1200, 688);
+            this.tabControl1.Size = new System.Drawing.Size(800, 447);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tabControl1_KeyPress);
             // 
-            // tabPageDashboard
-            // 
-            this.tabPageDashboard.Location = new System.Drawing.Point(4, 38);
-            this.tabPageDashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageDashboard.Name = "tabPageDashboard";
-            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageDashboard.Size = new System.Drawing.Size(1192, 646);
-            this.tabPageDashboard.TabIndex = 0;
-            this.tabPageDashboard.Text = "Dashboard";
-            this.tabPageDashboard.UseVisualStyleBackColor = true;
-            // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 38);
-            this.tabPageIncidentManagement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageIncidentManagement.Controls.Add(this.panel1);
+            this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
-            this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageIncidentManagement.Size = new System.Drawing.Size(1192, 646);
+            this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageIncidentManagement.Size = new System.Drawing.Size(792, 414);
             this.tabPageIncidentManagement.TabIndex = 1;
             this.tabPageIncidentManagement.Text = "Incident Management";
             this.tabPageIncidentManagement.UseVisualStyleBackColor = true;
             // 
             // tabPageUserManagement
             // 
-            this.tabPageUserManagement.Controls.Add(this.panelAddUser);
             this.tabPageUserManagement.Controls.Add(this.panelUserManagement);
-            this.tabPageUserManagement.Location = new System.Drawing.Point(4, 38);
-            this.tabPageUserManagement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageUserManagement.Controls.Add(this.panelAddUser);
+            this.tabPageUserManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageUserManagement.Name = "tabPageUserManagement";
-            this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageUserManagement.Size = new System.Drawing.Size(1192, 646);
+            this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageUserManagement.Size = new System.Drawing.Size(792, 414);
             this.tabPageUserManagement.TabIndex = 2;
             this.tabPageUserManagement.Text = "User Management";
             this.tabPageUserManagement.UseVisualStyleBackColor = true;
@@ -136,8 +135,9 @@
             this.panelAddUser.Controls.Add(this.btnAddUser);
             this.panelAddUser.Controls.Add(this.lblAddUser);
             this.panelAddUser.Location = new System.Drawing.Point(0, 0);
+            this.panelAddUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelAddUser.Name = "panelAddUser";
-            this.panelAddUser.Size = new System.Drawing.Size(1192, 650);
+            this.panelAddUser.Size = new System.Drawing.Size(795, 422);
             this.panelAddUser.TabIndex = 8;
             this.panelAddUser.Visible = false;
             // 
@@ -149,9 +149,10 @@
             "Haarlem",
             "Amterdam",
             "Utrecht"});
-            this.comboLocation.Location = new System.Drawing.Point(337, 392);
+            this.comboLocation.Location = new System.Drawing.Point(225, 255);
+            this.comboLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboLocation.Name = "comboLocation";
-            this.comboLocation.Size = new System.Drawing.Size(355, 33);
+            this.comboLocation.Size = new System.Drawing.Size(238, 24);
             this.comboLocation.TabIndex = 22;
             // 
             // comboType
@@ -161,18 +162,20 @@
             this.comboType.Items.AddRange(new object[] {
             "Employee",
             "Service Desk Employee"});
-            this.comboType.Location = new System.Drawing.Point(337, 242);
+            this.comboType.Location = new System.Drawing.Point(225, 157);
+            this.comboType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboType.Name = "comboType";
-            this.comboType.Size = new System.Drawing.Size(355, 33);
+            this.comboType.Size = new System.Drawing.Size(238, 24);
             this.comboType.TabIndex = 21;
             // 
             // checkBoxYes
             // 
             this.checkBoxYes.AutoSize = true;
             this.checkBoxYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxYes.Location = new System.Drawing.Point(337, 451);
+            this.checkBoxYes.Location = new System.Drawing.Point(225, 293);
+            this.checkBoxYes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBoxYes.Name = "checkBoxYes";
-            this.checkBoxYes.Size = new System.Drawing.Size(355, 24);
+            this.checkBoxYes.Size = new System.Drawing.Size(240, 17);
             this.checkBoxYes.TabIndex = 20;
             this.checkBoxYes.Text = "yes, a password e-mail will be sent to the user";
             this.checkBoxYes.UseVisualStyleBackColor = true;
@@ -180,43 +183,48 @@
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(337, 345);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(225, 224);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(355, 30);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(238, 23);
             this.txtPhoneNumber.TabIndex = 19;
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(337, 295);
+            this.txtEmail.Location = new System.Drawing.Point(225, 192);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(355, 30);
+            this.txtEmail.Size = new System.Drawing.Size(238, 23);
             this.txtEmail.TabIndex = 18;
             // 
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(337, 190);
+            this.txtLastName.Location = new System.Drawing.Point(225, 123);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(355, 30);
+            this.txtLastName.Size = new System.Drawing.Size(238, 23);
             this.txtLastName.TabIndex = 17;
             // 
             // txtFirstName
             // 
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtFirstName.Location = new System.Drawing.Point(337, 145);
+            this.txtFirstName.Location = new System.Drawing.Point(225, 94);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(355, 30);
+            this.txtFirstName.Size = new System.Drawing.Size(238, 23);
             this.txtFirstName.TabIndex = 16;
             // 
             // lblSentPassword
             // 
             this.lblSentPassword.AutoSize = true;
             this.lblSentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSentPassword.Location = new System.Drawing.Point(70, 450);
+            this.lblSentPassword.Location = new System.Drawing.Point(47, 292);
+            this.lblSentPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSentPassword.Name = "lblSentPassword";
-            this.lblSentPassword.Size = new System.Drawing.Size(159, 25);
+            this.lblSentPassword.Size = new System.Drawing.Size(113, 17);
             this.lblSentPassword.TabIndex = 15;
             this.lblSentPassword.Text = "Send password?";
             // 
@@ -224,9 +232,10 @@
             // 
             this.lblLocation.AutoSize = true;
             this.lblLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocation.Location = new System.Drawing.Point(70, 400);
+            this.lblLocation.Location = new System.Drawing.Point(47, 260);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(158, 25);
+            this.lblLocation.Size = new System.Drawing.Size(114, 17);
             this.lblLocation.TabIndex = 14;
             this.lblLocation.Text = "Location/branch:";
             // 
@@ -234,9 +243,10 @@
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(70, 350);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(47, 227);
+            this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(146, 25);
+            this.lblPhoneNumber.Size = new System.Drawing.Size(105, 17);
             this.lblPhoneNumber.TabIndex = 13;
             this.lblPhoneNumber.Text = "Phone number:";
             // 
@@ -244,9 +254,10 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(70, 300);
+            this.lblEmail.Location = new System.Drawing.Point(47, 195);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(148, 25);
+            this.lblEmail.Size = new System.Drawing.Size(106, 17);
             this.lblEmail.TabIndex = 12;
             this.lblEmail.Text = "E-mail address:";
             // 
@@ -254,9 +265,10 @@
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(70, 250);
+            this.lblType.Location = new System.Drawing.Point(47, 162);
+            this.lblType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(127, 25);
+            this.lblType.Size = new System.Drawing.Size(92, 17);
             this.lblType.TabIndex = 11;
             this.lblType.Text = "Type of user:";
             // 
@@ -264,9 +276,10 @@
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(70, 200);
+            this.lblLastName.Location = new System.Drawing.Point(47, 130);
+            this.lblLastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(112, 25);
+            this.lblLastName.Size = new System.Drawing.Size(80, 17);
             this.lblLastName.TabIndex = 10;
             this.lblLastName.Text = "Last Name:";
             // 
@@ -274,9 +287,10 @@
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(70, 150);
+            this.lblFirstName.Location = new System.Drawing.Point(47, 98);
+            this.lblFirstName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(112, 25);
+            this.lblFirstName.Size = new System.Drawing.Size(80, 17);
             this.lblFirstName.TabIndex = 9;
             this.lblFirstName.Text = "First Name:";
             // 
@@ -284,10 +298,9 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(337, 493);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(225, 320);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(140, 50);
+            this.btnCancel.Size = new System.Drawing.Size(93, 32);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -297,10 +310,9 @@
             // 
             this.btnAddUser.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.Location = new System.Drawing.Point(552, 493);
-            this.btnAddUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddUser.Location = new System.Drawing.Point(368, 320);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(140, 50);
+            this.btnAddUser.Size = new System.Drawing.Size(93, 32);
             this.btnAddUser.TabIndex = 7;
             this.btnAddUser.Text = "ADD USER";
             this.btnAddUser.UseVisualStyleBackColor = false;
@@ -310,10 +322,9 @@
             // 
             this.lblAddUser.AutoSize = true;
             this.lblAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddUser.Location = new System.Drawing.Point(70, 40);
-            this.lblAddUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddUser.Location = new System.Drawing.Point(47, 26);
             this.lblAddUser.Name = "lblAddUser";
-            this.lblAddUser.Size = new System.Drawing.Size(338, 47);
+            this.lblAddUser.Size = new System.Drawing.Size(228, 31);
             this.lblAddUser.TabIndex = 5;
             this.lblAddUser.Text = "Create new user";
             // 
@@ -324,18 +335,18 @@
             this.panelUserManagement.Controls.Add(this.textBoxFilterByEmail);
             this.panelUserManagement.Controls.Add(this.listViewUsers);
             this.panelUserManagement.Location = new System.Drawing.Point(0, 0);
+            this.panelUserManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelUserManagement.Name = "panelUserManagement";
-            this.panelUserManagement.Size = new System.Drawing.Size(1192, 650);
+            this.panelUserManagement.Size = new System.Drawing.Size(795, 422);
             this.panelUserManagement.TabIndex = 8;
             // 
             // lblUserManagement
             // 
             this.lblUserManagement.AutoSize = true;
             this.lblUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserManagement.Location = new System.Drawing.Point(70, 40);
-            this.lblUserManagement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserManagement.Location = new System.Drawing.Point(47, 26);
             this.lblUserManagement.Name = "lblUserManagement";
-            this.lblUserManagement.Size = new System.Drawing.Size(374, 47);
+            this.lblUserManagement.Size = new System.Drawing.Size(251, 31);
             this.lblUserManagement.TabIndex = 4;
             this.lblUserManagement.Text = "User management";
             // 
@@ -343,10 +354,9 @@
             // 
             this.buttonAddNewUser.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonAddNewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddNewUser.Location = new System.Drawing.Point(867, 102);
-            this.buttonAddNewUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonAddNewUser.Location = new System.Drawing.Point(578, 66);
             this.buttonAddNewUser.Name = "buttonAddNewUser";
-            this.buttonAddNewUser.Size = new System.Drawing.Size(164, 51);
+            this.buttonAddNewUser.Size = new System.Drawing.Size(109, 33);
             this.buttonAddNewUser.TabIndex = 6;
             this.buttonAddNewUser.Text = "+ ADD NEW USER";
             this.buttonAddNewUser.UseVisualStyleBackColor = false;
@@ -356,10 +366,9 @@
             // 
             this.textBoxFilterByEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFilterByEmail.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxFilterByEmail.Location = new System.Drawing.Point(70, 120);
-            this.textBoxFilterByEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxFilterByEmail.Location = new System.Drawing.Point(47, 78);
             this.textBoxFilterByEmail.Name = "textBoxFilterByEmail";
-            this.textBoxFilterByEmail.Size = new System.Drawing.Size(319, 33);
+            this.textBoxFilterByEmail.Size = new System.Drawing.Size(214, 24);
             this.textBoxFilterByEmail.TabIndex = 7;
             this.textBoxFilterByEmail.Text = "Filter by email";
             this.textBoxFilterByEmail.Click += new System.EventHandler(this.textBoxFilterByEmail_Click);
@@ -374,10 +383,9 @@
             this.columnHeader10});
             this.listViewUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewUsers.HideSelection = false;
-            this.listViewUsers.Location = new System.Drawing.Point(70, 190);
-            this.listViewUsers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewUsers.Location = new System.Drawing.Point(47, 123);
             this.listViewUsers.Name = "listViewUsers";
-            this.listViewUsers.Size = new System.Drawing.Size(961, 433);
+            this.listViewUsers.Size = new System.Drawing.Size(642, 283);
             this.listViewUsers.TabIndex = 5;
             this.listViewUsers.UseCompatibleStateImageBehavior = false;
             this.listViewUsers.View = System.Windows.Forms.View.Details;
@@ -406,21 +414,116 @@
             this.columnHeader10.Text = "# tickets";
             this.columnHeader10.Width = 80;
             // 
+            // tabPageDashboard
+            // 
+            this.tabPageDashboard.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDashboard.Name = "tabPageDashboard";
+            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageDashboard.Size = new System.Drawing.Size(792, 414);
+            this.tabPageDashboard.TabIndex = 0;
+            this.tabPageDashboard.Text = "Dashboard";
+            this.tabPageDashboard.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnCreateIncident);
+            this.panel1.Controls.Add(this.textBoxFilterByEmailTickets);
+            this.panel1.Controls.Add(this.listViewTickets);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(792, 414);
+            this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(47, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(233, 31);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Tickets overview";
+            // 
+            // btnCreateIncident
+            // 
+            this.btnCreateIncident.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCreateIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateIncident.Location = new System.Drawing.Point(575, 66);
+            this.btnCreateIncident.Name = "btnCreateIncident";
+            this.btnCreateIncident.Size = new System.Drawing.Size(112, 33);
+            this.btnCreateIncident.TabIndex = 10;
+            this.btnCreateIncident.Text = "CREATE INCIDENT";
+            this.btnCreateIncident.UseVisualStyleBackColor = false;
+            // 
+            // textBoxFilterByEmailTickets
+            // 
+            this.textBoxFilterByEmailTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFilterByEmailTickets.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxFilterByEmailTickets.Location = new System.Drawing.Point(47, 78);
+            this.textBoxFilterByEmailTickets.Name = "textBoxFilterByEmailTickets";
+            this.textBoxFilterByEmailTickets.Size = new System.Drawing.Size(214, 24);
+            this.textBoxFilterByEmailTickets.TabIndex = 11;
+            this.textBoxFilterByEmailTickets.Text = "Filter by email";
+            // 
+            // listViewTickets
+            // 
+            this.listViewTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listViewTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewTickets.HideSelection = false;
+            this.listViewTickets.Location = new System.Drawing.Point(47, 123);
+            this.listViewTickets.Name = "listViewTickets";
+            this.listViewTickets.Size = new System.Drawing.Size(642, 283);
+            this.listViewTickets.TabIndex = 9;
+            this.listViewTickets.UseCompatibleStateImageBehavior = false;
+            this.listViewTickets.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Subject";
+            this.columnHeader2.Width = 200;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "User";
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Date";
+            this.columnHeader4.Width = 120;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Status";
+            this.columnHeader5.Width = 80;
+            // 
             // ServiceDeskEmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ServiceDeskEmployeeForm";
             this.Text = "ServiceDeskEmployeeForm";
             this.tabControl1.ResumeLayout(false);
+            this.tabPageIncidentManagement.ResumeLayout(false);
             this.tabPageUserManagement.ResumeLayout(false);
             this.panelAddUser.ResumeLayout(false);
             this.panelAddUser.PerformLayout();
             this.panelUserManagement.ResumeLayout(false);
             this.panelUserManagement.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -459,5 +562,15 @@
         private System.Windows.Forms.CheckBox checkBoxYes;
         private System.Windows.Forms.ComboBox comboLocation;
         private System.Windows.Forms.ComboBox comboType;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCreateIncident;
+        private System.Windows.Forms.TextBox textBoxFilterByEmailTickets;
+        private System.Windows.Forms.ListView listViewTickets;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
