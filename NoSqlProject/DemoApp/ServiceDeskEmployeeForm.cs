@@ -144,7 +144,6 @@ namespace DemoApp
                 UserService userService = new UserService();
                 userService.addUser(user);
                 clearBoxes();
-
             }
         }
 
