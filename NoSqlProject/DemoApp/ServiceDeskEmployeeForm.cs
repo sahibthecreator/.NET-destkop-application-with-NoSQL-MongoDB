@@ -20,6 +20,8 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
+            loadIncidents();
+
             loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
@@ -252,7 +254,7 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents(string str)
+        private void loadIncidents()
         {
             try
             {
@@ -262,7 +264,12 @@ namespace DemoApp
 
                 foreach (Incident incident in incidents)
                 {
-                    listViewTickets item = new listViewTickets(user.Id.ToString());
+                    ListViewItem item = new ListViewItem(incident.Id.ToString());
+                    item.SubItems.Add(incident.Subject);
+                    item.SubItems.Add(incident.Reporter);
+                    item.SubItems.Add(incident.Date.ToString());                 
+                    item.SubItems.Add(incident.status.ToString());
+                    listViewTickets.Items.Add(item);
                 }
             }
             catch (Exception exp)

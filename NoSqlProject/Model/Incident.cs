@@ -31,9 +31,6 @@ namespace Model
         [BsonElement("description")]
         public string description { get; set; }
 
-        [BsonElement("I/T")]
-        public int IncidentTicket { get; set; }
-
         [BsonElement("status")]
         public int status { get; set; }
     }
