@@ -21,6 +21,9 @@ namespace DAL
         {
             return collectionIncident.AsQueryable().ToList<Incident>();
         }
-
+        public void addIncident(Incident incident)
+        {
+            collectionIncident.InsertOne(incident);
+        }
     }
 }

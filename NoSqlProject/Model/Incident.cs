@@ -29,9 +29,19 @@ namespace Model
         public DateTime Deadline { get; set; }
 
         [BsonElement("description")]
-        public string description { get; set; }
+        public string Description { get; set; }
 
         [BsonElement("status")]
-        public int status { get; set; }
+        public int Status { get; set; }
+        public Incident(DateTime date, string subject, string type, string reporter, DateTime deadline, string description, int status)
+        {
+            Date = date;
+            Subject = subject;
+            Type = type;
+            Reporter = reporter;
+            Deadline = deadline;
+            Description = description;
+            Status = status;
+        }
     }
 }

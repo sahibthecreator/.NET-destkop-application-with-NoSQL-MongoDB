@@ -44,7 +44,7 @@ namespace DemoApp
                 user = userService.getMatchedUser(emailInput.Text, passwordInput.Text)[0];
                 if(user.Type==UserType.basic)
                 {
-                    RegularEmployeeForm newForm = new RegularEmployeeForm();
+                    RegularEmployeeForm newForm = new RegularEmployeeForm(user);
                     this.Hide();
                     newForm.ShowDialog();
                     this.Close();
