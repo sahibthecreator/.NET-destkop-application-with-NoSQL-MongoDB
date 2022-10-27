@@ -16,9 +16,9 @@ namespace DemoApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            Application.Run(new Form1());
             //Application.Run(new ServiceDeskEmployeeForm());
-            Application.Run(new RegularEmployeeForm());
+            //Application.Run(new RegularEmployeeForm());
         }
     }
 }

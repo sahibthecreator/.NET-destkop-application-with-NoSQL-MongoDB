@@ -20,5 +20,9 @@ namespace Logic
         {
             return incidentDAO.GetAllIncidents();
         }
+        public void addIncident(Incident incident)
+        {
+            incidentDAO.addIncident(incident);
+        }
     }
 }
