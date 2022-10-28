@@ -251,8 +251,6 @@ namespace DemoApp
                 comboBox.Text = String.Empty; ;
             }
         }
-<<<<<<< Updated upstream
-=======
 
         private void loadIncidents()
         {
@@ -277,6 +275,5 @@ namespace DemoApp
                 MessageBox.Show(exp.Message);
             }
         }
->>>>>>> Stashed changes
     }
 }
