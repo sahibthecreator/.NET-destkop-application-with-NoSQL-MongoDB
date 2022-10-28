@@ -84,11 +84,15 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.ForeColor = System.Drawing.Color.LightGray;
             this.txtDescription.Location = new System.Drawing.Point(386, 310);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(197, 127);
+            this.txtDescription.Size = new System.Drawing.Size(268, 127);
             this.txtDescription.TabIndex = 14;
+            this.txtDescription.Text = "Briefly explain  the problem you\'re facing...";
+            this.txtDescription.Click += new System.EventHandler(this.txtDescription_Click);
             // 
             // lblUser
             // 
@@ -114,9 +118,11 @@
             // 
             this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datePicker.Location = new System.Drawing.Point(386, 259);
+            this.datePicker.MinDate = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
             this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(197, 24);
+            this.datePicker.Size = new System.Drawing.Size(268, 24);
             this.datePicker.TabIndex = 11;
+            this.datePicker.Value = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
             // 
             // btnSubmit
             // 
@@ -128,7 +134,7 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(686, 180);
+            this.btnSubmit.Location = new System.Drawing.Point(751, 233);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(158, 50);
             this.btnSubmit.TabIndex = 10;
@@ -146,7 +152,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(686, 116);
+            this.btnCancel.Location = new System.Drawing.Point(751, 169);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(158, 50);
             this.btnCancel.TabIndex = 9;
@@ -200,7 +206,7 @@
             this.lblCreatNewIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreatNewIncident.Location = new System.Drawing.Point(160, 37);
             this.lblCreatNewIncident.Name = "lblCreatNewIncident";
-            this.lblCreatNewIncident.Size = new System.Drawing.Size(406, 39);
+            this.lblCreatNewIncident.Size = new System.Drawing.Size(391, 38);
             this.lblCreatNewIncident.TabIndex = 4;
             this.lblCreatNewIncident.Text = "Create new incident ticket";
             // 
@@ -214,7 +220,7 @@
             "Service"});
             this.comboBoxType.Location = new System.Drawing.Point(386, 207);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(197, 28);
+            this.comboBoxType.Size = new System.Drawing.Size(268, 28);
             this.comboBoxType.TabIndex = 3;
             // 
             // txtSubject
@@ -222,7 +228,7 @@
             this.txtSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubject.Location = new System.Drawing.Point(386, 163);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(197, 27);
+            this.txtSubject.Size = new System.Drawing.Size(268, 27);
             this.txtSubject.TabIndex = 0;
             // 
             // tabPage2

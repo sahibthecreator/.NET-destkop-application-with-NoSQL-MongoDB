@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic;
 using Model;
-
 namespace DemoApp
 {
     public partial class RegularEmployeeForm : Form
@@ -35,10 +29,16 @@ namespace DemoApp
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            UserService userService = new UserService();
-            Incident incident = new Incident(DateTime.Now, txtSubject.Text, comboBoxType.Text, user.Id , datePicker.Value, txtDescription.Text, 0);
-            incidentService = new IncidentService();
-            incidentService.addIncident(incident);
+            if (!validateTextBoxes(txtBoxes) || comboBoxType.Text == string.Empty)
+            {
+                
+            }
+            else
+            {
+                Incident incident = new Incident(DateTime.Now, txtSubject.Text, comboBoxType.Text, user.Id, datePicker.Value, txtDescription.Text, 0);
+                incidentService = new IncidentService();
+                incidentService.addIncident(incident);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -46,6 +46,29 @@ namespace DemoApp
             foreach(TextBox tb in txtBoxes)
             {
                 tb.Text = string.Empty;
+            }
+        }
+        private bool validateTextBoxes(List<TextBox> txtBoxes)
+        {
+            foreach (TextBox txtBox in txtBoxes)
+            {
+                if (txtBox.Text == string.Empty)
+                    return false;
+            }
+            return true;
+        }
+
+        private void txtDescription_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtDescription.Text = string.Empty;
+                txtDescription.ForeColor = Color.Black;
+
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
             }
         }
     }

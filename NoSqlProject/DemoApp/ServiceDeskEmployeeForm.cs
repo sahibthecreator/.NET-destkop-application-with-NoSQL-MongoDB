@@ -251,5 +251,32 @@ namespace DemoApp
                 comboBox.Text = String.Empty; ;
             }
         }
+<<<<<<< Updated upstream
+=======
+
+        private void loadIncidents()
+        {
+            try
+            {
+                IncidentService incidentService = new IncidentService();
+                List<Incident> incidents = incidentService.GetAllIncidents();
+                listViewTickets.Items.Clear();
+
+                foreach (Incident incident in incidents)
+                {
+                    ListViewItem item = new ListViewItem(incident.Id.ToString());
+                    item.SubItems.Add(incident.Subject);
+                    item.SubItems.Add(incident.Reporter);
+                    item.SubItems.Add(incident.Date.ToString());                 
+                    item.SubItems.Add(incident.Status.ToString());
+                    listViewTickets.Items.Add(item);
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+>>>>>>> Stashed changes
     }
 }
