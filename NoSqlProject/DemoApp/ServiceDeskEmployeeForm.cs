@@ -20,6 +20,7 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
+            loadIncidents();
             loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
@@ -257,15 +258,19 @@ namespace DemoApp
             try
             {
                 IncidentService incidentService = new IncidentService();
+                UserService userService = new UserService();
                 List<Incident> incidents = incidentService.GetAllIncidents();
                 listViewTickets.Items.Clear();
 
                 foreach (Incident incident in incidents)
                 {
+                    //User user = userService.getUserById(incident.Reporter);
+
                     ListViewItem item = new ListViewItem(incident.Id.ToString());
                     item.SubItems.Add(incident.Subject);
                     item.SubItems.Add(incident.Reporter);
-                    item.SubItems.Add(incident.Date.ToString());                 
+                    //item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(incident.Date.ToString());
                     item.SubItems.Add(incident.Status.ToString());
                     listViewTickets.Items.Add(item);
                 }

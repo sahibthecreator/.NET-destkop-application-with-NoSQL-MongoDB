@@ -113,6 +113,7 @@
             // tabPageIncidentManagement
             // 
             this.tabPageIncidentManagement.Controls.Add(this.panel1);
+            this.tabPageIncidentManagement.Controls.Add(this.panel2);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
             this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(3);
@@ -123,7 +124,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnCreateIncident);
             this.panel1.Controls.Add(this.textBoxFilterByEmailTickets);
@@ -405,8 +405,8 @@
             // 
             // tabPageUserManagement
             // 
-            this.tabPageUserManagement.Controls.Add(this.panelAddUser);
             this.tabPageUserManagement.Controls.Add(this.panelUserManagement);
+            this.tabPageUserManagement.Controls.Add(this.panelAddUser);
             this.tabPageUserManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageUserManagement.Name = "tabPageUserManagement";
             this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3);
