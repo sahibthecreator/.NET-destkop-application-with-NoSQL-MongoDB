@@ -20,6 +20,16 @@ namespace DemoApp
             txtBoxes.Add(txtSubject);
             txtBoxes.Add(txtDescription);
             lblUser.Text = user.FirstName;
+            LoadCPB(cpbOpenTickets, Status.open);
+            LoadCPB(cpbClosedTickets, Status.closed);
+            //LoadCPB(cpbResolvedTickets,Status.resolved);
+        }
+
+        private void LoadCPB(ProgressBar cpb, Status status)
+        {  
+            List<Incident> tickets = incidentService.GetTickets(user, status);
+            cpb.Value = tickets.Count*10;
+            cpb.Text = tickets.Count.ToString();
         }
 
         private void RegularEmployeeForm_Load(object sender, EventArgs e)

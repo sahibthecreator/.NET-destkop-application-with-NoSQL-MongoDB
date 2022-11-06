@@ -44,8 +44,13 @@
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cpbOpenTickets = new CircularProgressBar.CircularProgressBar();
+            this.cpbClosedTickets = new CircularProgressBar.CircularProgressBar();
+            this.lblOpenTicketsText = new System.Windows.Forms.Label();
+            this.lblClosedTicketsText = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -233,6 +238,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblClosedTicketsText);
+            this.tabPage2.Controls.Add(this.lblOpenTicketsText);
+            this.tabPage2.Controls.Add(this.cpbClosedTickets);
+            this.tabPage2.Controls.Add(this.cpbOpenTickets);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -240,6 +249,86 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dashbord";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cpbOpenTickets
+            // 
+            this.cpbOpenTickets.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpbOpenTickets.AnimationSpeed = 500;
+            this.cpbOpenTickets.BackColor = System.Drawing.Color.Transparent;
+            this.cpbOpenTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.cpbOpenTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cpbOpenTickets.InnerColor = System.Drawing.Color.White;
+            this.cpbOpenTickets.InnerMargin = 2;
+            this.cpbOpenTickets.InnerWidth = -1;
+            this.cpbOpenTickets.Location = new System.Drawing.Point(34, 90);
+            this.cpbOpenTickets.MarqueeAnimationSpeed = 2000;
+            this.cpbOpenTickets.Name = "cpbOpenTickets";
+            this.cpbOpenTickets.OuterColor = System.Drawing.Color.Gray;
+            this.cpbOpenTickets.OuterMargin = -25;
+            this.cpbOpenTickets.OuterWidth = 26;
+            this.cpbOpenTickets.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cpbOpenTickets.ProgressWidth = 25;
+            this.cpbOpenTickets.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpbOpenTickets.Size = new System.Drawing.Size(280, 277);
+            this.cpbOpenTickets.StartAngle = 270;
+            this.cpbOpenTickets.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbOpenTickets.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpbOpenTickets.SubscriptText = "";
+            this.cpbOpenTickets.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbOpenTickets.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpbOpenTickets.SuperscriptText = "";
+            this.cpbOpenTickets.TabIndex = 0;
+            this.cpbOpenTickets.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpbOpenTickets.Value = 68;
+            // 
+            // cpbClosedTickets
+            // 
+            this.cpbClosedTickets.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpbClosedTickets.AnimationSpeed = 500;
+            this.cpbClosedTickets.BackColor = System.Drawing.Color.Transparent;
+            this.cpbClosedTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.cpbClosedTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cpbClosedTickets.InnerColor = System.Drawing.Color.White;
+            this.cpbClosedTickets.InnerMargin = 2;
+            this.cpbClosedTickets.InnerWidth = -1;
+            this.cpbClosedTickets.Location = new System.Drawing.Point(376, 90);
+            this.cpbClosedTickets.MarqueeAnimationSpeed = 2000;
+            this.cpbClosedTickets.Name = "cpbClosedTickets";
+            this.cpbClosedTickets.OuterColor = System.Drawing.Color.Gray;
+            this.cpbClosedTickets.OuterMargin = -25;
+            this.cpbClosedTickets.OuterWidth = 26;
+            this.cpbClosedTickets.ProgressColor = System.Drawing.Color.Red;
+            this.cpbClosedTickets.ProgressWidth = 25;
+            this.cpbClosedTickets.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpbClosedTickets.Size = new System.Drawing.Size(280, 277);
+            this.cpbClosedTickets.StartAngle = 270;
+            this.cpbClosedTickets.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbClosedTickets.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpbClosedTickets.SubscriptText = "";
+            this.cpbClosedTickets.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbClosedTickets.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpbClosedTickets.SuperscriptText = "";
+            this.cpbClosedTickets.TabIndex = 0;
+            this.cpbClosedTickets.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpbClosedTickets.Value = 68;
+            // 
+            // lblOpenTicketsText
+            // 
+            this.lblOpenTicketsText.AutoSize = true;
+            this.lblOpenTicketsText.Location = new System.Drawing.Point(108, 40);
+            this.lblOpenTicketsText.Name = "lblOpenTicketsText";
+            this.lblOpenTicketsText.Size = new System.Drawing.Size(129, 25);
+            this.lblOpenTicketsText.TabIndex = 1;
+            this.lblOpenTicketsText.Text = "Open Tickets";
+            // 
+            // lblClosedTicketsText
+            // 
+            this.lblClosedTicketsText.AutoSize = true;
+            this.lblClosedTicketsText.Location = new System.Drawing.Point(449, 40);
+            this.lblClosedTicketsText.Name = "lblClosedTicketsText";
+            this.lblClosedTicketsText.Size = new System.Drawing.Size(142, 25);
+            this.lblClosedTicketsText.TabIndex = 2;
+            this.lblClosedTicketsText.Text = "Closed Tickets";
             // 
             // RegularEmployeeForm
             // 
@@ -253,6 +342,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -275,5 +366,9 @@
         private System.Windows.Forms.Label lblReported;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.TextBox txtDescription;
+        private CircularProgressBar.CircularProgressBar cpbOpenTickets;
+        private CircularProgressBar.CircularProgressBar cpbClosedTickets;
+        private System.Windows.Forms.Label lblClosedTicketsText;
+        private System.Windows.Forms.Label lblOpenTicketsText;
     }
 }

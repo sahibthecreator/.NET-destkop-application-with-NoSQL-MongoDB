@@ -24,5 +24,10 @@ namespace Logic
         {
             incidentDAO.addIncident(incident);
         }
+
+        public List<Incident> GetTickets(User user, Status status)
+        {
+            return incidentDAO.GetTickets(user, status);    
+        } 
     }
 }
