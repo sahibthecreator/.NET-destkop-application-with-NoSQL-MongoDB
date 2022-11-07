@@ -31,7 +31,7 @@ namespace DemoApp
         {
             if (!validateTextBoxes(txtBoxes) || comboBoxType.Text == string.Empty)
             {
-                
+                //...
             }
             else
             {
@@ -39,14 +39,12 @@ namespace DemoApp
                 incidentService = new IncidentService();
                 incidentService.addIncident(incident);
             }
+            emptyTextBoxes();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            foreach(TextBox tb in txtBoxes)
-            {
-                tb.Text = string.Empty;
-            }
+            emptyTextBoxes();
         }
         private bool validateTextBoxes(List<TextBox> txtBoxes)
         {
@@ -69,6 +67,13 @@ namespace DemoApp
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
+            }
+        }
+        private void emptyTextBoxes()
+        {
+            foreach (TextBox txtBox in txtBoxes)
+            {
+                txtBox.Text = string.Empty;
             }
         }
     }
