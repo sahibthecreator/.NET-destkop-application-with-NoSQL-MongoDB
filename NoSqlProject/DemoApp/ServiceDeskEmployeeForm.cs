@@ -266,18 +266,31 @@ namespace DemoApp
                 {
                     User user = userService.getUserById(incident.Reporter);
 
-                    ListViewItem item = new ListViewItem(incident.Id.ToString());
-                    item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(user.FirstName);
-                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                    item.SubItems.Add(incident.Status.ToString());
-                    listViewTickets.Items.Add(item);
+                    if(incident.Status != TicketStatus.notOpen)
+                    {
+                        ListViewItem item = new ListViewItem(incident.Id.ToString());
+                        item.SubItems.Add(incident.Subject);
+                        item.SubItems.Add(user.FirstName);
+                        item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                        item.SubItems.Add(incident.Status.ToString());
+                        listViewTickets.Items.Add(item);
+                    }
                 }
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
             }
+        }
+
+        private void btnCancelCreateTicket_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSubmitTicket_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

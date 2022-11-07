@@ -55,8 +55,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
+            this.btnSubmitTicket = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
             this.panelUserManagement = new System.Windows.Forms.Panel();
@@ -88,6 +88,9 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
             this.tabPageDashboard = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,6 +127,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnCreateIncident);
             this.panel1.Controls.Add(this.textBoxFilterByEmailTickets);
@@ -147,7 +153,7 @@
             // 
             this.btnCreateIncident.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnCreateIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateIncident.Location = new System.Drawing.Point(575, 66);
+            this.btnCreateIncident.Location = new System.Drawing.Point(304, 69);
             this.btnCreateIncident.Name = "btnCreateIncident";
             this.btnCreateIncident.Size = new System.Drawing.Size(112, 33);
             this.btnCreateIncident.TabIndex = 10;
@@ -221,8 +227,8 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btnCancelCreateTicket);
+            this.panel2.Controls.Add(this.btnSubmitTicket);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -379,27 +385,29 @@
             this.label8.TabIndex = 9;
             this.label8.Text = "Date/time reported:";
             // 
-            // button1
+            // btnCancelCreateTicket
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(420, 340);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 32);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "CANCEL";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCancelCreateTicket.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelCreateTicket.Location = new System.Drawing.Point(420, 340);
+            this.btnCancelCreateTicket.Name = "btnCancelCreateTicket";
+            this.btnCancelCreateTicket.Size = new System.Drawing.Size(93, 32);
+            this.btnCancelCreateTicket.TabIndex = 8;
+            this.btnCancelCreateTicket.Text = "CANCEL";
+            this.btnCancelCreateTicket.UseVisualStyleBackColor = false;
+            this.btnCancelCreateTicket.Click += new System.EventHandler(this.btnCancelCreateTicket_Click);
             // 
-            // button2
+            // btnSubmitTicket
             // 
-            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(519, 340);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 32);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "SUBMIT TICKET";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSubmitTicket.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnSubmitTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitTicket.Location = new System.Drawing.Point(519, 340);
+            this.btnSubmitTicket.Name = "btnSubmitTicket";
+            this.btnSubmitTicket.Size = new System.Drawing.Size(97, 32);
+            this.btnSubmitTicket.TabIndex = 7;
+            this.btnSubmitTicket.Text = "SUBMIT TICKET";
+            this.btnSubmitTicket.UseVisualStyleBackColor = false;
+            this.btnSubmitTicket.Click += new System.EventHandler(this.btnSubmitTicket_Click);
             // 
             // label9
             // 
@@ -407,9 +415,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(47, 26);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(352, 31);
+            this.label9.Size = new System.Drawing.Size(242, 31);
             this.label9.TabIndex = 5;
-            this.label9.Text = "Create new incident ticket";
+            this.label9.Text = "Create new ticket";
             // 
             // tabPageUserManagement
             // 
@@ -733,6 +741,39 @@
             this.tabPageDashboard.Text = "Dashboard";
             this.tabPageDashboard.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(431, 69);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 33);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "EDIT";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(522, 69);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 33);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "DELETE";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LimeGreen;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(614, 69);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 33);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "CLOSE";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // ServiceDeskEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -814,9 +855,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelCreateTicket;
+        private System.Windows.Forms.Button btnSubmitTicket;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
