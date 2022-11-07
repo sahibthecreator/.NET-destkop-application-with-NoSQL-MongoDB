@@ -30,9 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelTicketsOverview = new System.Windows.Forms.Panel();
+            this.btnCloseTicket = new System.Windows.Forms.Button();
+            this.btnDeleteTicket = new System.Windows.Forms.Button();
+            this.btnEditTicket = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCreateIncident = new System.Windows.Forms.Button();
+            this.btnCreateTicket = new System.Windows.Forms.Button();
             this.textBoxFilterByEmailTickets = new System.Windows.Forms.TextBox();
             this.listViewTickets = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,7 +43,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelCreateTicket = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -88,13 +91,10 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
             this.tabPageDashboard = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelTicketsOverview.SuspendLayout();
+            this.panelCreateTicket.SuspendLayout();
             this.tabPageUserManagement.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
@@ -115,8 +115,8 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panel1);
-            this.tabPageIncidentManagement.Controls.Add(this.panel2);
+            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
+            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
             this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(3);
@@ -125,19 +125,53 @@
             this.tabPageIncidentManagement.Text = "Incident Management";
             this.tabPageIncidentManagement.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panelTicketsOverview
             // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnCreateIncident);
-            this.panel1.Controls.Add(this.textBoxFilterByEmailTickets);
-            this.panel1.Controls.Add(this.listViewTickets);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 414);
-            this.panel1.TabIndex = 0;
+            this.panelTicketsOverview.Controls.Add(this.btnCloseTicket);
+            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
+            this.panelTicketsOverview.Controls.Add(this.btnEditTicket);
+            this.panelTicketsOverview.Controls.Add(this.label1);
+            this.panelTicketsOverview.Controls.Add(this.btnCreateTicket);
+            this.panelTicketsOverview.Controls.Add(this.textBoxFilterByEmailTickets);
+            this.panelTicketsOverview.Controls.Add(this.listViewTickets);
+            this.panelTicketsOverview.Location = new System.Drawing.Point(0, 0);
+            this.panelTicketsOverview.Name = "panelTicketsOverview";
+            this.panelTicketsOverview.Size = new System.Drawing.Size(792, 414);
+            this.panelTicketsOverview.TabIndex = 0;
+            // 
+            // btnCloseTicket
+            // 
+            this.btnCloseTicket.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCloseTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseTicket.Location = new System.Drawing.Point(614, 69);
+            this.btnCloseTicket.Name = "btnCloseTicket";
+            this.btnCloseTicket.Size = new System.Drawing.Size(75, 33);
+            this.btnCloseTicket.TabIndex = 14;
+            this.btnCloseTicket.Text = "CLOSE";
+            this.btnCloseTicket.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteTicket
+            // 
+            this.btnDeleteTicket.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTicket.Location = new System.Drawing.Point(522, 69);
+            this.btnDeleteTicket.Name = "btnDeleteTicket";
+            this.btnDeleteTicket.Size = new System.Drawing.Size(75, 33);
+            this.btnDeleteTicket.TabIndex = 13;
+            this.btnDeleteTicket.Text = "DELETE";
+            this.btnDeleteTicket.UseVisualStyleBackColor = false;
+            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
+            // 
+            // btnEditTicket
+            // 
+            this.btnEditTicket.BackColor = System.Drawing.Color.Gray;
+            this.btnEditTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditTicket.Location = new System.Drawing.Point(431, 69);
+            this.btnEditTicket.Name = "btnEditTicket";
+            this.btnEditTicket.Size = new System.Drawing.Size(75, 33);
+            this.btnEditTicket.TabIndex = 12;
+            this.btnEditTicket.Text = "EDIT";
+            this.btnEditTicket.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -149,16 +183,17 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Tickets overview";
             // 
-            // btnCreateIncident
+            // btnCreateTicket
             // 
-            this.btnCreateIncident.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnCreateIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateIncident.Location = new System.Drawing.Point(304, 69);
-            this.btnCreateIncident.Name = "btnCreateIncident";
-            this.btnCreateIncident.Size = new System.Drawing.Size(112, 33);
-            this.btnCreateIncident.TabIndex = 10;
-            this.btnCreateIncident.Text = "CREATE INCIDENT";
-            this.btnCreateIncident.UseVisualStyleBackColor = false;
+            this.btnCreateTicket.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateTicket.Location = new System.Drawing.Point(304, 69);
+            this.btnCreateTicket.Name = "btnCreateTicket";
+            this.btnCreateTicket.Size = new System.Drawing.Size(112, 33);
+            this.btnCreateTicket.TabIndex = 10;
+            this.btnCreateTicket.Text = "CREATE TICKET";
+            this.btnCreateTicket.UseVisualStyleBackColor = false;
+            this.btnCreateTicket.Click += new System.EventHandler(this.btnCreateTicket_Click);
             // 
             // textBoxFilterByEmailTickets
             // 
@@ -179,6 +214,7 @@
             this.columnHeader4,
             this.columnHeader5});
             this.listViewTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewTickets.FullRowSelect = true;
             this.listViewTickets.HideSelection = false;
             this.listViewTickets.Location = new System.Drawing.Point(47, 123);
             this.listViewTickets.Name = "listViewTickets";
@@ -190,6 +226,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 80;
             // 
             // columnHeader2
             // 
@@ -211,31 +248,31 @@
             this.columnHeader5.Text = "Status";
             this.columnHeader5.Width = 80;
             // 
-            // panel2
+            // panelCreateTicket
             // 
-            this.panel2.Controls.Add(this.richTextBox1);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.btnCancelCreateTicket);
-            this.panel2.Controls.Add(this.btnSubmitTicket);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(792, 414);
-            this.panel2.TabIndex = 12;
-            this.panel2.Visible = false;
+            this.panelCreateTicket.Controls.Add(this.richTextBox1);
+            this.panelCreateTicket.Controls.Add(this.comboBox1);
+            this.panelCreateTicket.Controls.Add(this.comboBox2);
+            this.panelCreateTicket.Controls.Add(this.textBox1);
+            this.panelCreateTicket.Controls.Add(this.textBox2);
+            this.panelCreateTicket.Controls.Add(this.textBox3);
+            this.panelCreateTicket.Controls.Add(this.textBox4);
+            this.panelCreateTicket.Controls.Add(this.label2);
+            this.panelCreateTicket.Controls.Add(this.label3);
+            this.panelCreateTicket.Controls.Add(this.label4);
+            this.panelCreateTicket.Controls.Add(this.label5);
+            this.panelCreateTicket.Controls.Add(this.label6);
+            this.panelCreateTicket.Controls.Add(this.label7);
+            this.panelCreateTicket.Controls.Add(this.label8);
+            this.panelCreateTicket.Controls.Add(this.btnCancelCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.btnSubmitTicket);
+            this.panelCreateTicket.Controls.Add(this.label9);
+            this.panelCreateTicket.Location = new System.Drawing.Point(0, 0);
+            this.panelCreateTicket.Margin = new System.Windows.Forms.Padding(2);
+            this.panelCreateTicket.Name = "panelCreateTicket";
+            this.panelCreateTicket.Size = new System.Drawing.Size(792, 414);
+            this.panelCreateTicket.TabIndex = 12;
+            this.panelCreateTicket.Visible = false;
             // 
             // richTextBox1
             // 
@@ -741,39 +778,6 @@
             this.tabPageDashboard.Text = "Dashboard";
             this.tabPageDashboard.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(431, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 33);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "EDIT";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(522, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 33);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "DELETE";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.LimeGreen;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(614, 69);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 33);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "CLOSE";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // ServiceDeskEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -784,10 +788,10 @@
             this.Text = "ServiceDeskEmployeeForm";
             this.tabControl1.ResumeLayout(false);
             this.tabPageIncidentManagement.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelTicketsOverview.ResumeLayout(false);
+            this.panelTicketsOverview.PerformLayout();
+            this.panelCreateTicket.ResumeLayout(false);
+            this.panelCreateTicket.PerformLayout();
             this.tabPageUserManagement.ResumeLayout(false);
             this.panelUserManagement.ResumeLayout(false);
             this.panelUserManagement.PerformLayout();
@@ -831,9 +835,9 @@
         private System.Windows.Forms.CheckBox checkBoxYes;
         private System.Windows.Forms.ComboBox comboLocation;
         private System.Windows.Forms.ComboBox comboType;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelTicketsOverview;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCreateIncident;
+        private System.Windows.Forms.Button btnCreateTicket;
         private System.Windows.Forms.TextBox textBoxFilterByEmailTickets;
         private System.Windows.Forms.ListView listViewTickets;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -841,7 +845,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelCreateTicket;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox1;
@@ -859,8 +863,8 @@
         private System.Windows.Forms.Button btnSubmitTicket;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCloseTicket;
+        private System.Windows.Forms.Button btnDeleteTicket;
+        private System.Windows.Forms.Button btnEditTicket;
     }
 }

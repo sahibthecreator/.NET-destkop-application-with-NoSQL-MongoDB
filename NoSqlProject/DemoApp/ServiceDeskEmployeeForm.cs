@@ -15,6 +15,8 @@ namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
+        UserService userService = new UserService();
+        IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
         List<ComboBox> comboBoxes = new List<ComboBox>();
         public ServiceDeskEmployeeForm()
@@ -59,7 +61,6 @@ namespace DemoApp
         {
             try
             {
-                UserService userService = new UserService();
                 List<User> users = userService.getAllUsers();
                 listViewUsers.Items.Clear();
 
@@ -257,8 +258,6 @@ namespace DemoApp
         {
             try
             {
-                IncidentService incidentService = new IncidentService();
-                UserService userService = new UserService();
                 List<Incident> incidents = incidentService.GetAllIncidents();
                 listViewTickets.Items.Clear();
 
@@ -273,6 +272,7 @@ namespace DemoApp
                         item.SubItems.Add(user.FirstName);
                         item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                         item.SubItems.Add(incident.Status.ToString());
+                        item.Tag = incident;
                         listViewTickets.Items.Add(item);
                     }
                 }
@@ -285,12 +285,52 @@ namespace DemoApp
 
         private void btnCancelCreateTicket_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                panelCreateTicket.Visible = false;
+                panelTicketsOverview.Visible = true;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewTickets.SelectedItems.Count > 0)
+                {
+                    foreach (ListViewItem item in listViewTickets.SelectedItems)
+                    {
+                        incidentService.deleteTicket((Incident)item.Tag);
+                    }
+                }
+                loadIncidents();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void btnCreateTicket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelTicketsOverview.Visible = false;
+                panelCreateTicket.Visible = true;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
     }
 }
