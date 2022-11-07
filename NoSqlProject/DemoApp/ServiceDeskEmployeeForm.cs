@@ -264,13 +264,12 @@ namespace DemoApp
 
                 foreach (Incident incident in incidents)
                 {
-                    //User user = userService.getUserById(incident.Reporter);
+                    User user = userService.getUserById(incident.Reporter);
 
                     ListViewItem item = new ListViewItem(incident.Id.ToString());
                     item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(incident.Reporter);
-                    //item.SubItems.Add(user.FirstName);
-                    item.SubItems.Add(incident.Date.ToString());
+                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                     item.SubItems.Add(incident.Status.ToString());
                     listViewTickets.Items.Add(item);
                 }

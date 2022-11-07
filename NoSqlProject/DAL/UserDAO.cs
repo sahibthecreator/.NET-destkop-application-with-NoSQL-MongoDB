@@ -29,7 +29,7 @@ namespace DAL
 
         public User getUserById(string id)
         {
-            return (User)collectionUsers.Find(x => x.Id == id);
+            return collectionUsers.Find(x => x.Id == id).ToList<User>()[0];
         }
 
         public void addUser(User user)
