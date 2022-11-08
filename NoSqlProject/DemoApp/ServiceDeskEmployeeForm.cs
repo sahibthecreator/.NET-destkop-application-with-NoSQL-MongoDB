@@ -96,7 +96,6 @@ namespace DemoApp
             }
         }
 
-
         //when the key ENTER is pressed the user list and incident list it wil be filtered
         private void tabControl1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -145,7 +144,6 @@ namespace DemoApp
             {
                 fillEmptyTextBoxes();
                 fillEmptyComboBoxes();
-
                 if (!validateEmail(txtEmail.Text))
                 {
                     txtEmail.ForeColor = Color.Red;
@@ -298,11 +296,11 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents(string str)
+        private void loadIncidents()
         {
             try
             {
-                incidents = incidentService.GetAllIncidents();
+                List<Incident> incidents = incidentService.GetAllIncidents();
                 listViewTickets.Items.Clear();
 
                 foreach (Incident incident in incidents)
@@ -397,47 +395,36 @@ namespace DemoApp
 
         private void btnCloseTicket_Click(object sender, EventArgs e)
         {
-            updateStatus(Status.closed);
-        }
-
-        private void btnResolve_Click(object sender, EventArgs e)
-        {
-            updateStatus(Status.resolved);
-        }
-
-        private void updateStatus(Status status)
-        {
-            List<Incident> tickets = new List<Incident>();
-            if (listViewTickets.SelectedItems.Count > 0)
+            List<Incident> closedTickets = new List<Incident>();
+            try
             {
-                foreach (ListViewItem item in listViewTickets.SelectedItems)
+                if (listViewTickets.SelectedItems.Count > 0)
                 {
-                    if (((Incident)item.Tag).Status == status)
+                    foreach (ListViewItem item in listViewTickets.SelectedItems)
                     {
-                        tickets.Add((Incident)item.Tag);
+                        Incident incident = (Incident)item.Tag;
+                        if (incident.Status == Status.closed)
+                        {
+                            closedTickets.Add(incident);
+                        }
+                        else
+                        {
+                            incidentService.closeTicket(incident);
+                        }
                     }
-                    else
+                    string message = "";
+                    foreach (var item in closedTickets)
                     {
-                        incidentService.updateStatus(((Incident)item.Tag), status);
+                        message += $"ticket {item.Id} already closed \n";
                     }
-                }
-                string message = "";
-                foreach (var item in tickets)
-                {
-                    message += $"ticket {item.Id} already {status} \n";
-                }
-
-                if (tickets.Count != 0)
-                {
                     MessageBox.Show(message);
                 }
+                loadIncidents();
             }
-            loadIncidents();
-        }
-
-        private void btnFilterByPriority_Click(object sender, EventArgs e)
-        {
-            //incidents = incidents.OrderBy(i => i.).ToList();
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
     }
 }
