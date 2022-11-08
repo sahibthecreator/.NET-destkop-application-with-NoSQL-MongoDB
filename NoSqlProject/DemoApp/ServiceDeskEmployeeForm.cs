@@ -16,6 +16,7 @@ namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
+        List<Incident> incidents;
         UserService userService = new UserService();
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
@@ -48,7 +49,7 @@ namespace DemoApp
         {
             try
             {
-                panelUserManagement.Visible = false;    
+                panelUserManagement.Visible = false;
                 panelAddUser.Visible = true;
 
             }
@@ -144,7 +145,7 @@ namespace DemoApp
             {
                 fillEmptyTextBoxes();
                 fillEmptyComboBoxes();
-                
+
                 if (!validateEmail(txtEmail.Text))
                 {
                     txtEmail.ForeColor = Color.Red;
@@ -301,16 +302,16 @@ namespace DemoApp
         {
             try
             {
-                List<Incident> incidents = incidentService.GetAllIncidents();
+                incidents = incidentService.GetAllIncidents();
                 listViewTickets.Items.Clear();
 
                 foreach (Incident incident in incidents)
                 {
-                    User user = userService.getUserById(incident.Reporter);
+                    //User user = userService.getUserById(incident.Reporter);
 
                     ListViewItem item = new ListViewItem(incident.Id.ToString());
                     item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add("");
                     item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                     item.SubItems.Add(incident.Status.ToString());
                     item.Tag = incident;
@@ -339,7 +340,25 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
+            DateTime date = Convert.ToDateTime(txtDateReported.Text);
+            string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
 
+            Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
+            if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
+            {
+                ticket.Deadline = date.AddMonths(6);
+            }
+            else
+            {
+                ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
+            }
+            ticket.Type = cmbTypeIncident.Text;
+            ticket.Status = Status.open;
+            //ticket.Priority=Enum.TryParse( cmbPriorityIncident.Text,out Priority priority);
+            incidentService.CreateTicket(ticket);
+            panelTicketsOverview.Visible = true;
+            panelCreateTicket.Visible = false;
+            loadIncidents();
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -363,49 +382,62 @@ namespace DemoApp
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
-            try
+            Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
             {
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
+                selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+                txtUserNameIncident.Text = selcetedIncident.Reporter;
+                txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
+                txtSubjectIncident.Text = selcetedIncident.Subject;
+                txtDescriptionIncident.Text = selcetedIncident.Description;
             }
         }
 
         private void btnCloseTicket_Click(object sender, EventArgs e)
         {
-            List<Incident> closedTickets = new List<Incident>();
-            try
+            updateStatus(Status.closed);
+        }
+
+        private void btnResolve_Click(object sender, EventArgs e)
+        {
+            updateStatus(Status.resolved);
+        }
+
+        private void updateStatus(Status status)
+        {
+            List<Incident> tickets = new List<Incident>();
+            if (listViewTickets.SelectedItems.Count > 0)
             {
-                if (listViewTickets.SelectedItems.Count > 0)
+                foreach (ListViewItem item in listViewTickets.SelectedItems)
                 {
-                    foreach (ListViewItem item in listViewTickets.SelectedItems)
+                    if (((Incident)item.Tag).Status == status)
                     {
-                        Incident incident = (Incident)item.Tag;
-                        if (incident.Status == Status.closed)
-                        {
-                            closedTickets.Add(incident);
-                        }
-                        else
-                        {
-                            incidentService.closeTicket(incident);
-                        }
+                        tickets.Add((Incident)item.Tag);
                     }
-                    string message = "";
-                    foreach (var item in closedTickets)
+                    else
                     {
-                        message += $"ticket {item.Id} already closed \n";
+                        incidentService.updateStatus(((Incident)item.Tag), status);
                     }
+                }
+                string message = "";
+                foreach (var item in tickets)
+                {
+                    message += $"ticket {item.Id} already {status} \n";
+                }
+
+                if (tickets.Count != 0)
+                {
                     MessageBox.Show(message);
                 }
-                loadIncidents(string.Empty);
             }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
+            loadIncidents();
+        }
+
+        private void btnFilterByPriority_Click(object sender, EventArgs e)
+        {
+            //incidents = incidents.OrderBy(i => i.).ToList();
         }
     }
 }

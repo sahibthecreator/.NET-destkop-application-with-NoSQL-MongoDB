@@ -41,9 +41,13 @@ namespace Logic
             incidentDAO.deleteTicket(incident);
         }
 
-        public void closeTicket(Incident incident)
+        public void updateStatus(Incident incident, Status status)
         {
-            incidentDAO.closeTicket(incident);
+            incidentDAO.updateStatus(incident, status);
+        }
+        public void CreateTicket(Incident incident)
+        {
+            incidentDAO.CreateTicket(incident);
         }
     }
 }

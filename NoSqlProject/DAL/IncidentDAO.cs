@@ -42,15 +42,9 @@ namespace DAL
             collectionIncident.DeleteOne(x => x.Id == incident.Id);
         }
 
-        public void closeTicket(Incident incident)
+        public void updateStatus(Incident incident, Status status)
         {
-            incident.Status = Status.closed;
-            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
-        }
-
-        public void resolveTicket(Incident incident)
-        {
-            incident.Status = Status.resolved;
+            incident.Status = status;
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
@@ -59,5 +53,9 @@ namespace DAL
 
         }
 
+        public void CreateTicket(Incident incident)
+        {
+            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
+        }
     }
 }
