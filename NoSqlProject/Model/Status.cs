@@ -8,6 +8,6 @@ namespace Model
 {
     public enum Status
     {
-        notOpen, open, closed, resolved
+        incident, open, closed, resolved
     }
 }

@@ -59,5 +59,9 @@ namespace DAL
 
         }
 
+        public void CreateTicket(Incident incident)
+        {
+            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
+        }
     }
 }

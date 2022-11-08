@@ -288,11 +288,11 @@ namespace DemoApp
 
                 foreach (Incident incident in incidents)
                 {
-                    User user = userService.getUserById(incident.Reporter);
+                    //User user = userService.getUserById(incident.Reporter);
 
                     ListViewItem item = new ListViewItem(incident.Id.ToString());
                     item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add("");
                     item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                     item.SubItems.Add(incident.Status.ToString());
                     item.Tag = incident;
@@ -321,7 +321,25 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
+            DateTime date = Convert.ToDateTime( txtDateReported.Text);
+            string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
 
+            Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
+            if(cmbDeadlineIncident.SelectedItem.ToString()=="6 months")
+            {
+                ticket.Deadline = date.AddMonths(6);
+            }
+            else
+            {
+                ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
+            }
+            ticket.Type = cmbTypeIncident.Text;
+            ticket.Status = Status.open;
+            //priority
+            incidentService.CreateTicket(ticket);
+            panelTicketsOverview.Visible = true;
+            panelCreateTicket.Visible = false;
+            loadIncidents();
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -345,14 +363,16 @@ namespace DemoApp
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
-            try
+            Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status==Status.incident)
             {
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
+                selcetedIncident=(Incident) listViewTickets.SelectedItems[0].Tag;
+                txtUserNameIncident.Text = selcetedIncident.Reporter;
+                txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
+                txtSubjectIncident.Text=selcetedIncident.Subject;
+                txtDescriptionIncident.Text = selcetedIncident.Description;
             }
         }
 
