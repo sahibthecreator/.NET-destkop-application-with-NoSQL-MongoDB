@@ -63,22 +63,6 @@
             this.btnSubmitTicket = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
-            this.panelAddUser = new System.Windows.Forms.Panel();
-            this.comboLocation = new System.Windows.Forms.ComboBox();
-            this.comboType = new System.Windows.Forms.ComboBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.lblLocation = new System.Windows.Forms.Label();
-            this.lblPhoneNumber = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.lblLastName = new System.Windows.Forms.Label();
-            this.lblFirstName = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
-            this.lblAddUser = new System.Windows.Forms.Label();
             this.panelUserManagement = new System.Windows.Forms.Panel();
             this.lblUserManagement = new System.Windows.Forms.Label();
             this.buttonAddNewUser = new System.Windows.Forms.Button();
@@ -89,14 +73,37 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panelAddUser = new System.Windows.Forms.Panel();
+            this.comboLocation = new System.Windows.Forms.ComboBox();
+            this.comboType = new System.Windows.Forms.ComboBox();
+            this.checkBoxYes = new System.Windows.Forms.CheckBox();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.lblSentPassword = new System.Windows.Forms.Label();
+            this.lblLocation = new System.Windows.Forms.Label();
+            this.lblPhoneNumber = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
+            this.lblAddUser = new System.Windows.Forms.Label();
             this.tabPageDashboard = new System.Windows.Forms.TabPage();
+
+            this.btnFilterByPriority = new System.Windows.Forms.Button();
+
+            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
+
             this.tabControl1.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
             this.panelTicketsOverview.SuspendLayout();
             this.panelCreateTicket.SuspendLayout();
             this.tabPageUserManagement.SuspendLayout();
-            this.panelAddUser.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
+            this.panelAddUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -611,10 +618,12 @@
             // 
             this.panelAddUser.Controls.Add(this.comboLocation);
             this.panelAddUser.Controls.Add(this.comboType);
+            this.panelAddUser.Controls.Add(this.checkBoxYes);
             this.panelAddUser.Controls.Add(this.txtPhoneNumber);
             this.panelAddUser.Controls.Add(this.txtEmail);
             this.panelAddUser.Controls.Add(this.txtLastName);
             this.panelAddUser.Controls.Add(this.txtFirstName);
+            this.panelAddUser.Controls.Add(this.lblSentPassword);
             this.panelAddUser.Controls.Add(this.lblLocation);
             this.panelAddUser.Controls.Add(this.lblPhoneNumber);
             this.panelAddUser.Controls.Add(this.lblEmail);
@@ -814,96 +823,6 @@
             this.lblAddUser.TabIndex = 5;
             this.lblAddUser.Text = "Create new user";
             // 
-            // panelUserManagement
-            // 
-            this.panelUserManagement.Controls.Add(this.lblUserManagement);
-            this.panelUserManagement.Controls.Add(this.buttonAddNewUser);
-            this.panelUserManagement.Controls.Add(this.textBoxFilterByEmail);
-            this.panelUserManagement.Controls.Add(this.listViewUsers);
-            this.panelUserManagement.Location = new System.Drawing.Point(0, 0);
-            this.panelUserManagement.Name = "panelUserManagement";
-            this.panelUserManagement.Size = new System.Drawing.Size(1192, 649);
-            this.panelUserManagement.TabIndex = 8;
-            // 
-            // lblUserManagement
-            // 
-            this.lblUserManagement.AutoSize = true;
-            this.lblUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserManagement.Location = new System.Drawing.Point(70, 40);
-            this.lblUserManagement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUserManagement.Name = "lblUserManagement";
-            this.lblUserManagement.Size = new System.Drawing.Size(374, 47);
-            this.lblUserManagement.TabIndex = 4;
-            this.lblUserManagement.Text = "User management";
-            // 
-            // buttonAddNewUser
-            // 
-            this.buttonAddNewUser.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonAddNewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddNewUser.Location = new System.Drawing.Point(867, 102);
-            this.buttonAddNewUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonAddNewUser.Name = "buttonAddNewUser";
-            this.buttonAddNewUser.Size = new System.Drawing.Size(164, 51);
-            this.buttonAddNewUser.TabIndex = 6;
-            this.buttonAddNewUser.Text = "+ ADD NEW USER";
-            this.buttonAddNewUser.UseVisualStyleBackColor = false;
-            this.buttonAddNewUser.Click += new System.EventHandler(this.buttonAddNewUser_Click);
-            // 
-            // textBoxFilterByEmail
-            // 
-            this.textBoxFilterByEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFilterByEmail.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxFilterByEmail.Location = new System.Drawing.Point(70, 120);
-            this.textBoxFilterByEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxFilterByEmail.Name = "textBoxFilterByEmail";
-            this.textBoxFilterByEmail.Size = new System.Drawing.Size(319, 33);
-            this.textBoxFilterByEmail.TabIndex = 7;
-            this.textBoxFilterByEmail.Text = "Filter by email";
-            this.textBoxFilterByEmail.Click += new System.EventHandler(this.textBoxFilterByEmail_Click);
-            this.textBoxFilterByEmail.TextChanged += new System.EventHandler(this.textBoxFilterByEmail_TextChanged);
-            // 
-            // listViewUsers
-            // 
-            this.listViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10});
-            this.listViewUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewUsers.HideSelection = false;
-            this.listViewUsers.Location = new System.Drawing.Point(70, 189);
-            this.listViewUsers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listViewUsers.Name = "listViewUsers";
-            this.listViewUsers.Size = new System.Drawing.Size(961, 433);
-            this.listViewUsers.TabIndex = 5;
-            this.listViewUsers.UseCompatibleStateImageBehavior = false;
-            this.listViewUsers.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "ID";
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Email";
-            this.columnHeader7.Width = 200;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "First Name";
-            this.columnHeader8.Width = 120;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Last Name";
-            this.columnHeader9.Width = 120;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "# tickets";
-            this.columnHeader10.Width = 80;
-            // 
             // tabPageDashboard
             // 
             this.tabPageDashboard.Location = new System.Drawing.Point(4, 34);
@@ -957,10 +876,10 @@
             this.panelCreateTicket.ResumeLayout(false);
             this.panelCreateTicket.PerformLayout();
             this.tabPageUserManagement.ResumeLayout(false);
-            this.panelAddUser.ResumeLayout(false);
-            this.panelAddUser.PerformLayout();
             this.panelUserManagement.ResumeLayout(false);
             this.panelUserManagement.PerformLayout();
+            this.panelAddUser.ResumeLayout(false);
+            this.panelAddUser.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -985,6 +904,7 @@
         private System.Windows.Forms.Label lblAddUser;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Label lblSentPassword;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label lblEmail;
@@ -995,6 +915,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.CheckBox checkBoxYes;
         private System.Windows.Forms.ComboBox comboLocation;
         private System.Windows.Forms.ComboBox comboType;
         private System.Windows.Forms.Panel panelTicketsOverview;

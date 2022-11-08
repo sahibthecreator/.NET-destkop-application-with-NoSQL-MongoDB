@@ -24,7 +24,7 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-            loadIncidents(string.Empty);
+            loadIncidents();
             loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
@@ -73,7 +73,7 @@ namespace DemoApp
                     item.SubItems.Add(user.FirstName);
                     item.SubItems.Add(user.LastName);
 
-                    if (user.Email.ToLower().Contains(str.ToLower()))
+                    if (user.Email.Contains(str))
                         listViewUsers.Items.Add(item);
                 }
             }
@@ -96,27 +96,12 @@ namespace DemoApp
             }
         }
 
-
-        //when the key ENTER is pressed the user list and incident list it wil be filtered
         private void tabControl1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 loadUsers(textBoxFilterByEmail.Text);
-                loadIncidents(textBoxFilterByEmailTickets.Text);
             }
-        }
-
-        //filter the incident list
-        private void textBoxFilterByEmailTickets_TextChanged(object sender, EventArgs e)
-        {
-            loadIncidents(textBoxFilterByEmailTickets.Text);
-        }
-
-        //filter the user list
-        private void textBoxFilterByEmail_TextChanged(object sender, EventArgs e)
-        {
-            loadUsers(textBoxFilterByEmail.Text);
         }
 
         private void tabPageUserManagement_Click(object sender, EventArgs e)
@@ -159,7 +144,28 @@ namespace DemoApp
             }
             else
             {
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, hashPassord(), comboType.Text);
+                Random rand = new Random();
+                int passwordLength = rand.Next(6, 12);
+                int randValue;
+                string password = "";
+                char letter;
+                for (int i = 0; i < passwordLength; i++)
+                {
+                    randValue = rand.Next(0, 26);
+                    letter = Convert.ToChar(randValue + 65);
+                    password += letter;
+                }
+                MessageBox.Show("Password generated:" + password);
+                byte[] salt;
+                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
+                byte[] hash = pbkdf2.GetBytes(20);
+                byte[] hashBytes = new byte[36];
+                Array.Copy(salt, 0, hashBytes, 0, 16);
+                Array.Copy(hash, 0, hashBytes, 16, 20);
+                string savedPasswordHash = Convert.ToBase64String(hashBytes);
+
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, savedPasswordHash, comboType.Text);
                 UserService userService = new UserService();
                 userService.addUser(user);
                 clearBoxes();
@@ -167,30 +173,6 @@ namespace DemoApp
                 panelAddUser.Visible = false;
                 loadUsers("");
             }
-        }
-
-        public string hashPassord()
-        {
-            Random rand = new Random();
-            int passwordLength = rand.Next(6, 12);
-            int randValue;
-            string password = "";
-            char letter;
-            for (int i = 0; i < passwordLength; i++)
-            {
-                randValue = rand.Next(0, 26);
-                letter = Convert.ToChar(randValue + 65);
-                password += letter;
-            }
-            MessageBox.Show("Password generated:" + password);
-            byte[] salt;
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
-            byte[] hash = pbkdf2.GetBytes(20);
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-            return Convert.ToBase64String(hashBytes);
         }
 
         private void fillEmptyTextBoxes()
@@ -298,7 +280,7 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents(string str)
+        private void loadIncidents()
         {
             try
             {
@@ -315,8 +297,8 @@ namespace DemoApp
                     item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                     item.SubItems.Add(incident.Status.ToString());
                     item.Tag = incident;
-                    if ((incident.Subject.ToLower().Contains(str.ToLower())))
-                        listViewTickets.Items.Add(item);
+                    listViewTickets.Items.Add(item);
+
                 }
             }
             catch (Exception exp)
@@ -372,7 +354,7 @@ namespace DemoApp
                         incidentService.deleteTicket((Incident)item.Tag);
                     }
                 }
-                loadIncidents(string.Empty);
+                loadIncidents();
             }
             catch (Exception exp)
             {
