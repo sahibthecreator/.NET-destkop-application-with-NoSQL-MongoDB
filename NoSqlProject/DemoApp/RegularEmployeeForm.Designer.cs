@@ -33,8 +33,10 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblReported = new System.Windows.Forms.Label();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblDeadline = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
             this.lblSubject = new System.Windows.Forms.Label();
@@ -42,16 +44,25 @@
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.lblDeadline = new System.Windows.Forms.Label();
+            this.lblClosedTicketsText = new System.Windows.Forms.Label();
+            this.lblOpenTicketsText = new System.Windows.Forms.Label();
+            this.cpbClosedTickets = new CircularProgressBar.CircularProgressBar();
+            this.cpbOpenTickets = new CircularProgressBar.CircularProgressBar();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblTicketsHead = new System.Windows.Forms.Label();
+            this.listViewMyTickets = new System.Windows.Forms.ListView();
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(-4, 2);
             this.tabControl1.Name = "tabControl1";
@@ -114,6 +125,16 @@
             this.lblReported.TabIndex = 12;
             this.lblReported.Text = "Reported by user:";
             // 
+            // datePicker
+            // 
+            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePicker.Location = new System.Drawing.Point(386, 259);
+            this.datePicker.MinDate = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(268, 24);
+            this.datePicker.TabIndex = 11;
+            this.datePicker.Value = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
+            // 
             // btnSubmit
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.Black;
@@ -149,6 +170,16 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // lblDeadline
+            // 
+            this.lblDeadline.AutoSize = true;
+            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeadline.Location = new System.Drawing.Point(163, 259);
+            this.lblDeadline.Name = "lblDeadline";
+            this.lblDeadline.Size = new System.Drawing.Size(95, 25);
+            this.lblDeadline.TabIndex = 8;
+            this.lblDeadline.Text = "Deadline:";
             // 
             // lblDescription
             // 
@@ -213,6 +244,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblClosedTicketsText);
+            this.tabPage2.Controls.Add(this.lblOpenTicketsText);
+            this.tabPage2.Controls.Add(this.cpbClosedTickets);
+            this.tabPage2.Controls.Add(this.cpbOpenTickets);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -221,25 +256,117 @@
             this.tabPage2.Text = "Dashbord";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // datePicker
+            // lblClosedTicketsText
             // 
-            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Location = new System.Drawing.Point(386, 259);
-            this.datePicker.MinDate = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(268, 24);
-            this.datePicker.TabIndex = 11;
-            this.datePicker.Value = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
+            this.lblClosedTicketsText.AutoSize = true;
+            this.lblClosedTicketsText.Location = new System.Drawing.Point(700, 40);
+            this.lblClosedTicketsText.Name = "lblClosedTicketsText";
+            this.lblClosedTicketsText.Size = new System.Drawing.Size(142, 25);
+            this.lblClosedTicketsText.TabIndex = 2;
+            this.lblClosedTicketsText.Text = "Closed Tickets";
             // 
-            // lblDeadline
+            // lblOpenTicketsText
             // 
-            this.lblDeadline.AutoSize = true;
-            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeadline.Location = new System.Drawing.Point(163, 259);
-            this.lblDeadline.Name = "lblDeadline";
-            this.lblDeadline.Size = new System.Drawing.Size(95, 25);
-            this.lblDeadline.TabIndex = 8;
-            this.lblDeadline.Text = "Deadline:";
+            this.lblOpenTicketsText.AutoSize = true;
+            this.lblOpenTicketsText.Location = new System.Drawing.Point(209, 40);
+            this.lblOpenTicketsText.Name = "lblOpenTicketsText";
+            this.lblOpenTicketsText.Size = new System.Drawing.Size(129, 25);
+            this.lblOpenTicketsText.TabIndex = 1;
+            this.lblOpenTicketsText.Text = "Open Tickets";
+            // 
+            // cpbClosedTickets
+            // 
+            this.cpbClosedTickets.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpbClosedTickets.AnimationSpeed = 500;
+            this.cpbClosedTickets.BackColor = System.Drawing.Color.Transparent;
+            this.cpbClosedTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.cpbClosedTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cpbClosedTickets.InnerColor = System.Drawing.Color.White;
+            this.cpbClosedTickets.InnerMargin = 2;
+            this.cpbClosedTickets.InnerWidth = -1;
+            this.cpbClosedTickets.Location = new System.Drawing.Point(635, 90);
+            this.cpbClosedTickets.MarqueeAnimationSpeed = 2000;
+            this.cpbClosedTickets.Name = "cpbClosedTickets";
+            this.cpbClosedTickets.OuterColor = System.Drawing.Color.Gray;
+            this.cpbClosedTickets.OuterMargin = -25;
+            this.cpbClosedTickets.OuterWidth = 26;
+            this.cpbClosedTickets.ProgressColor = System.Drawing.Color.Red;
+            this.cpbClosedTickets.ProgressWidth = 25;
+            this.cpbClosedTickets.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpbClosedTickets.Size = new System.Drawing.Size(280, 277);
+            this.cpbClosedTickets.StartAngle = 270;
+            this.cpbClosedTickets.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbClosedTickets.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpbClosedTickets.SubscriptText = "";
+            this.cpbClosedTickets.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbClosedTickets.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpbClosedTickets.SuperscriptText = "";
+            this.cpbClosedTickets.TabIndex = 0;
+            this.cpbClosedTickets.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpbClosedTickets.Value = 68;
+            // 
+            // cpbOpenTickets
+            // 
+            this.cpbOpenTickets.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpbOpenTickets.AnimationSpeed = 500;
+            this.cpbOpenTickets.BackColor = System.Drawing.Color.Transparent;
+            this.cpbOpenTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.cpbOpenTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cpbOpenTickets.InnerColor = System.Drawing.Color.White;
+            this.cpbOpenTickets.InnerMargin = 2;
+            this.cpbOpenTickets.InnerWidth = -1;
+            this.cpbOpenTickets.Location = new System.Drawing.Point(135, 90);
+            this.cpbOpenTickets.MarqueeAnimationSpeed = 2000;
+            this.cpbOpenTickets.Name = "cpbOpenTickets";
+            this.cpbOpenTickets.OuterColor = System.Drawing.Color.Gray;
+            this.cpbOpenTickets.OuterMargin = -25;
+            this.cpbOpenTickets.OuterWidth = 26;
+            this.cpbOpenTickets.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cpbOpenTickets.ProgressWidth = 25;
+            this.cpbOpenTickets.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpbOpenTickets.Size = new System.Drawing.Size(280, 277);
+            this.cpbOpenTickets.StartAngle = 270;
+            this.cpbOpenTickets.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbOpenTickets.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpbOpenTickets.SubscriptText = "";
+            this.cpbOpenTickets.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpbOpenTickets.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpbOpenTickets.SuperscriptText = "";
+            this.cpbOpenTickets.TabIndex = 0;
+            this.cpbOpenTickets.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpbOpenTickets.Value = 68;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.listViewMyTickets);
+            this.tabPage3.Controls.Add(this.lblTicketsHead);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1051, 474);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "My tickets";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblTicketsHead
+            // 
+            this.lblTicketsHead.AutoSize = true;
+            this.lblTicketsHead.Location = new System.Drawing.Point(27, 26);
+            this.lblTicketsHead.Name = "lblTicketsHead";
+            this.lblTicketsHead.Size = new System.Drawing.Size(75, 25);
+            this.lblTicketsHead.TabIndex = 0;
+            this.lblTicketsHead.Text = "Tickets";
+            // 
+            // listViewMyTickets
+            // 
+            this.listViewMyTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Id});
+            this.listViewMyTickets.HideSelection = false;
+            this.listViewMyTickets.Location = new System.Drawing.Point(25, 88);
+            this.listViewMyTickets.Name = "listViewMyTickets";
+            this.listViewMyTickets.Size = new System.Drawing.Size(1005, 277);
+            this.listViewMyTickets.TabIndex = 1;
+            this.listViewMyTickets.UseCompatibleStateImageBehavior = false;
             // 
             // RegularEmployeeForm
             // 
@@ -253,6 +380,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -267,13 +398,21 @@
         private System.Windows.Forms.Label lblCreatNewIncident;
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.TextBox txtSubject;
+        private System.Windows.Forms.Label lblDeadline;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label lblReported;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.DateTimePicker datePicker;
-        private System.Windows.Forms.Label lblDeadline;
+        private CircularProgressBar.CircularProgressBar cpbOpenTickets;
+        private CircularProgressBar.CircularProgressBar cpbClosedTickets;
+        private System.Windows.Forms.Label lblClosedTicketsText;
+        private System.Windows.Forms.Label lblOpenTicketsText;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListView listViewMyTickets;
+        private System.Windows.Forms.Label lblTicketsHead;
+        private System.Windows.Forms.ColumnHeader Id;
     }
 }
