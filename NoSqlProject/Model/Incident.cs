@@ -32,8 +32,8 @@ namespace Model
         public string Description { get; set; }
 
         [BsonElement("status")]
-        public int Status { get; set; }
-        public Incident(DateTime date, string subject, string type, string reporter, DateTime deadline, string description, int status)
+        public TicketStatus Status { get; set; }
+        public Incident(DateTime date, string subject, string type, string reporter, DateTime deadline, string description, TicketStatus status)
         {
             Date = date;
             Subject = subject;

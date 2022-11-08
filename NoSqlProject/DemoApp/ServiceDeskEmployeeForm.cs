@@ -15,11 +15,14 @@ namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
+        UserService userService = new UserService();
+        IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
         List<ComboBox> comboBoxes = new List<ComboBox>();
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
+            loadIncidents();
             loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
@@ -58,7 +61,6 @@ namespace DemoApp
         {
             try
             {
-                UserService userService = new UserService();
                 List<User> users = userService.getAllUsers();
                 listViewUsers.Items.Clear();
 
@@ -256,19 +258,74 @@ namespace DemoApp
         {
             try
             {
-                IncidentService incidentService = new IncidentService();
                 List<Incident> incidents = incidentService.GetAllIncidents();
                 listViewTickets.Items.Clear();
 
                 foreach (Incident incident in incidents)
                 {
-                    ListViewItem item = new ListViewItem(incident.Id.ToString());
-                    item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(incident.Reporter);
-                    item.SubItems.Add(incident.Date.ToString());                 
-                    item.SubItems.Add(incident.Status.ToString());
-                    listViewTickets.Items.Add(item);
+                    User user = userService.getUserById(incident.Reporter);
+
+                    if(incident.Status != TicketStatus.notOpen)
+                    {
+                        ListViewItem item = new ListViewItem(incident.Id.ToString());
+                        item.SubItems.Add(incident.Subject);
+                        item.SubItems.Add(user.FirstName);
+                        item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                        item.SubItems.Add(incident.Status.ToString());
+                        item.Tag = incident;
+                        listViewTickets.Items.Add(item);
+                    }
                 }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void btnCancelCreateTicket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelCreateTicket.Visible = false;
+                panelTicketsOverview.Visible = true;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void btnSubmitTicket_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewTickets.SelectedItems.Count > 0)
+                {
+                    foreach (ListViewItem item in listViewTickets.SelectedItems)
+                    {
+                        incidentService.deleteTicket((Incident)item.Tag);
+                    }
+                }
+                loadIncidents();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void btnCreateTicket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelTicketsOverview.Visible = false;
+                panelCreateTicket.Visible = true;
             }
             catch (Exception exp)
             {

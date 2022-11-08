@@ -25,6 +25,7 @@ namespace Logic
             incidentDAO.addIncident(incident);
         }
 
+
         public List<Incident> GetTickets(User user, Status status)
         {
             return incidentDAO.GetTickets(user, status);    
@@ -32,7 +33,12 @@ namespace Logic
 
         public List<Incident> GetAllUserTickets(User user)
         {
-            return incidentDAO.GetAllUserTickets(user);    
+            return incidentDAO.GetAllUserTickets(user);
         }
-    }
+
+        public void deleteTicket(Incident incident)
+        {
+            incidentDAO.deleteTicket(incident);
+        }
+    
 }

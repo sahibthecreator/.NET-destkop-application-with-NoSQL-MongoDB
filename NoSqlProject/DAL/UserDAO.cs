@@ -27,6 +27,11 @@ namespace DAL
             return collectionUsers.Find(x => x.Email == email && x.Password == password).ToList<User>();
         }
 
+        public User getUserById(string id)
+        {
+            return collectionUsers.FindAsync(x => x.Id == id).Result.Single();
+        }
+
         public void addUser(User user)
         {
             collectionUsers.InsertOne(user);
