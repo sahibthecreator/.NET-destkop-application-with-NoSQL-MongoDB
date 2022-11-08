@@ -8,6 +8,6 @@ namespace Model
 {
     public enum TicketStatus
     {
-        notOpen, open, resolved, closedWithoutResolved
+        notOpen, open, resolved, closed
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Model;
 using Logic;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace DemoApp
 {
@@ -142,10 +143,34 @@ namespace DemoApp
             }
             else
             {
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, comboType.Text);
+                Random rand = new Random();
+                int passwordLength = rand.Next(6, 12);
+                int randValue;
+                string password = "";
+                char letter;
+                for (int i = 0; i < passwordLength; i++)
+                {
+                    randValue = rand.Next(0, 26);
+                    letter = Convert.ToChar(randValue + 65);
+                    password += letter;
+                }
+                MessageBox.Show("Password generated:" + password);
+                byte[] salt;
+                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
+                byte[] hash = pbkdf2.GetBytes(20);
+                byte[] hashBytes = new byte[36];
+                Array.Copy(salt, 0, hashBytes, 0, 16);
+                Array.Copy(hash, 0, hashBytes, 16, 20);
+                string savedPasswordHash = Convert.ToBase64String(hashBytes);
+
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, savedPasswordHash, comboType.Text);
                 UserService userService = new UserService();
                 userService.addUser(user);
                 clearBoxes();
+                panelUserManagement.Visible = true;
+                panelAddUser.Visible = false;
+                loadUsers("");
             }
         }
 
@@ -265,16 +290,14 @@ namespace DemoApp
                 {
                     User user = userService.getUserById(incident.Reporter);
 
-                    if(incident.Status != Status.notOpen)
-                    {
-                        ListViewItem item = new ListViewItem(incident.Id.ToString());
-                        item.SubItems.Add(incident.Subject);
-                        item.SubItems.Add(user.FirstName);
-                        item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                        item.SubItems.Add(incident.Status.ToString());
-                        item.Tag = incident;
-                        listViewTickets.Items.Add(item);
-                    }
+                    ListViewItem item = new ListViewItem(incident.Id.ToString());
+                    item.SubItems.Add(incident.Subject);
+                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                    item.SubItems.Add(incident.Status.ToString());
+                    item.Tag = incident;
+                    listViewTickets.Items.Add(item);
+
                 }
             }
             catch (Exception exp)
@@ -326,6 +349,40 @@ namespace DemoApp
             {
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void btnCloseTicket_Click(object sender, EventArgs e)
+        {
+            List<Incident> closedTickets = new List<Incident>();
+            try
+            {
+                if (listViewTickets.SelectedItems.Count > 0)
+                {
+                    foreach (ListViewItem item in listViewTickets.SelectedItems)
+                    {
+                        Incident incident = (Incident)item.Tag;
+                        if (incident.Status == Status.closed)
+                        {
+                            closedTickets.Add(incident);
+                        }
+                        else
+                        {
+                            incidentService.closeTicket(incident);
+                        }
+                    }
+                    string message = "";
+                    foreach (var item in closedTickets)
+                    {
+                        message += $"ticket {item.Id} already closed \n";
+                    }
+                    MessageBox.Show(message);
+                }
+                loadIncidents();
             }
             catch (Exception exp)
             {
