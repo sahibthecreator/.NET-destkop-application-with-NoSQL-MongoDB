@@ -24,6 +24,10 @@ namespace Logic
             return userDAO.getMatchedUser(email, password);
         }
 
+        public User getUserById(string id)
+        {
+            return userDAO.getUserById(id);
+        }
         public void addUser(User user)
         {
             userDAO.addUser(user);

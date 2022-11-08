@@ -24,5 +24,10 @@ namespace Logic
         {
             incidentDAO.addIncident(incident);
         }
+
+        public void deleteTicket(Incident incident)
+        {
+            incidentDAO.deleteTicket(incident);
+        }
     }
 }

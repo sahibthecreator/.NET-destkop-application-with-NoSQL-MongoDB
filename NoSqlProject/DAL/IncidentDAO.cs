@@ -25,5 +25,20 @@ namespace DAL
         {
             collectionIncident.InsertOne(incident);
         }
+
+        public void deleteTicket(Incident incident)
+        {
+            collectionIncident.DeleteOne(x => x.Id == incident.Id);
+        }
+
+        public void closeTicket(Incident incident)
+        {
+            //collectionIncident.UpdateOne(x => x.Id == incident.Id);
+        }
+
+        public void editTicket(Incident incident)
+        {
+
+        }
     }
 }
