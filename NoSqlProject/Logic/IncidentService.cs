@@ -29,5 +29,10 @@ namespace Logic
         {
             incidentDAO.deleteTicket(incident);
         }
+
+        public void closeTicket(Incident incident)
+        {
+            incidentDAO.closeTicket(incident);
+        }
     }
 }
