@@ -70,13 +70,13 @@ namespace DemoApp
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!validateTextBoxes(txtBoxes) || comboBoxType.Text == string.Empty)
+            if (!validateTextBoxes(txtBoxes))
             {
                 //...
             }
             else
             {
-                Incident incident = new Incident(DateTime.Now, txtSubject.Text, comboBoxType.Text, user.Id, datePicker.Value, txtDescription.Text, 0);
+                Incident incident = new Incident(DateTime.Now, txtSubject.Text, null, user.Id, DateTime.Now, txtDescription.Text, 0);
                 incidentService = new IncidentService();
                 incidentService.addIncident(incident);
             }
