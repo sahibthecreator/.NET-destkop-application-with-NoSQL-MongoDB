@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using Model;
 using Logic;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
-        List<Incident> incidents;
+        List<Incident> incidents;   
         UserService userService = new UserService();
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
@@ -143,10 +144,34 @@ namespace DemoApp
             }
             else
             {
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, comboType.Text);
+                Random rand = new Random();
+                int passwordLength = rand.Next(6, 12);
+                int randValue;
+                string password = "";
+                char letter;
+                for (int i = 0; i < passwordLength; i++)
+                {
+                    randValue = rand.Next(0, 26);
+                    letter = Convert.ToChar(randValue + 65);
+                    password += letter;
+                }
+                MessageBox.Show("Password generated:" + password);
+                byte[] salt;
+                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
+                byte[] hash = pbkdf2.GetBytes(20);
+                byte[] hashBytes = new byte[36];
+                Array.Copy(salt, 0, hashBytes, 0, 16);
+                Array.Copy(hash, 0, hashBytes, 16, 20);
+                string savedPasswordHash = Convert.ToBase64String(hashBytes);
+
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, savedPasswordHash, comboType.Text);
                 UserService userService = new UserService();
                 userService.addUser(user);
                 clearBoxes();
+                panelUserManagement.Visible = true;
+                panelAddUser.Visible = false;
+                loadUsers("");
             }
         }
 
@@ -297,7 +322,25 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
+            DateTime date = Convert.ToDateTime( txtDateReported.Text);
+            string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
 
+            Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
+            if(cmbDeadlineIncident.SelectedItem.ToString()=="6 months")
+            {
+                ticket.Deadline = date.AddMonths(6);
+            }
+            else
+            {
+                ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
+            }
+            ticket.Type = cmbTypeIncident.Text;
+            ticket.Status = Status.open;
+            //priority
+            incidentService.CreateTicket(ticket);
+            panelTicketsOverview.Visible = true;
+            panelCreateTicket.Visible = false;
+            loadIncidents();
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -321,18 +364,20 @@ namespace DemoApp
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
-            try
+            Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status==Status.incident)
             {
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
+                selcetedIncident=(Incident) listViewTickets.SelectedItems[0].Tag;
+                txtUserNameIncident.Text = selcetedIncident.Reporter;
+                txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
+                txtSubjectIncident.Text=selcetedIncident.Subject;
+                txtDescriptionIncident.Text = selcetedIncident.Description;
             }
         }
-
-        private void btnCloseTicket_Click(object sender, EventArgs e)
+        
+                private void btnCloseTicket_Click(object sender, EventArgs e)
         {
             updateStatus(Status.closed);
         }
@@ -341,8 +386,8 @@ namespace DemoApp
         {
             updateStatus(Status.resolved);
         }
-
-        private void updateStatus(Status status)
+    
+      private void updateStatus(Status status)
         {
             List<Incident> tickets = new List<Incident>();
             if (listViewTickets.SelectedItems.Count > 0)
@@ -376,5 +421,4 @@ namespace DemoApp
         {
             //incidents = incidents.OrderBy(i => i.).ToList();
         }
-    }
 }

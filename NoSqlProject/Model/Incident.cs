@@ -45,7 +45,7 @@ namespace Model
             Deadline = deadline;
             Description = description;
             Status = status;
-            Priority = priority
+            Priority = null;
         }
     }
 }

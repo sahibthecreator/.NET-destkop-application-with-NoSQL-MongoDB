@@ -70,24 +70,22 @@ namespace DemoApp
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!validateTextBoxes(txtBoxes) || comboBoxType.Text == string.Empty)
+            if (!validateTextBoxes(txtBoxes))
             {
-                
+                //...
             }
             else
             {
-                Incident incident = new Incident(DateTime.Now, txtSubject.Text, comboBoxType.Text, user.Id, datePicker.Value, txtDescription.Text, 0);
+                Incident incident = new Incident(DateTime.Now, txtSubject.Text, null, user.Id, DateTime.Now, txtDescription.Text, 0);
                 incidentService = new IncidentService();
                 incidentService.addIncident(incident);
             }
+            emptyTextBoxes();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            foreach(TextBox tb in txtBoxes)
-            {
-                tb.Text = string.Empty;
-            }
+            emptyTextBoxes();
         }
         private bool validateTextBoxes(List<TextBox> txtBoxes)
         {
@@ -110,6 +108,13 @@ namespace DemoApp
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
+            }
+        }
+        private void emptyTextBoxes()
+        {
+            foreach (TextBox txtBox in txtBoxes)
+            {
+                txtBox.Text = string.Empty;
             }
         }
     }

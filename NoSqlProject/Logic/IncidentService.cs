@@ -45,5 +45,9 @@ namespace Logic
         {
             incidentDAO.updateStatus(incident, status);
         }
+        public void CreateTicket(Incident incident)
+        {
+            incidentDAO.CreateTicket(incident);
+        }
     }
 }
