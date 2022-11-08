@@ -272,6 +272,7 @@ namespace DemoApp
                     item.SubItems.Add(incident.Status.ToString());
                     item.Tag = incident;
                     listViewTickets.Items.Add(item);
+
                 }
             }
             catch (Exception exp)
