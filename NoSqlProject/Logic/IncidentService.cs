@@ -16,7 +16,7 @@ namespace Logic
             incidentDAO = new IncidentDAO();
         }
 
-       public List<Incident> GetAllIncidents()
+        public List<Incident> GetAllIncidents()
         {
             return incidentDAO.GetAllIncidents();
         }
@@ -28,8 +28,8 @@ namespace Logic
 
         public List<Incident> GetTickets(User user, Status status)
         {
-            return incidentDAO.GetTickets(user, status);    
-        } 
+            return incidentDAO.GetTickets(user, status);
+        }
 
         public List<Incident> GetAllUserTickets(User user)
         {
@@ -40,5 +40,6 @@ namespace Logic
         {
             incidentDAO.deleteTicket(incident);
         }
-    
+
+    }
 }

@@ -16,7 +16,7 @@ namespace DAL
         {
             collectionIncident = Db.GetCollection<Incident>("Incidents");
         }
-         
+
         public List<Incident> GetAllIncidents()
         {
             return collectionIncident.AsQueryable().ToList<Incident>();
@@ -28,9 +28,9 @@ namespace DAL
 
         public List<Incident> GetTickets(User user, Status status)
         {
-            return collectionIncident.Find(i => i.Reporter == user.Id && i.Status == (int)status).ToList<Incident>();
+            return collectionIncident.Find(i => i.Reporter == user.Id && i.Status == status).ToList<Incident>();
         }
-        
+
         public List<Incident> GetAllUserTickets(User user)
         {
             return collectionIncident.Find(i => i.Reporter == user.Id).ToList<Incident>();
@@ -50,5 +50,6 @@ namespace DAL
         {
 
         }
-    
+
+    }
 }

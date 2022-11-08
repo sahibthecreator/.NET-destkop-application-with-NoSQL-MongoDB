@@ -265,7 +265,7 @@ namespace DemoApp
                 {
                     User user = userService.getUserById(incident.Reporter);
 
-                    if(incident.Status != TicketStatus.notOpen)
+                    if(incident.Status != Status.notOpen)
                     {
                         ListViewItem item = new ListViewItem(incident.Id.ToString());
                         item.SubItems.Add(incident.Subject);
