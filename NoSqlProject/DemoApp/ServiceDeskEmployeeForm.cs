@@ -341,7 +341,7 @@ namespace DemoApp
                     foreach (ListViewItem item in listViewTickets.SelectedItems)
                     {
                         Incident incident = (Incident)item.Tag;
-                        if (incident.Status == TicketStatus.closed)
+                        if (incident.Status == Status.closed)
                         {
                             closedTickets.Add(incident);
                         }

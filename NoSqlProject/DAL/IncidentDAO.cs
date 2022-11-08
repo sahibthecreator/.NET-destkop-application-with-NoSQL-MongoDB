@@ -44,13 +44,13 @@ namespace DAL
 
         public void closeTicket(Incident incident)
         {
-            incident.Status = TicketStatus.closed;
+            incident.Status = Status.closed;
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
         public void resolveTicket(Incident incident)
         {
-            incident.Status = TicketStatus.resolved;
+            incident.Status = Status.resolved;
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
