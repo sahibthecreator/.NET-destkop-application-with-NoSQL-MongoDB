@@ -33,7 +33,10 @@ namespace Model
 
         [BsonElement("status")]
         public Status Status { get; set; }
-        public Incident(DateTime date, string subject, string type, string reporter, DateTime deadline, string description, Status status)
+
+        [BsonElement("priority")]
+        public Priority Priority { get; set; }
+        public Incident(DateTime date, string subject, string type, string reporter, DateTime deadline, string description, Status status, Priority priority)
         {
             Date = date;
             Subject = subject;
@@ -42,7 +45,7 @@ namespace Model
             Deadline = deadline;
             Description = description;
             Status = status;
-            //Priority = null;
+            Priority = null;
         }
     }
 }

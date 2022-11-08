@@ -16,6 +16,7 @@ namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
+        List<Incident> incidents;   
         UserService userService = new UserService();
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
@@ -283,7 +284,7 @@ namespace DemoApp
         {
             try
             {
-                List<Incident> incidents = incidentService.GetAllIncidents();
+                incidents = incidentService.GetAllIncidents();
                 listViewTickets.Items.Clear();
 
                 foreach (Incident incident in incidents)
@@ -375,39 +376,49 @@ namespace DemoApp
                 txtDescriptionIncident.Text = selcetedIncident.Description;
             }
         }
-
-        private void btnCloseTicket_Click(object sender, EventArgs e)
+        
+                private void btnCloseTicket_Click(object sender, EventArgs e)
         {
-            List<Incident> closedTickets = new List<Incident>();
-            try
+            updateStatus(Status.closed);
+        }
+
+        private void btnResolve_Click(object sender, EventArgs e)
+        {
+            updateStatus(Status.resolved);
+        }
+    
+      private void updateStatus(Status status)
+        {
+            List<Incident> tickets = new List<Incident>();
+            if (listViewTickets.SelectedItems.Count > 0)
             {
-                if (listViewTickets.SelectedItems.Count > 0)
+                foreach (ListViewItem item in listViewTickets.SelectedItems)
                 {
-                    foreach (ListViewItem item in listViewTickets.SelectedItems)
+                    if (((Incident)item.Tag).Status == status)
                     {
-                        Incident incident = (Incident)item.Tag;
-                        if (incident.Status == Status.closed)
-                        {
-                            closedTickets.Add(incident);
-                        }
-                        else
-                        {
-                            incidentService.closeTicket(incident);
-                        }
+                        tickets.Add((Incident)item.Tag);
                     }
-                    string message = "";
-                    foreach (var item in closedTickets)
+                    else
                     {
-                        message += $"ticket {item.Id} already closed \n";
+                        incidentService.updateStatus(((Incident)item.Tag), status);
                     }
+                }
+                string message = "";
+                foreach (var item in tickets)
+                {
+                    message += $"ticket {item.Id} already {status} \n";
+                }
+
+                if (tickets.Count != 0)
+                {
                     MessageBox.Show(message);
                 }
-                loadIncidents();
             }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
+            loadIncidents();
         }
-    }
+
+        private void btnFilterByPriority_Click(object sender, EventArgs e)
+        {
+            //incidents = incidents.OrderBy(i => i.).ToList();
+        }
 }
