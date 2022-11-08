@@ -22,7 +22,7 @@ namespace DemoApp
             txtBoxes.Add(txtDescription);
             lblUser.Text = user.FirstName;
 
-            allTickets = incidentService.GetAllIncidents();
+            allTickets = incidentService.GetAllUserTickets(user);
 
             LoadCPB(cpbOpenTickets, Status.open);
             LoadCPB(cpbClosedTickets, Status.closed);

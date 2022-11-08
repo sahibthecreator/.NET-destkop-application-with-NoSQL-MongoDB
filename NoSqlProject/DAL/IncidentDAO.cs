@@ -29,5 +29,10 @@ namespace DAL
         {
             return collectionIncident.Find(i => i.Reporter == user.Id && i.Status == (int)status).ToList<Incident>();
         }
+        public List<Incident> GetAllUserTickets(User user)
+        {
+            return collectionIncident.Find(i => i.Reporter == user.Id).ToList<Incident>();
+
+        }
     }
 }

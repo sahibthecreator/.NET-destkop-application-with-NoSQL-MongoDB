@@ -29,5 +29,10 @@ namespace Logic
         {
             return incidentDAO.GetTickets(user, status);    
         } 
+
+        public List<Incident> GetAllUserTickets(User user)
+        {
+            return incidentDAO.GetAllUserTickets(user);    
+        }
     }
 }
