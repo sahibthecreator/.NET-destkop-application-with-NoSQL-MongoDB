@@ -16,7 +16,7 @@ namespace DemoApp
 {
     public partial class ServiceDeskEmployeeForm : Form
     {
-        List<Incident> incidents;   
+        List<Incident> incidents;
         UserService userService = new UserService();
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
@@ -49,7 +49,7 @@ namespace DemoApp
         {
             try
             {
-                panelUserManagement.Visible = false;    
+                panelUserManagement.Visible = false;
                 panelAddUser.Visible = true;
 
             }
@@ -130,7 +130,7 @@ namespace DemoApp
             {
                 fillEmptyTextBoxes();
                 fillEmptyComboBoxes();
-                
+
                 if (!validateEmail(txtEmail.Text))
                 {
                     txtEmail.ForeColor = Color.Red;
@@ -322,11 +322,11 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
-            DateTime date = Convert.ToDateTime( txtDateReported.Text);
+            DateTime date = Convert.ToDateTime(txtDateReported.Text);
             string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
 
             Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
-            if(cmbDeadlineIncident.SelectedItem.ToString()=="6 months")
+            if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
             {
                 ticket.Deadline = date.AddMonths(6);
             }
@@ -336,7 +336,7 @@ namespace DemoApp
             }
             ticket.Type = cmbTypeIncident.Text;
             ticket.Status = Status.open;
-            //priority
+            //ticket.Priority=Enum.TryParse( cmbPriorityIncident.Text,out Priority priority);
             incidentService.CreateTicket(ticket);
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
@@ -365,19 +365,19 @@ namespace DemoApp
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
             Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status==Status.incident)
+            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
             {
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
-                selcetedIncident=(Incident) listViewTickets.SelectedItems[0].Tag;
+                selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
                 txtUserNameIncident.Text = selcetedIncident.Reporter;
                 txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
-                txtSubjectIncident.Text=selcetedIncident.Subject;
+                txtSubjectIncident.Text = selcetedIncident.Subject;
                 txtDescriptionIncident.Text = selcetedIncident.Description;
             }
         }
-        
-                private void btnCloseTicket_Click(object sender, EventArgs e)
+
+        private void btnCloseTicket_Click(object sender, EventArgs e)
         {
             updateStatus(Status.closed);
         }
@@ -386,8 +386,8 @@ namespace DemoApp
         {
             updateStatus(Status.resolved);
         }
-    
-      private void updateStatus(Status status)
+
+        private void updateStatus(Status status)
         {
             List<Incident> tickets = new List<Incident>();
             if (listViewTickets.SelectedItems.Count > 0)
@@ -421,4 +421,5 @@ namespace DemoApp
         {
             //incidents = incidents.OrderBy(i => i.).ToList();
         }
+    }
 }
