@@ -1,4 +1,5 @@
 ﻿using Model;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,14 @@ namespace DAL
 
         public void closeTicket(Incident incident)
         {
-            //collectionIncident.UpdateOne(x => x.Id == incident.Id);
+            incident.Status = TicketStatus.closed;
+            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
+        }
+
+        public void resolveTicket(Incident incident)
+        {
+            incident.Status = TicketStatus.resolved;
+            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
         public void editTicket(Incident incident)

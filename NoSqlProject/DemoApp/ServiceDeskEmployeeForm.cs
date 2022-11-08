@@ -265,16 +265,14 @@ namespace DemoApp
                 {
                     User user = userService.getUserById(incident.Reporter);
 
-                    if(incident.Status != Status.notOpen)
-                    {
-                        ListViewItem item = new ListViewItem(incident.Id.ToString());
-                        item.SubItems.Add(incident.Subject);
-                        item.SubItems.Add(user.FirstName);
-                        item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                        item.SubItems.Add(incident.Status.ToString());
-                        item.Tag = incident;
-                        listViewTickets.Items.Add(item);
-                    }
+                    ListViewItem item = new ListViewItem(incident.Id.ToString());
+                    item.SubItems.Add(incident.Subject);
+                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                    item.SubItems.Add(incident.Status.ToString());
+                    item.Tag = incident;
+                    listViewTickets.Items.Add(item);
+
                 }
             }
             catch (Exception exp)
@@ -326,6 +324,40 @@ namespace DemoApp
             {
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void btnCloseTicket_Click(object sender, EventArgs e)
+        {
+            List<Incident> closedTickets = new List<Incident>();
+            try
+            {
+                if (listViewTickets.SelectedItems.Count > 0)
+                {
+                    foreach (ListViewItem item in listViewTickets.SelectedItems)
+                    {
+                        Incident incident = (Incident)item.Tag;
+                        if (incident.Status == TicketStatus.closed)
+                        {
+                            closedTickets.Add(incident);
+                        }
+                        else
+                        {
+                            incidentService.closeTicket(incident);
+                        }
+                    }
+                    string message = "";
+                    foreach (var item in closedTickets)
+                    {
+                        message += $"ticket {item.Id} already closed \n";
+                    }
+                    MessageBox.Show(message);
+                }
+                loadIncidents();
             }
             catch (Exception exp)
             {
