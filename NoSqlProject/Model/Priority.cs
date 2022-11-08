@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Status
+    public enum Priority
     {
-        incident, open, closed, resolved
+        low, normal, high
     }
 }
