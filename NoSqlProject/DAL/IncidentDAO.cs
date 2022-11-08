@@ -26,6 +26,16 @@ namespace DAL
             collectionIncident.InsertOne(incident);
         }
 
+        public List<Incident> GetTickets(User user, Status status)
+        {
+            return collectionIncident.Find(i => i.Reporter == user.Id && i.Status == (int)status).ToList<Incident>();
+        }
+        
+        public List<Incident> GetAllUserTickets(User user)
+        {
+            return collectionIncident.Find(i => i.Reporter == user.Id).ToList<Incident>();
+        }
+
         public void deleteTicket(Incident incident)
         {
             collectionIncident.DeleteOne(x => x.Id == incident.Id);
@@ -40,5 +50,5 @@ namespace DAL
         {
 
         }
-    }
+    
 }
