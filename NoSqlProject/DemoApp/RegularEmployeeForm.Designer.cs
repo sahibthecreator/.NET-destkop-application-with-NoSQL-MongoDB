@@ -33,10 +33,8 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblReported = new System.Windows.Forms.Label();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblDeadline = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
             this.lblSubject = new System.Windows.Forms.Label();
@@ -44,6 +42,8 @@
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.lblDeadline = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -114,16 +114,6 @@
             this.lblReported.TabIndex = 12;
             this.lblReported.Text = "Reported by user:";
             // 
-            // datePicker
-            // 
-            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Location = new System.Drawing.Point(386, 259);
-            this.datePicker.MinDate = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(268, 24);
-            this.datePicker.TabIndex = 11;
-            this.datePicker.Value = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
-            // 
             // btnSubmit
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.Black;
@@ -159,16 +149,6 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // lblDeadline
-            // 
-            this.lblDeadline.AutoSize = true;
-            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeadline.Location = new System.Drawing.Point(163, 259);
-            this.lblDeadline.Name = "lblDeadline";
-            this.lblDeadline.Size = new System.Drawing.Size(95, 25);
-            this.lblDeadline.TabIndex = 8;
-            this.lblDeadline.Text = "Deadline:";
             // 
             // lblDescription
             // 
@@ -241,6 +221,26 @@
             this.tabPage2.Text = "Dashbord";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // datePicker
+            // 
+            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePicker.Location = new System.Drawing.Point(386, 259);
+            this.datePicker.MinDate = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(268, 24);
+            this.datePicker.TabIndex = 11;
+            this.datePicker.Value = new System.DateTime(2022, 10, 27, 22, 40, 43, 0);
+            // 
+            // lblDeadline
+            // 
+            this.lblDeadline.AutoSize = true;
+            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeadline.Location = new System.Drawing.Point(163, 259);
+            this.lblDeadline.Name = "lblDeadline";
+            this.lblDeadline.Size = new System.Drawing.Size(95, 25);
+            this.lblDeadline.TabIndex = 8;
+            this.lblDeadline.Text = "Deadline:";
+            // 
             // RegularEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,13 +267,13 @@
         private System.Windows.Forms.Label lblCreatNewIncident;
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.TextBox txtSubject;
-        private System.Windows.Forms.Label lblDeadline;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label lblReported;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.Label lblDeadline;
     }
 }
