@@ -22,6 +22,7 @@ namespace DemoApp
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
         List<ComboBox> comboBoxes = new List<ComboBox>();
+        List<RadioButton> radioButtons = new List<RadioButton>();
         SortByPriority sortByPriority = new SortByPriority();   
         public ServiceDeskEmployeeForm()
         {
@@ -36,6 +37,11 @@ namespace DemoApp
             comboBoxes.Add(comboType);
             comboBoxes.Add(comboLocation);
 
+            radioButtons.Add(radioButtonOpen);
+            radioButtons.Add(radioButtonIncident);
+            radioButtons.Add(radioButtonClosed);
+            radioButtons.Add(radioButtonResolved);
+
             foreach (TextBox textBox in textBoxes)
             {
                 textBox.Click += new EventHandler(textBox_Click);
@@ -45,12 +51,40 @@ namespace DemoApp
             {
                 comboBox.Click += new EventHandler(comboBox_Click);
             }
+            foreach (RadioButton radioButton in radioButtons)
+            {
+                radioButton.CheckedChanged += RadioButton_CheckedChanged;
+            }
+            
             // load unresolved incidents
             LoadPBUnresolved(pbUnresolved, Status.open);
             // load incidents past deadline
             LoadPBPastDeadline(pbPast, DateTime.Now);
         }
 
+        Status status = Status.open;
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            switch (((RadioButton)sender).Name)
+            {
+                case "radioButtonOpen":
+                    status = Status.open;
+                    break;
+                case "radioButtonIncident":
+                    status = Status.incident;
+                    break;
+                case "radioButtonClosed":
+                    status = Status.closed;
+                    break;
+                case "radioButtonResolved":
+                    status = Status.resolved;
+                    break;
+            }
+            FilteringList filteringList = new FilteringList();
+            incidents = incidentService.GetAllIncidents();
+            incidents = filteringList.filterIncidentByStatus(incidents, status);
+            loadIncidents(string.Empty);
+        }
 
         private void loadUsers(string str)
         {
@@ -292,8 +326,26 @@ namespace DemoApp
         {
             try
             {
-                incidents = incidentService.GetAllIncidents();
-                fillListViewIncident();
+                if(incidents == null)
+                    incidents = incidentService.GetAllIncidents();
+                listViewTickets.Items.Clear();
+                foreach (Incident incident in incidents)
+                {
+                    User user = userService.getUserById(incident.Reporter);
+
+                    ListViewItem item = new ListViewItem(incident.Id.ToString());
+                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                    item.SubItems.Add(incident.Subject);
+                    item.SubItems.Add(incident.Type);
+                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
+                    item.SubItems.Add(incident.Description);
+                    item.SubItems.Add(incident.Status.ToString());
+                    item.SubItems.Add(incident.Priority.ToString());
+                    item.Tag = incident;
+                    listViewTickets.Items.Add(item);
+
+                }
             }
             catch (Exception exp)
             {
@@ -462,24 +514,7 @@ namespace DemoApp
 
         private void fillListViewIncident()
         {
-            listViewTickets.Items.Clear();
-            foreach (Incident incident in incidents)
-            {
-                User user = userService.getUserById(incident.Reporter);
-
-                ListViewItem item = new ListViewItem(incident.Id.ToString());
-                item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                item.SubItems.Add(incident.Subject);
-                item.SubItems.Add(incident.Type);
-                item.SubItems.Add(user.FirstName);
-                item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
-                item.SubItems.Add(incident.Description);
-                item.SubItems.Add(incident.Status.ToString());
-                item.SubItems.Add(incident.Priority.ToString());
-                item.Tag = incident;
-                listViewTickets.Items.Add(item);
-
-            }
+            
         }
 
         private void btnHigh_Click(object sender, EventArgs e)
@@ -546,7 +581,6 @@ namespace DemoApp
             {
                 panelUserManagement.Visible = false;
                 panelAddUser.Visible = true;
-
             }
             catch (Exception exp)
             {

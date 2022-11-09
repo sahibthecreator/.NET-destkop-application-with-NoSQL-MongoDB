@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Databases_Model.cs" />
+    <Compile Include="FilteringList.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="SortByPriority.cs" />
     <Compile Include="Status.cs" />
