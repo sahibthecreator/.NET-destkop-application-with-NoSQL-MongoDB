@@ -53,5 +53,14 @@ namespace Logic
         {
             incidentDAO.CreateTicket(incident, type, status, priority);
         }
+        public List<Incident> GetTicketsWithStatus( Status status)
+        {
+            return incidentDAO.GetTicketsWithStatus(status);
+        }
+        public List<Incident> GetTicketsPastDeadline(DateTime datetime)
+        {
+            return incidentDAO.GetTicketsPastDeadline(datetime);
+        }
     }
 }
+
