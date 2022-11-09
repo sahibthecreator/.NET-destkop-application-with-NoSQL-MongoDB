@@ -50,14 +50,10 @@ namespace DemoApp
                     }
                 }
                 else
-                {
                     errorMessage.Text = "Password is not correct";
-                }
             }
             else
-            {
                 errorMessage.Text = "User with this email was not found";
-            }
         }
 
         private Boolean VerifyHashedPassword(string password, string hashedPassword)
