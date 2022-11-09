@@ -18,6 +18,7 @@ namespace DemoApp
     public partial class ServiceDeskEmployeeForm : Form
     {
         List<Incident> incidents;
+        SortByPriority sortByPriority = new SortByPriority();
         UserService userService = new UserService();
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
@@ -450,12 +451,12 @@ namespace DemoApp
 
         private void btnHigh_Click(object sender, EventArgs e)
         {
-            incidents = incidents.OrderByDescending(i => i.Priority).ToList();
+            incidents = sortByPriority.sortByHigh(incidents);
             fillListViewIncident();
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
-            incidents = incidents.OrderBy(i => i.Priority).ToList();
+            incidents = sortByPriority.sortByLow(incidents);
             fillListViewIncident();
         }
 
