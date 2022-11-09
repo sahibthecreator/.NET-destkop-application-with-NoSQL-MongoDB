@@ -169,6 +169,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegularEmployeeForm.resx">
       <DependentUpon>RegularEmployeeForm.cs</DependentUpon>
@@ -197,6 +198,8 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\Down.png" />
+    <None Include="Resources\Up.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj">
