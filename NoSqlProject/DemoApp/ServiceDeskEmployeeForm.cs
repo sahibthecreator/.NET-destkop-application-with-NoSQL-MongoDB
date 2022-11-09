@@ -479,11 +479,13 @@ namespace DemoApp
 
         private void btnHigh_Click(object sender, EventArgs e)
         {
- 
+            incidents = sortByPriority.sortByHigh(incidents);
+            fillListViewIncident();
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
-
+            incidents = sortByPriority.sortByLow(incidents);
+            fillListViewIncident();
         }
 
         private void btnEditTicket_Click(object sender, EventArgs e)
