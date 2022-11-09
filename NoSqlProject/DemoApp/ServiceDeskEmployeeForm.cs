@@ -26,6 +26,7 @@ namespace DemoApp
             InitializeComponent();
             loadIncidents();
             loadUsers(string.Empty);
+          
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
             textBoxes.Add(txtEmail);
@@ -317,6 +318,7 @@ namespace DemoApp
             {
                 panelCreateTicket.Visible = false;
                 panelTicketsOverview.Visible = true;
+                lblError.Text = "";
             }
             catch (Exception exp)
             {
@@ -326,9 +328,13 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
+            if (cmbDeadlineIncident.Text.Length==0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
+            {
+                lblError.Text = "please fill in the required information!";
+                return;
+            }
             DateTime date = Convert.ToDateTime(txtDateReported.Text);
             string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
-
             Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
             if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
             {
@@ -338,12 +344,10 @@ namespace DemoApp
             {
                 ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
             }
-            ticket.Type = cmbTypeIncident.Text;
-            ticket.Status = Status.open;
-            //ticket.Priority=Enum.TryParse( cmbPriorityIncident.Text,out Priority priority);
-            incidentService.CreateTicket(ticket);
+            incidentService.CreateTicket(ticket, cmbTypeIncident.Text,  Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
+            lblError.Text = "";
             loadIncidents();
         }
 
@@ -371,10 +375,11 @@ namespace DemoApp
             Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
             if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
             {
+                User user = userService.getUserById(selcetedIncident.Reporter);
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
                 selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-                txtUserNameIncident.Text = selcetedIncident.Reporter;
+                txtUserNameIncident.Text =user.FirstName;
                 txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
                 txtSubjectIncident.Text = selcetedIncident.Subject;
                 txtDescriptionIncident.Text = selcetedIncident.Description;
