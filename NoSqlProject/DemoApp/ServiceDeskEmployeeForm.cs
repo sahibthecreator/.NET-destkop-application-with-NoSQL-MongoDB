@@ -23,8 +23,7 @@ namespace DemoApp
         List<TextBox> textBoxes = new List<TextBox>();
         List<ComboBox> comboBoxes = new List<ComboBox>();
         List<RadioButton> radioButtons = new List<RadioButton>();
-        
-
+        SortByPriority sortByPriority = new SortByPriority();   
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
@@ -52,12 +51,15 @@ namespace DemoApp
             {
                 comboBox.Click += new EventHandler(comboBox_Click);
             }
-
             foreach (RadioButton radioButton in radioButtons)
             {
                 radioButton.CheckedChanged += RadioButton_CheckedChanged;
             }
             
+            // load unresolved incidents
+            LoadPBUnresolved(pbUnresolved, Status.open);
+            // load incidents past deadline
+            LoadPBPastDeadline(pbPast, DateTime.Now);
         }
 
         Status status = Status.open;
@@ -367,23 +369,47 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
-            if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
-            {
-                lblErrorCreateTicket.Text = "please fill in the required information!";
-                return;
-            }
-            DateTime date = Convert.ToDateTime(txtDateReported.Text);
-            string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
             Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
-            if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
+
+            if (label9.Text.Equals("Edit Ticket"))
             {
-                ticket.Deadline = date.AddMonths(6);
+                ticket.Date = Convert.ToDateTime(txtDateReported.Text);
+                if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
+                    ticket.Deadline = ticket.Date.AddMonths(6);
+                else
+                {
+                    string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
+                    ticket.Deadline = ticket.Date.AddDays(int.Parse(splitCmbString[0]));
+                }
+                ticket.Type = cmbTypeIncident.SelectedItem.ToString();
+                ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
+                ticket.Subject = txtSubjectIncident.Text;
+                ticket.Description = txtDescriptionIncident.Text;
+                incidentService.editTicket(ticket);
             }
-            else
+            else if(label9.Text.Equals("Create new ticket"))
             {
-                ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
+                if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
+                {
+                    lblErrorCreateTicket.Text = "please fill in the required information!";
+                    return;
+                }
+                DateTime date = Convert.ToDateTime(txtDateReported.Text);
+                string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
+
+                if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
+                {
+                    ticket.Deadline = date.AddMonths(6);
+                }
+                else
+                {
+                    ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
+                }
+                ticket.Type = cmbTypeIncident.Text;
+                ticket.Status = Status.open;
+                incidentService.CreateTicket(ticket, cmbTypeIncident.Text, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
             }
-            incidentService.CreateTicket(ticket, cmbTypeIncident.Text, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
+            txtUserNameIncident.Enabled = true;
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
             lblErrorCreateTicket.Text = "";
@@ -411,17 +437,21 @@ namespace DemoApp
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
-            Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
+            if (listViewTickets.SelectedItems.Count == 1)
             {
-                User user = userService.getUserById(selcetedIncident.Reporter);
-                panelTicketsOverview.Visible = false;
-                panelCreateTicket.Visible = true;
-                selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-                txtUserNameIncident.Text = user.FirstName;
-                txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
-                txtSubjectIncident.Text = selcetedIncident.Subject;
-                txtDescriptionIncident.Text = selcetedIncident.Description;
+                Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+                if (selcetedIncident.Status == Status.incident)
+                {
+                    label9.Text = "Create new ticket";
+                    User user = userService.getUserById(selcetedIncident.Reporter);
+                    panelTicketsOverview.Visible = false;
+                    panelCreateTicket.Visible = true;
+                    selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+                    txtUserNameIncident.Text = user.FirstName;
+                    txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
+                    txtSubjectIncident.Text = selcetedIncident.Subject;
+                    txtDescriptionIncident.Text = selcetedIncident.Description;
+                }
             }
         }
 
@@ -489,13 +519,48 @@ namespace DemoApp
 
         private void btnHigh_Click(object sender, EventArgs e)
         {
-            incidents = incidents.OrderByDescending(i => i.Priority).ToList();
+            incidents = sortByPriority.SortByHigh(incidents);
             fillListViewIncident();
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
-            incidents = incidents.OrderBy(i => i.Priority).ToList();
+            incidents = sortByPriority.SortByLow(incidents);
             fillListViewIncident();
+        }
+
+        private void btnEditTicket_Click(object sender, EventArgs e)
+        {
+            if (listViewTickets.SelectedItems.Count == 1)
+            {
+                Incident selectedTicket = (Incident)listViewTickets.SelectedItems[0].Tag;
+                if(selectedTicket.Status != Status.incident)
+                {
+                    panelTicketsOverview.Visible = false;
+                    panelCreateTicket.Visible = true;
+                    label9.Text = "Edit Ticket";
+
+                    TimeSpan timeSpan = selectedTicket.Deadline - selectedTicket.Date;
+                    if (timeSpan.Days >= 5 && timeSpan.Days <= 9)
+                        cmbDeadlineIncident.SelectedItem = "7 days";
+                    else if (timeSpan.Days >= 12 && timeSpan.Days <= 16)
+                        cmbDeadlineIncident.SelectedItem = "14 days";
+                    else if (timeSpan.Days >= 26 && timeSpan.Days <= 30)
+                        cmbDeadlineIncident.SelectedItem = "28 days";
+                    else if (timeSpan.Days >= 150 && timeSpan.Days <= 200)
+                        cmbDeadlineIncident.SelectedItem = "6 month";
+
+                    cmbTypeIncident.SelectedItem = selectedTicket.Type;
+
+                    cmbPriorityIncident.SelectedItem = char.ToUpper(selectedTicket.Priority.ToString()[0]) + selectedTicket.Priority.ToString().Substring(1);
+
+                    User user = userService.getUserById(selectedTicket.Reporter);
+                    txtUserNameIncident.Text = user.FirstName;
+                    txtUserNameIncident.Enabled = false;
+                    txtDateReported.Text = selectedTicket.Date.ToString("yyyy MM dd");
+                    txtSubjectIncident.Text = selectedTicket.Subject;
+                    txtDescriptionIncident.Text = selectedTicket.Description;
+                }
+            }
         }
 
         //search bar for incidents and users
@@ -521,6 +586,26 @@ namespace DemoApp
             {
                 MessageBox.Show(exp.Message);
             }
+        }
+        // progress bars for dashboard
+        public void LoadPBUnresolved(ProgressBar progressBar, Status status)
+        {
+            List<Incident> unresolvedIncidents = incidentService.GetTicketsWithStatus(status);
+            List<Incident> totalIncidents = incidentService.GetAllIncidents();
+
+            progressBar.Value = unresolvedIncidents.Count;
+            progressBar.Maximum = totalIncidents.Count;
+            progressBar.Text = $"{unresolvedIncidents.Count.ToString()}/{totalIncidents.Count.ToString()}";
+            
+        }
+        public void LoadPBPastDeadline(ProgressBar progressBar, DateTime dateTime)
+        {
+            List<Incident> pastDeadlineIncidents = incidentService.GetTicketsPastDeadline(dateTime);
+            List<Incident> totalIncidents = incidentService.GetAllIncidents();
+
+            progressBar.Value = pastDeadlineIncidents.Count;
+            progressBar.Maximum = totalIncidents.Count;
+            progressBar.Text = $"{pastDeadlineIncidents.Count.ToString()}/{totalIncidents.Count.ToString()}";
         }
     }
 }

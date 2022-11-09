@@ -38,7 +38,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnLow = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnHigh = new System.Windows.Forms.Button();
             this.btnResolve = new System.Windows.Forms.Button();
             this.btnCloseTicket = new System.Windows.Forms.Button();
             this.btnDeleteTicket = new System.Windows.Forms.Button();
@@ -104,6 +103,17 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
             this.tabPageDashboard = new System.Windows.Forms.TabPage();
+
+            this.btnLow = new System.Windows.Forms.Button();
+            this.btnHigh = new System.Windows.Forms.Button();
+            
+            this.pbPast = new CircularProgressBar.CircularProgressBar();
+            this.pbUnresolved = new CircularProgressBar.CircularProgressBar();
+            this.lblPast1 = new System.Windows.Forms.Label();
+            this.lblPast2 = new System.Windows.Forms.Label();
+            this.lblUnresolved1 = new System.Windows.Forms.Label();
+            this.lblUnresolved2 = new System.Windows.Forms.Label();
+
             this.tabControl1.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
             this.panelTicketsOverview.SuspendLayout();
@@ -111,6 +121,7 @@
             this.tabPageUserManagement.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
+            this.tabPageDashboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -233,16 +244,6 @@
             this.btnLow.UseVisualStyleBackColor = true;
             this.btnLow.Click += new System.EventHandler(this.btnLow_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(580, 8);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 20);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Filter by priority";
             // 
             // btnHigh
             // 
@@ -256,6 +257,15 @@
             this.btnHigh.UseVisualStyleBackColor = true;
             this.btnHigh.Click += new System.EventHandler(this.btnHigh_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(375, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 16);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Filter by priority";
             // btnResolve
             // 
             this.btnResolve.BackColor = System.Drawing.Color.Yellow;
@@ -306,6 +316,7 @@
             this.btnEditTicket.TabIndex = 12;
             this.btnEditTicket.Text = "EDIT";
             this.btnEditTicket.UseVisualStyleBackColor = false;
+            this.btnEditTicket.Click += new System.EventHandler(this.btnEditTicket_Click);
             // 
             // label1
             // 
@@ -461,7 +472,8 @@
             "Low",
             "Normal",
             "High"});
-            this.cmbPriorityIncident.Location = new System.Drawing.Point(338, 345);
+            this.cmbPriorityIncident.Location = new System.Drawing.Point(225, 224);
+            this.cmbPriorityIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbPriorityIncident.Name = "cmbPriorityIncident";
             this.cmbPriorityIncident.Size = new System.Drawing.Size(355, 33);
             this.cmbPriorityIncident.TabIndex = 24;
@@ -484,7 +496,9 @@
             "14 days",
             "28 days",
             "6 months"});
-            this.cmbDeadlineIncident.Location = new System.Drawing.Point(338, 392);
+
+            this.cmbDeadlineIncident.Location = new System.Drawing.Point(225, 255);
+            this.cmbDeadlineIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbDeadlineIncident.Name = "cmbDeadlineIncident";
             this.cmbDeadlineIncident.Size = new System.Drawing.Size(355, 33);
             this.cmbDeadlineIncident.TabIndex = 22;
@@ -497,7 +511,9 @@
             "Software",
             "Hardware",
             "Service"});
-            this.cmbTypeIncident.Location = new System.Drawing.Point(338, 243);
+
+            this.cmbTypeIncident.Location = new System.Drawing.Point(225, 158);
+            this.cmbTypeIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbTypeIncident.Name = "cmbTypeIncident";
             this.cmbTypeIncident.Size = new System.Drawing.Size(355, 33);
             this.cmbTypeIncident.TabIndex = 21;
@@ -505,7 +521,9 @@
             // txtUserNameIncident
             // 
             this.txtUserNameIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserNameIncident.Location = new System.Drawing.Point(338, 295);
+
+            this.txtUserNameIncident.Location = new System.Drawing.Point(225, 192);
+            this.txtUserNameIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUserNameIncident.Name = "txtUserNameIncident";
             this.txtUserNameIncident.Size = new System.Drawing.Size(355, 30);
             this.txtUserNameIncident.TabIndex = 18;
@@ -513,7 +531,9 @@
             // txtSubjectIncident
             // 
             this.txtSubjectIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubjectIncident.Location = new System.Drawing.Point(338, 189);
+
+            this.txtSubjectIncident.Location = new System.Drawing.Point(225, 123);
+            this.txtSubjectIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSubjectIncident.Name = "txtSubjectIncident";
             this.txtSubjectIncident.Size = new System.Drawing.Size(355, 30);
             this.txtSubjectIncident.TabIndex = 17;
@@ -522,7 +542,9 @@
             // 
             this.txtDateReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateReported.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDateReported.Location = new System.Drawing.Point(338, 145);
+
+            this.txtDateReported.Location = new System.Drawing.Point(225, 94);
+            this.txtDateReported.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDateReported.Name = "txtDateReported";
             this.txtDateReported.Size = new System.Drawing.Size(355, 30);
             this.txtDateReported.TabIndex = 16;
@@ -641,8 +663,8 @@
             this.tabPageUserManagement.Location = new System.Drawing.Point(4, 38);
             this.tabPageUserManagement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPageUserManagement.Name = "tabPageUserManagement";
-            this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageUserManagement.Size = new System.Drawing.Size(1192, 646);
+            this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageUserManagement.Size = new System.Drawing.Size(792, 414);
             this.tabPageUserManagement.TabIndex = 2;
             this.tabPageUserManagement.Text = "User Management";
             this.tabPageUserManagement.UseVisualStyleBackColor = true;
@@ -655,7 +677,7 @@
             this.panelUserManagement.Controls.Add(this.textBoxFilterByEmail);
             this.panelUserManagement.Controls.Add(this.listViewUsers);
             this.panelUserManagement.Location = new System.Drawing.Point(0, 0);
-            this.panelUserManagement.Name = "panelUserManagement";
+            this.panelUserManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelUserManagement.Size = new System.Drawing.Size(1788, 997);
             this.panelUserManagement.TabIndex = 8;
             // 
@@ -917,14 +939,152 @@
             // 
             // tabPageDashboard
             // 
-            this.tabPageDashboard.Location = new System.Drawing.Point(4, 38);
-            this.tabPageDashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+
+            this.tabPageDashboard.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDashboard.Controls.Add(this.lblUnresolved2);
+            this.tabPageDashboard.Controls.Add(this.lblUnresolved1);
+            this.tabPageDashboard.Controls.Add(this.lblPast2);
+            this.tabPageDashboard.Controls.Add(this.lblPast1);
+            this.tabPageDashboard.Controls.Add(this.pbUnresolved);
+            this.tabPageDashboard.Controls.Add(this.pbPast);
+
+            this.tabPageDashboard.Location = new System.Drawing.Point(4, 34);
+            this.tabPageDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+
             this.tabPageDashboard.Name = "tabPageDashboard";
-            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageDashboard.Size = new System.Drawing.Size(1192, 646);
+            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageDashboard.Size = new System.Drawing.Size(792, 414);
             this.tabPageDashboard.TabIndex = 0;
             this.tabPageDashboard.Text = "Dashboard";
             this.tabPageDashboard.UseVisualStyleBackColor = true;
+            // 
+
+            // btnLow
+            // 
+            this.btnLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLow.Image = global::DemoApp.Properties.Resources.Down;
+            this.btnLow.Location = new System.Drawing.Point(430, 34);
+            this.btnLow.Name = "btnLow";
+            this.btnLow.Size = new System.Drawing.Size(40, 23);
+            this.btnLow.TabIndex = 18;
+            this.btnLow.UseVisualStyleBackColor = true;
+            this.btnLow.Click += new System.EventHandler(this.btnLow_Click);
+            // 
+            // btnHigh
+            // 
+            this.btnHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHigh.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnHigh.Image = global::DemoApp.Properties.Resources.Up;
+            this.btnHigh.Location = new System.Drawing.Point(378, 33);
+            this.btnHigh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHigh.Name = "btnHigh";
+            this.btnHigh.Size = new System.Drawing.Size(40, 24);
+            this.btnHigh.TabIndex = 16;
+            this.btnHigh.UseVisualStyleBackColor = true;
+            this.btnHigh.Click += new System.EventHandler(this.btnHigh_Click);
+
+            // pbPast
+            // 
+            this.pbPast.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.pbPast.AnimationSpeed = 500;
+            this.pbPast.BackColor = System.Drawing.Color.Transparent;
+            this.pbPast.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbPast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pbPast.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pbPast.InnerMargin = 2;
+            this.pbPast.InnerWidth = -1;
+            this.pbPast.Location = new System.Drawing.Point(627, 161);
+            this.pbPast.MarqueeAnimationSpeed = 2000;
+            this.pbPast.Name = "pbPast";
+            this.pbPast.OuterColor = System.Drawing.Color.Gray;
+            this.pbPast.OuterMargin = -25;
+            this.pbPast.OuterWidth = 26;
+            this.pbPast.ProgressColor = System.Drawing.Color.Red;
+            this.pbPast.ProgressWidth = 25;
+            this.pbPast.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbPast.Size = new System.Drawing.Size(320, 320);
+            this.pbPast.StartAngle = 270;
+            this.pbPast.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbPast.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.pbPast.SubscriptText = "";
+            this.pbPast.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbPast.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.pbPast.SuperscriptText = "";
+            this.pbPast.TabIndex = 0;
+            this.pbPast.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.pbPast.Value = 68;
+            // 
+            // pbUnresolved
+            // 
+            this.pbUnresolved.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.pbUnresolved.AnimationSpeed = 500;
+            this.pbUnresolved.BackColor = System.Drawing.Color.Transparent;
+            this.pbUnresolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbUnresolved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pbUnresolved.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pbUnresolved.InnerMargin = 2;
+            this.pbUnresolved.InnerWidth = -1;
+            this.pbUnresolved.Location = new System.Drawing.Point(83, 161);
+            this.pbUnresolved.MarqueeAnimationSpeed = 2000;
+            this.pbUnresolved.Name = "pbUnresolved";
+            this.pbUnresolved.OuterColor = System.Drawing.Color.Gray;
+            this.pbUnresolved.OuterMargin = -25;
+            this.pbUnresolved.OuterWidth = 26;
+            this.pbUnresolved.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pbUnresolved.ProgressWidth = 25;
+            this.pbUnresolved.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbUnresolved.Size = new System.Drawing.Size(320, 320);
+            this.pbUnresolved.StartAngle = 270;
+            this.pbUnresolved.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbUnresolved.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.pbUnresolved.SubscriptText = ".";
+            this.pbUnresolved.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbUnresolved.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.pbUnresolved.SuperscriptText = "";
+            this.pbUnresolved.TabIndex = 1;
+            this.pbUnresolved.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.pbUnresolved.Value = 68;
+            // 
+            // lblPast1
+            // 
+            this.lblPast1.AutoSize = true;
+            this.lblPast1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPast1.Location = new System.Drawing.Point(639, 37);
+            this.lblPast1.Name = "lblPast1";
+            this.lblPast1.Size = new System.Drawing.Size(343, 36);
+            this.lblPast1.TabIndex = 2;
+            this.lblPast1.Text = "Incidents past deadline";
+            // 
+            // lblPast2
+            // 
+            this.lblPast2.AutoSize = true;
+            this.lblPast2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPast2.Location = new System.Drawing.Point(614, 100);
+            this.lblPast2.Name = "lblPast2";
+            this.lblPast2.Size = new System.Drawing.Size(378, 24);
+            this.lblPast2.TabIndex = 3;
+            this.lblPast2.Text = "These tickets need your immediate attention";
+            // 
+            // lblUnresolved1
+            // 
+            this.lblUnresolved1.AutoSize = true;
+            this.lblUnresolved1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnresolved1.Location = new System.Drawing.Point(89, 37);
+            this.lblUnresolved1.Name = "lblUnresolved1";
+            this.lblUnresolved1.Size = new System.Drawing.Size(314, 36);
+            this.lblUnresolved1.TabIndex = 4;
+            this.lblUnresolved1.Text = "Unresolved incidents";
+            // 
+            // lblUnresolved2
+            // 
+            this.lblUnresolved2.AutoSize = true;
+            this.lblUnresolved2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnresolved2.Location = new System.Drawing.Point(132, 100);
+            this.lblUnresolved2.Name = "lblUnresolved2";
+            this.lblUnresolved2.Size = new System.Drawing.Size(213, 24);
+            this.lblUnresolved2.TabIndex = 5;
+            this.lblUnresolved2.Text = "All tickets currently open";
+
             // 
             // ServiceDeskEmployeeForm
             // 
@@ -946,6 +1106,8 @@
             this.panelUserManagement.PerformLayout();
             this.panelAddUser.ResumeLayout(false);
             this.panelAddUser.PerformLayout();
+            this.tabPageDashboard.ResumeLayout(false);
+            this.tabPageDashboard.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1029,5 +1191,11 @@
         private System.Windows.Forms.RadioButton radioButtonOpen;
         private System.Windows.Forms.RadioButton radioButtonIncident;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblUnresolved2;
+        private System.Windows.Forms.Label lblUnresolved1;
+        private System.Windows.Forms.Label lblPast2;
+        private System.Windows.Forms.Label lblPast1;
+        private CircularProgressBar.CircularProgressBar pbUnresolved;
+        private CircularProgressBar.CircularProgressBar pbPast;
     }
 }

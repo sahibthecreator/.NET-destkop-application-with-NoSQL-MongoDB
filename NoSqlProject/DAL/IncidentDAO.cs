@@ -26,7 +26,14 @@ namespace DAL
         {
             collectionIncident.InsertOne(incident);
         }
-
+        public List<Incident> GetTicketsWithStatus(Status status)
+        {
+            return collectionIncident.Find(ticket => ticket.Status == status).ToList<Incident>();
+        }
+        public List<Incident> GetTicketsPastDeadline(DateTime dateTime)
+        {
+            return collectionIncident.Find(ticket => ticket.Deadline < dateTime).ToList<Incident>();
+        }
         public List<Incident> GetTickets(User user, Status status)
         {
             return collectionIncident.Find(i => i.Reporter == user.Id && i.Status == status).ToList<Incident>();
@@ -50,7 +57,7 @@ namespace DAL
 
         public void editTicket(Incident incident)
         {
-
+            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
         public void CreateTicket(Incident incident, string type, Status status, Priority priority)
