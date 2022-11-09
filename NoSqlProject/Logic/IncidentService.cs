@@ -45,6 +45,10 @@ namespace Logic
         {
             incidentDAO.updateStatus(incident, status);
         }
+        public void editTicket(Incident incident)
+        {
+            incidentDAO.editTicket(incident);
+        }
         public void CreateTicket(Incident incident, string type, Status status, Priority priority)
         {
             incidentDAO.CreateTicket(incident, type, status, priority);
