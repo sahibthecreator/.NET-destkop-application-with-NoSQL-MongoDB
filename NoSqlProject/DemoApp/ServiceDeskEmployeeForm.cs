@@ -11,6 +11,7 @@ using Model;
 using Logic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace DemoApp
 {
@@ -320,6 +321,7 @@ namespace DemoApp
             {
                 panelCreateTicket.Visible = false;
                 panelTicketsOverview.Visible = true;
+                lblErrorCreateTicket.Text = "";
             }
             catch (Exception exp)
             {
@@ -329,9 +331,13 @@ namespace DemoApp
 
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
+            if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
+            {
+                lblErrorCreateTicket.Text = "please fill in the required information!";
+                return;
+            }
             DateTime date = Convert.ToDateTime(txtDateReported.Text);
             string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
-
             Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
             if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
             {
@@ -341,12 +347,10 @@ namespace DemoApp
             {
                 ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
             }
-            ticket.Type = cmbTypeIncident.Text;
-            ticket.Status = Status.open;
-            //ticket.Priority=Enum.TryParse( cmbPriorityIncident.Text,out Priority priority);
-            incidentService.CreateTicket(ticket);
+            incidentService.CreateTicket(ticket, cmbTypeIncident.Text, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
+            lblErrorCreateTicket.Text = "";
             loadIncidents(string.Empty);
         }
 
