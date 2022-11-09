@@ -289,13 +289,17 @@ namespace DemoApp
 
                 foreach (Incident incident in incidents)
                 {
-                    //User user = userService.getUserById(incident.Reporter);
+                    User user = userService.getUserById(incident.Reporter);
 
                     ListViewItem item = new ListViewItem(incident.Id.ToString());
-                    item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add("");
                     item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                    item.SubItems.Add(incident.Subject);
+                    item.SubItems.Add(incident.Type);
+                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
+                    item.SubItems.Add(incident.Description);
                     item.SubItems.Add(incident.Status.ToString());
+                    item.SubItems.Add(incident.Priority.ToString());
                     item.Tag = incident;
                     listViewTickets.Items.Add(item);
 
@@ -394,19 +398,35 @@ namespace DemoApp
             {
                 foreach (ListViewItem item in listViewTickets.SelectedItems)
                 {
-                    if (((Incident)item.Tag).Status == status)
-                    {
-                        tickets.Add((Incident)item.Tag);
-                    }
-                    else
+                    if (((Incident)item.Tag).Status == Status.open)
                     {
                         incidentService.updateStatus(((Incident)item.Tag), status);
                     }
+                    else 
+                    {
+                        tickets.Add((Incident)item.Tag);
+                    }
                 }
                 string message = "";
-                foreach (var item in tickets)
+                foreach (Incident item in tickets)
                 {
-                    message += $"ticket {item.Id} already {status} \n";
+                    if (item.Status == status)
+                    {
+                        message += $"ticket Id {item.Id} is already {status}\n\n";
+                    }
+                    else if (item.Status == Status.incident)
+                    {
+                        message += $"incident Id {item.Id} is an incident, only tickets can be {status}\n\n";
+                    }
+                    else
+                    {
+                        if (status == Status.closed)
+                        {
+                            message += $"ticket Id {item.Id} is already {status}, tickets that is already resolve cannot be {status}\n\n";
+                        }
+                        else
+                            message += $"ticket Id {item.Id} is already {status}, tickets that is already closed cannot be {status}\n\n";
+                    }
                 }
 
                 if (tickets.Count != 0)
@@ -419,7 +439,25 @@ namespace DemoApp
 
         private void btnFilterByPriority_Click(object sender, EventArgs e)
         {
-            //incidents = incidents.OrderBy(i => i.).ToList();
+            incidents = incidents.OrderByDescending(i => i.Priority).ToList();
+            listViewTickets.Items.Clear();
+            foreach (Incident incident in incidents)
+            {
+                User user = userService.getUserById(incident.Reporter);
+
+                ListViewItem item = new ListViewItem(incident.Id.ToString());
+                item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                item.SubItems.Add(incident.Subject);
+                item.SubItems.Add(incident.Type);
+                item.SubItems.Add(user.FirstName);
+                item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
+                item.SubItems.Add(incident.Description);
+                item.SubItems.Add(incident.Status.ToString());
+                item.SubItems.Add(incident.Priority.ToString());
+                item.Tag = incident;
+                listViewTickets.Items.Add(item);
+
+            }
         }
     }
 }
