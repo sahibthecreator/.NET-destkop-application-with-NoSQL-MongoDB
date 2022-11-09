@@ -8,14 +8,14 @@ namespace Model
 {
     public class SortByPriority
     {
-        public List<Incident> sortByHigh(List<Incident> incidents)
+        public List<Incident> SortByHigh(List<Incident> incidents)
         {
             return incidents = incidents.OrderByDescending(i => i.Priority).ToList();
         }
 
-        public void sortByLow(List<Incident> incidents)
+        public List<Incident> SortByLow(List<Incident> incidents)
         {
-            incidents = incidents.OrderBy(i => i.Priority).ToList();
+           return incidents = incidents.OrderBy(i => i.Priority).ToList();
 
         }
     }

@@ -22,6 +22,7 @@ namespace DemoApp
         IncidentService incidentService = new IncidentService();
         List<TextBox> textBoxes = new List<TextBox>();
         List<ComboBox> comboBoxes = new List<ComboBox>();
+        SortByPriority sortByPriority = new SortByPriority();   
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
@@ -479,12 +480,12 @@ namespace DemoApp
 
         private void btnHigh_Click(object sender, EventArgs e)
         {
-            incidents = sortByPriority.sortByHigh(incidents);
+            incidents = sortByPriority.SortByHigh(incidents);
             fillListViewIncident();
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
-            incidents = sortByPriority.sortByLow(incidents);
+            incidents = sortByPriority.SortByLow(incidents);
             fillListViewIncident();
         }
 
