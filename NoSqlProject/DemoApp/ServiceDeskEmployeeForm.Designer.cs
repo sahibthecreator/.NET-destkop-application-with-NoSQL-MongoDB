@@ -110,6 +110,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
+            this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPageDashboard.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
@@ -268,6 +269,7 @@
             // 
             // panelTicketsOverview
             // 
+            this.panelTicketsOverview.Controls.Add(this.radioButtonNoFilter);
             this.panelTicketsOverview.Controls.Add(this.radioButtonResolved);
             this.panelTicketsOverview.Controls.Add(this.radioButtonClosed);
             this.panelTicketsOverview.Controls.Add(this.radioButtonOpen);
@@ -1050,6 +1052,18 @@
             this.lblAddUser.TabIndex = 5;
             this.lblAddUser.Text = "Create new user";
             // 
+            // radioButtonNoFilter
+            // 
+            this.radioButtonNoFilter.AutoSize = true;
+            this.radioButtonNoFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radioButtonNoFilter.Location = new System.Drawing.Point(13, 443);
+            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
+            this.radioButtonNoFilter.Size = new System.Drawing.Size(94, 26);
+            this.radioButtonNoFilter.TabIndex = 24;
+            this.radioButtonNoFilter.TabStop = true;
+            this.radioButtonNoFilter.Text = "no filter";
+            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
+            // 
             // ServiceDeskEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1161,5 +1175,6 @@
         private System.Windows.Forms.Label lblPast1;
         private CircularProgressBar.CircularProgressBar pbUnresolved;
         private CircularProgressBar.CircularProgressBar pbPast;
+        private System.Windows.Forms.RadioButton radioButtonNoFilter;
     }
 }
