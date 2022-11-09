@@ -326,7 +326,6 @@ namespace DemoApp
                 }
                 ticket.Type = cmbTypeIncident.SelectedItem.ToString();
                 ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
-                ticket.Reporter = txtUserNameIncident.Text;
                 ticket.Subject = txtSubjectIncident.Text;
                 ticket.Description = txtDescriptionIncident.Text;
                 incidentService.editTicket(ticket);
@@ -353,6 +352,7 @@ namespace DemoApp
                 ticket.Status = Status.open;
                 incidentService.CreateTicket(ticket, cmbTypeIncident.Text, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
             }
+            txtUserNameIncident.Enabled = true;
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
             lblErrorCreateTicket.Text = "";
@@ -380,18 +380,21 @@ namespace DemoApp
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
-            Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-            if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
+            if (listViewTickets.SelectedItems.Count == 1)
             {
-                label9.Text = "Create new ticket";
-                User user = userService.getUserById(selcetedIncident.Reporter);
-                panelTicketsOverview.Visible = false;
-                panelCreateTicket.Visible = true;
-                selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-                txtUserNameIncident.Text = user.FirstName;
-                txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
-                txtSubjectIncident.Text = selcetedIncident.Subject;
-                txtDescriptionIncident.Text = selcetedIncident.Description;
+                Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+                if (selcetedIncident.Status == Status.incident)
+                {
+                    label9.Text = "Create new ticket";
+                    User user = userService.getUserById(selcetedIncident.Reporter);
+                    panelTicketsOverview.Visible = false;
+                    panelCreateTicket.Visible = true;
+                    selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
+                    txtUserNameIncident.Text = user.FirstName;
+                    txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
+                    txtSubjectIncident.Text = selcetedIncident.Subject;
+                    txtDescriptionIncident.Text = selcetedIncident.Description;
+                }
             }
         }
 
@@ -508,7 +511,9 @@ namespace DemoApp
 
                     cmbPriorityIncident.SelectedItem = char.ToUpper(selectedTicket.Priority.ToString()[0]) + selectedTicket.Priority.ToString().Substring(1);
 
-                    txtUserNameIncident.Text = selectedTicket.Reporter;
+                    User user = userService.getUserById(selectedTicket.Reporter);
+                    txtUserNameIncident.Text = user.FirstName;
+                    txtUserNameIncident.Enabled = false;
                     txtDateReported.Text = selectedTicket.Date.ToString("yyyy MM dd");
                     txtSubjectIncident.Text = selectedTicket.Subject;
                     txtDescriptionIncident.Text = selectedTicket.Description;
