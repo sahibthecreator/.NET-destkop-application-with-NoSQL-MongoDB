@@ -33,6 +33,7 @@ namespace Model
 
         [BsonElement("type")]
         public UserType Type { get; set; }
+
         public User(string firstName, string lastName, string location, string phone, string email, string password, string type)
         {
             FirstName = firstName;
@@ -49,6 +50,17 @@ namespace Model
             if (type == "Employee")
                 return UserType.basic;
             return UserType.admin;
+        }
+
+        public int GetNumberOfIncidetsByUser(List<Incident> incidents)
+        {
+            int count = 0;
+            foreach(Incident incident in incidents)
+            {
+                if (Id == incident.Reporter)
+                    count++;
+            }
+            return count;
         }
     }
 }

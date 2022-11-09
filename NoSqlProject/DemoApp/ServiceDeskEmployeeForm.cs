@@ -41,6 +41,7 @@ namespace DemoApp
             radioButtons.Add(radioButtonIncident);
             radioButtons.Add(radioButtonClosed);
             radioButtons.Add(radioButtonResolved);
+            radioButtons.Add(radioButtonNoFilter);
 
             foreach (TextBox textBox in textBoxes)
             {
@@ -62,7 +63,7 @@ namespace DemoApp
             LoadPBPastDeadline(pbPast, DateTime.Now);
         }
 
-        Status status = Status.open;
+        Status? status = null;
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             switch (((RadioButton)sender).Name)
@@ -79,10 +80,14 @@ namespace DemoApp
                 case "radioButtonResolved":
                     status = Status.resolved;
                     break;
+                case "radioButtonNoFilter":
+                    status = null;
+                    break;
             }
             FilteringList filteringList = new FilteringList();
             incidents = incidentService.GetAllIncidents();
-            incidents = filteringList.filterIncidentByStatus(incidents, status);
+            if (status != null)
+                incidents = filteringList.filterIncidentByStatus(incidents, status);
             loadIncidents(string.Empty);
         }
 
@@ -99,6 +104,7 @@ namespace DemoApp
                     item.SubItems.Add(user.Email);
                     item.SubItems.Add(user.FirstName);
                     item.SubItems.Add(user.LastName);
+                    item.SubItems.Add(user.GetNumberOfIncidetsByUser(incidents).ToString());
 
                     if (user.Email.ToLower().Contains(str.ToLower()))
                         listViewUsers.Items.Add(item);
@@ -328,7 +334,7 @@ namespace DemoApp
             {
                 if(incidents == null)
                     incidents = incidentService.GetAllIncidents();
-                fillListViewIncident();
+                fillListViewIncident(str);
             }
             catch (Exception exp)
             {
@@ -495,7 +501,7 @@ namespace DemoApp
         }
 
 
-        private void fillListViewIncident()
+        private void fillListViewIncident(string str)
         {
             listViewTickets.Items.Clear();
             foreach (Incident incident in incidents)
@@ -512,7 +518,8 @@ namespace DemoApp
                 item.SubItems.Add(incident.Status.ToString());
                 item.SubItems.Add(incident.Priority.ToString());
                 item.Tag = incident;
-                listViewTickets.Items.Add(item);
+                if (incident.Subject.ToLower().Contains(str.ToLower()))
+                    listViewTickets.Items.Add(item);
 
             }
         }
@@ -520,12 +527,12 @@ namespace DemoApp
         private void btnHigh_Click(object sender, EventArgs e)
         {
             incidents = sortByPriority.SortByHigh(incidents);
-            fillListViewIncident();
+            fillListViewIncident(string.Empty);
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
             incidents = sortByPriority.SortByLow(incidents);
-            fillListViewIncident();
+            fillListViewIncident(string.Empty);
         }
 
         private void btnEditTicket_Click(object sender, EventArgs e)
