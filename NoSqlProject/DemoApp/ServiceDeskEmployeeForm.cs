@@ -359,10 +359,11 @@ namespace DemoApp
             Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
             if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
             {
+                User user = userService.getUserById(selcetedIncident.Reporter);
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
                 selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-                txtUserNameIncident.Text = selcetedIncident.Reporter;
+                txtUserNameIncident.Text = user.FirstName;
                 txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
                 txtSubjectIncident.Text = selcetedIncident.Subject;
                 txtDescriptionIncident.Text = selcetedIncident.Description;
