@@ -894,7 +894,7 @@
             this.pbPast.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
             this.pbPast.AnimationSpeed = 500;
             this.pbPast.BackColor = System.Drawing.Color.Transparent;
-            this.pbPast.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.pbPast.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pbPast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pbPast.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pbPast.InnerMargin = 2;
@@ -907,7 +907,7 @@
             this.pbPast.OuterWidth = 26;
             this.pbPast.ProgressColor = System.Drawing.Color.Red;
             this.pbPast.ProgressWidth = 25;
-            this.pbPast.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.pbPast.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pbPast.Size = new System.Drawing.Size(320, 320);
             this.pbPast.StartAngle = 270;
             this.pbPast.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
@@ -925,7 +925,7 @@
             this.pbUnresolved.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
             this.pbUnresolved.AnimationSpeed = 500;
             this.pbUnresolved.BackColor = System.Drawing.Color.Transparent;
-            this.pbUnresolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.pbUnresolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pbUnresolved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pbUnresolved.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pbUnresolved.InnerMargin = 2;
@@ -938,7 +938,7 @@
             this.pbUnresolved.OuterWidth = 26;
             this.pbUnresolved.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.pbUnresolved.ProgressWidth = 25;
-            this.pbUnresolved.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.pbUnresolved.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pbUnresolved.Size = new System.Drawing.Size(320, 320);
             this.pbUnresolved.StartAngle = 270;
             this.pbUnresolved.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));

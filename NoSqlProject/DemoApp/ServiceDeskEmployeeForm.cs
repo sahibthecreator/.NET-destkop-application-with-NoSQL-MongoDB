@@ -494,14 +494,18 @@ namespace DemoApp
         {
             List<Incident> unresolvedIncidents = incidentService.GetTicketsWithStatus(status);
             List<Incident> totalIncidents = incidentService.GetAllIncidents();
-            progressBar.Maximum = incidents.Count;
+            progressBar.Value = unresolvedIncidents.Count;
+            progressBar.Maximum = totalIncidents.Count;
             progressBar.Text = $"{unresolvedIncidents.Count.ToString()}/{totalIncidents.Count.ToString()}";
             
         }
         public void LoadPBPastDeadline(ProgressBar progressBar, DateTime dateTime)
         {
-        List<Incident> incidents = incidentService.GetTicketsPastDeadline(dateTime);
-        progressBar.Text = incidents.Count.ToString();
+            List<Incident> incidents = incidentService.GetTicketsPastDeadline(dateTime);
+            List<Incident> totalIncidents = incidentService.GetAllIncidents();
+            progressBar.Text = incidents.Count.ToString();
+            progressBar.Value = incidents.Count;
+            progressBar.Maximum = totalIncidents.Count;
         }
     }
 }
