@@ -24,14 +24,8 @@ namespace Logic
         {
             incidentDAO.addIncident(incident);
         }
-        public List<Incident> GetTicketsWithStatus( Status status)
-        {
-            return incidentDAO.GetTicketsWithStatus(status);
-        }
-        public List<Incident> GetTicketsPastDeadline(DateTime datetime)
-        {
-            return incidentDAO.GetTicketsPastDeadline(datetime);
-        }
+
+
         public List<Incident> GetTickets(User user, Status status)
         {
             return incidentDAO.GetTickets(user, status);
@@ -51,9 +45,22 @@ namespace Logic
         {
             incidentDAO.updateStatus(incident, status);
         }
+        public void editTicket(Incident incident)
+        {
+            incidentDAO.editTicket(incident);
+        }
         public void CreateTicket(Incident incident, string type, Status status, Priority priority)
         {
             incidentDAO.CreateTicket(incident, type, status, priority);
         }
+        public List<Incident> GetTicketsWithStatus( Status status)
+        {
+            return incidentDAO.GetTicketsWithStatus(status);
+        }
+        public List<Incident> GetTicketsPastDeadline(DateTime datetime)
+        {
+            return incidentDAO.GetTicketsPastDeadline(datetime);
+        }
     }
 }
+

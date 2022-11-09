@@ -247,6 +247,7 @@
             this.btnEditTicket.TabIndex = 12;
             this.btnEditTicket.Text = "EDIT";
             this.btnEditTicket.UseVisualStyleBackColor = false;
+            this.btnEditTicket.Click += new System.EventHandler(this.btnEditTicket_Click);
             // 
             // label1
             // 
@@ -874,12 +875,14 @@
             // 
             // tabPageDashboard
             // 
+
             this.tabPageDashboard.Controls.Add(this.lblUnresolved2);
             this.tabPageDashboard.Controls.Add(this.lblUnresolved1);
             this.tabPageDashboard.Controls.Add(this.lblPast2);
             this.tabPageDashboard.Controls.Add(this.lblPast1);
             this.tabPageDashboard.Controls.Add(this.pbUnresolved);
             this.tabPageDashboard.Controls.Add(this.pbPast);
+
             this.tabPageDashboard.Location = new System.Drawing.Point(4, 34);
             this.tabPageDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageDashboard.Name = "tabPageDashboard";
