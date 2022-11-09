@@ -24,7 +24,7 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-            loadIncidents();
+            loadIncidents(string.Empty);
             loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
@@ -45,19 +45,6 @@ namespace DemoApp
             }
         }
 
-        private void buttonAddNewUser_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                panelUserManagement.Visible = false;
-                panelAddUser.Visible = true;
-
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
-        }
 
         private void loadUsers(string str)
         {
@@ -73,7 +60,7 @@ namespace DemoApp
                     item.SubItems.Add(user.FirstName);
                     item.SubItems.Add(user.LastName);
 
-                    if (user.Email.Contains(str))
+                    if (user.Email.ToLower().Contains(str.ToLower()))
                         listViewUsers.Items.Add(item);
                 }
             }
@@ -88,6 +75,18 @@ namespace DemoApp
             try
             {
                 textBoxFilterByEmail.Text = string.Empty;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void textBoxFilterBySubject_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textBoxFilterBySubject.Text = string.Empty;
 
             }
             catch (Exception exp)
@@ -143,29 +142,8 @@ namespace DemoApp
                 }
             }
             else
-            {
-                Random rand = new Random();
-                int passwordLength = rand.Next(6, 12);
-                int randValue;
-                string password = "";
-                char letter;
-                for (int i = 0; i < passwordLength; i++)
-                {
-                    randValue = rand.Next(0, 26);
-                    letter = Convert.ToChar(randValue + 65);
-                    password += letter;
-                }
-                MessageBox.Show("Password generated:" + password);
-                byte[] salt;
-                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
-                byte[] hash = pbkdf2.GetBytes(20);
-                byte[] hashBytes = new byte[36];
-                Array.Copy(salt, 0, hashBytes, 0, 16);
-                Array.Copy(hash, 0, hashBytes, 16, 20);
-                string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, savedPasswordHash, comboType.Text);
+            {    
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, hashPassword(), comboType.Text);
                 UserService userService = new UserService();
                 userService.addUser(user);
                 clearBoxes();
@@ -173,6 +151,30 @@ namespace DemoApp
                 panelAddUser.Visible = false;
                 loadUsers("");
             }
+        }
+
+        public string hashPassword()
+        {
+            Random rand = new Random();
+            int passwordLength = rand.Next(6, 12);
+            int randValue;
+            string password = "";
+            char letter;
+            for (int i = 0; i < passwordLength; i++)
+            {
+                randValue = rand.Next(0, 26);
+                letter = Convert.ToChar(randValue + 65);
+                password += letter;
+            }
+            MessageBox.Show("Password generated:" + password);
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
+            byte[] hash = pbkdf2.GetBytes(20);
+            byte[] hashBytes = new byte[36];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+            return Convert.ToBase64String(hashBytes);
         }
 
         private void fillEmptyTextBoxes()
@@ -280,7 +282,7 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents()
+        private void loadIncidents(string str)
         {
             try
             {
@@ -301,7 +303,8 @@ namespace DemoApp
                     item.SubItems.Add(incident.Status.ToString());
                     item.SubItems.Add(incident.Priority.ToString());
                     item.Tag = incident;
-                    listViewTickets.Items.Add(item);
+                    if(incident.Subject.ToLower().Contains(str.ToLower()))
+                        listViewTickets.Items.Add(item);
 
                 }
             }
@@ -344,7 +347,7 @@ namespace DemoApp
             incidentService.CreateTicket(ticket);
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
-            loadIncidents();
+            loadIncidents(string.Empty);
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -358,7 +361,7 @@ namespace DemoApp
                         incidentService.deleteTicket((Incident)item.Tag);
                     }
                 }
-                loadIncidents();
+                loadIncidents(string.Empty);
             }
             catch (Exception exp)
             {
@@ -434,7 +437,7 @@ namespace DemoApp
                     MessageBox.Show(message);
                 }
             }
-            loadIncidents();
+            loadIncidents(string.Empty);
         }
 
         private void btnFilterByPriority_Click(object sender, EventArgs e)
@@ -457,6 +460,32 @@ namespace DemoApp
                 item.Tag = incident;
                 listViewTickets.Items.Add(item);
 
+            }
+        }
+
+        //search bar for incidents and users
+        private void textBoxFilterBySubject_TextChanged(object sender, EventArgs e)
+        {
+            loadIncidents(textBoxFilterBySubject.Text.ToLower());
+        }
+
+        private void textBoxFilterByEmail_TextChanged(object sender, EventArgs e)
+        {
+            loadUsers(textBoxFilterByEmail.Text.ToLower());
+        }
+
+        //add button in the User Management interface
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelUserManagement.Visible = false;
+                panelAddUser.Visible = true;
+
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
             }
         }
     }
