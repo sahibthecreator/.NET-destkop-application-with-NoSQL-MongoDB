@@ -11,6 +11,7 @@ using Model;
 using Logic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace DemoApp
 {
@@ -24,7 +25,7 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-            loadIncidents();
+            loadIncidents(string.Empty);
             loadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
@@ -45,19 +46,6 @@ namespace DemoApp
             }
         }
 
-        private void buttonAddNewUser_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                panelUserManagement.Visible = false;
-                panelAddUser.Visible = true;
-
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
-        }
 
         private void loadUsers(string str)
         {
@@ -73,7 +61,7 @@ namespace DemoApp
                     item.SubItems.Add(user.FirstName);
                     item.SubItems.Add(user.LastName);
 
-                    if (user.Email.Contains(str))
+                    if (user.Email.ToLower().Contains(str.ToLower()))
                         listViewUsers.Items.Add(item);
                 }
             }
@@ -88,6 +76,18 @@ namespace DemoApp
             try
             {
                 textBoxFilterByEmail.Text = string.Empty;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void textBoxFilterBySubject_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textBoxFilterBySubject.Text = string.Empty;
 
             }
             catch (Exception exp)
@@ -143,29 +143,8 @@ namespace DemoApp
                 }
             }
             else
-            {
-                Random rand = new Random();
-                int passwordLength = rand.Next(6, 12);
-                int randValue;
-                string password = "";
-                char letter;
-                for (int i = 0; i < passwordLength; i++)
-                {
-                    randValue = rand.Next(0, 26);
-                    letter = Convert.ToChar(randValue + 65);
-                    password += letter;
-                }
-                MessageBox.Show("Password generated:" + password);
-                byte[] salt;
-                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
-                byte[] hash = pbkdf2.GetBytes(20);
-                byte[] hashBytes = new byte[36];
-                Array.Copy(salt, 0, hashBytes, 0, 16);
-                Array.Copy(hash, 0, hashBytes, 16, 20);
-                string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, savedPasswordHash, comboType.Text);
+            {    
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, hashPassword(), comboType.Text);
                 UserService userService = new UserService();
                 userService.addUser(user);
                 clearBoxes();
@@ -173,6 +152,30 @@ namespace DemoApp
                 panelAddUser.Visible = false;
                 loadUsers("");
             }
+        }
+
+        public string hashPassword()
+        {
+            Random rand = new Random();
+            int passwordLength = rand.Next(6, 12);
+            int randValue;
+            string password = "";
+            char letter;
+            for (int i = 0; i < passwordLength; i++)
+            {
+                randValue = rand.Next(0, 26);
+                letter = Convert.ToChar(randValue + 65);
+                password += letter;
+            }
+            MessageBox.Show("Password generated:" + password);
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000);
+            byte[] hash = pbkdf2.GetBytes(20);
+            byte[] hashBytes = new byte[36];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+            return Convert.ToBase64String(hashBytes);
         }
 
         private void fillEmptyTextBoxes()
@@ -280,26 +283,12 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents()
+        private void loadIncidents(string str)
         {
             try
             {
                 incidents = incidentService.GetAllIncidents();
-                listViewTickets.Items.Clear();
-
-                foreach (Incident incident in incidents)
-                {
-                    //User user = userService.getUserById(incident.Reporter);
-
-                    ListViewItem item = new ListViewItem(incident.Id.ToString());
-                    item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add("");
-                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                    item.SubItems.Add(incident.Status.ToString());
-                    item.Tag = incident;
-                    listViewTickets.Items.Add(item);
-
-                }
+                fillListViewIncident();
             }
             catch (Exception exp)
             {
@@ -313,6 +302,7 @@ namespace DemoApp
             {
                 panelCreateTicket.Visible = false;
                 panelTicketsOverview.Visible = true;
+                lblErrorCreateTicket.Text = "";
             }
             catch (Exception exp)
             {
@@ -343,6 +333,11 @@ namespace DemoApp
             }
             else if(label9.Text.Equals("Create new ticket"))
             {
+            if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
+            {
+                lblErrorCreateTicket.Text = "please fill in the required information!";
+                return;
+            }
                 DateTime date = Convert.ToDateTime(txtDateReported.Text);
                 string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
 
@@ -359,9 +354,13 @@ namespace DemoApp
                 //ticket.Priority=Enum.TryParse( cmbPriorityIncident.Text,out Priority priority);
                 incidentService.CreateTicket(ticket);
             }
+
+            incidentService.CreateTicket(ticket, cmbTypeIncident.Text, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
+
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
-            loadIncidents();
+            lblErrorCreateTicket.Text = "";
+            loadIncidents(string.Empty);
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -375,7 +374,7 @@ namespace DemoApp
                         incidentService.deleteTicket((Incident)item.Tag);
                     }
                 }
-                loadIncidents();
+                loadIncidents(string.Empty);
             }
             catch (Exception exp)
             {
@@ -389,10 +388,11 @@ namespace DemoApp
             if (listViewTickets.SelectedItems.Count == 1 && selcetedIncident.Status == Status.incident)
             {
                 label9.Text = "Create new ticket";
+                User user = userService.getUserById(selcetedIncident.Reporter);
                 panelTicketsOverview.Visible = false;
                 panelCreateTicket.Visible = true;
                 selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
-                txtUserNameIncident.Text = selcetedIncident.Reporter;
+                txtUserNameIncident.Text = user.FirstName;
                 txtDateReported.Text = selcetedIncident.Date.ToString("yyyy MM dd");
                 txtSubjectIncident.Text = selcetedIncident.Subject;
                 txtDescriptionIncident.Text = selcetedIncident.Description;
@@ -416,19 +416,35 @@ namespace DemoApp
             {
                 foreach (ListViewItem item in listViewTickets.SelectedItems)
                 {
-                    if (((Incident)item.Tag).Status == status)
-                    {
-                        tickets.Add((Incident)item.Tag);
-                    }
-                    else
+                    if (((Incident)item.Tag).Status == Status.open)
                     {
                         incidentService.updateStatus(((Incident)item.Tag), status);
                     }
+                    else 
+                    {
+                        tickets.Add((Incident)item.Tag);
+                    }
                 }
                 string message = "";
-                foreach (var item in tickets)
+                foreach (Incident item in tickets)
                 {
-                    message += $"ticket {item.Id} already {status} \n";
+                    if (item.Status == status)
+                    {
+                        message += $"ticket Id {item.Id} is already {status}\n\n";
+                    }
+                    else if (item.Status == Status.incident)
+                    {
+                        message += $"incident Id {item.Id} is an incident, only tickets can be {status}\n\n";
+                    }
+                    else
+                    {
+                        if (status == Status.closed)
+                        {
+                            message += $"ticket Id {item.Id} is already {status}, tickets that is already resolve cannot be {status}\n\n";
+                        }
+                        else
+                            message += $"ticket Id {item.Id} is already {status}, tickets that is already closed cannot be {status}\n\n";
+                    }
                 }
 
                 if (tickets.Count != 0)
@@ -436,12 +452,39 @@ namespace DemoApp
                     MessageBox.Show(message);
                 }
             }
-            loadIncidents();
+            loadIncidents(string.Empty);
         }
 
-        private void btnFilterByPriority_Click(object sender, EventArgs e)
+
+        private void fillListViewIncident()
         {
-            //incidents = incidents.OrderBy(i => i.).ToList();
+            listViewTickets.Items.Clear();
+            foreach (Incident incident in incidents)
+            {
+                User user = userService.getUserById(incident.Reporter);
+
+                ListViewItem item = new ListViewItem(incident.Id.ToString());
+                item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                item.SubItems.Add(incident.Subject);
+                item.SubItems.Add(incident.Type);
+                item.SubItems.Add(user.FirstName);
+                item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
+                item.SubItems.Add(incident.Description);
+                item.SubItems.Add(incident.Status.ToString());
+                item.SubItems.Add(incident.Priority.ToString());
+                item.Tag = incident;
+                listViewTickets.Items.Add(item);
+
+            }
+        }
+
+        private void btnHigh_Click(object sender, EventArgs e)
+        {
+ 
+        }
+        private void btnLow_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnEditTicket_Click(object sender, EventArgs e)
@@ -474,6 +517,32 @@ namespace DemoApp
                     txtSubjectIncident.Text = selectedTicket.Subject;
                     txtDescriptionIncident.Text = selectedTicket.Description;
                 }
+            }
+        }
+
+        //search bar for incidents and users
+        private void textBoxFilterBySubject_TextChanged(object sender, EventArgs e)
+        {
+            loadIncidents(textBoxFilterBySubject.Text.ToLower());
+        }
+
+        private void textBoxFilterByEmail_TextChanged(object sender, EventArgs e)
+        {
+            loadUsers(textBoxFilterByEmail.Text.ToLower());
+        }
+
+        //add button in the User Management interface
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelUserManagement.Visible = false;
+                panelAddUser.Visible = true;
+
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
             }
         }
     }
