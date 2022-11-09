@@ -288,26 +288,7 @@ namespace DemoApp
             try
             {
                 incidents = incidentService.GetAllIncidents();
-                listViewTickets.Items.Clear();
-
-                foreach (Incident incident in incidents)
-                {
-                    User user = userService.getUserById(incident.Reporter);
-
-                    ListViewItem item = new ListViewItem(incident.Id.ToString());
-                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                    item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(incident.Type);
-                    item.SubItems.Add(user.FirstName);
-                    item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
-                    item.SubItems.Add(incident.Description);
-                    item.SubItems.Add(incident.Status.ToString());
-                    item.SubItems.Add(incident.Priority.ToString());
-                    item.Tag = incident;
-                    if(incident.Subject.ToLower().Contains(str.ToLower()))
-                        listViewTickets.Items.Add(item);
-
-                }
+                fillListViewIncident();
             }
             catch (Exception exp)
             {
@@ -444,9 +425,9 @@ namespace DemoApp
             loadIncidents(string.Empty);
         }
 
-        private void btnFilterByPriority_Click(object sender, EventArgs e)
+
+        private void fillListViewIncident()
         {
-            incidents = incidents.OrderByDescending(i => i.Priority).ToList();
             listViewTickets.Items.Clear();
             foreach (Incident incident in incidents)
             {
@@ -465,6 +446,17 @@ namespace DemoApp
                 listViewTickets.Items.Add(item);
 
             }
+        }
+
+        private void btnHigh_Click(object sender, EventArgs e)
+        {
+            incidents = incidents.OrderByDescending(i => i.Priority).ToList();
+            fillListViewIncident();
+        }
+        private void btnLow_Click(object sender, EventArgs e)
+        {
+            incidents = incidents.OrderBy(i => i.Priority).ToList();
+            fillListViewIncident();
         }
 
         //search bar for incidents and users

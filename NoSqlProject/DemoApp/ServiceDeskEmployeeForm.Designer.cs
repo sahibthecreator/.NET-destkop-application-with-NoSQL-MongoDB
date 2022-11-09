@@ -30,25 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
-            this.panelCreateTicket = new System.Windows.Forms.Panel();
-            this.lblErrorCreateTicket = new System.Windows.Forms.Label();
-            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
-            this.txtDescriptionIncident = new System.Windows.Forms.RichTextBox();
-            this.cmbDeadlineIncident = new System.Windows.Forms.ComboBox();
-            this.cmbTypeIncident = new System.Windows.Forms.ComboBox();
-            this.txtUserNameIncident = new System.Windows.Forms.TextBox();
-            this.txtSubjectIncident = new System.Windows.Forms.TextBox();
-            this.txtDateReported = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
-            this.btnSubmitTicket = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.panelTicketsOverview = new System.Windows.Forms.Panel();
             this.btnLow = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -70,6 +51,26 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panelCreateTicket = new System.Windows.Forms.Panel();
+            this.lblErroroCreateTicket = new System.Windows.Forms.Label();
+            this.lblErrorCreateTicket = new System.Windows.Forms.Label();
+            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
+            this.txtDescriptionIncident = new System.Windows.Forms.RichTextBox();
+            this.cmbDeadlineIncident = new System.Windows.Forms.ComboBox();
+            this.cmbTypeIncident = new System.Windows.Forms.ComboBox();
+            this.txtUserNameIncident = new System.Windows.Forms.TextBox();
+            this.txtSubjectIncident = new System.Windows.Forms.TextBox();
+            this.txtDateReported = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
+            this.btnSubmitTicket = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
             this.panelUserManagement = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -98,11 +99,10 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
             this.tabPageDashboard = new System.Windows.Forms.TabPage();
-            this.lblErroroCreateTicket = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
-            this.panelCreateTicket.SuspendLayout();
             this.panelTicketsOverview.SuspendLayout();
+            this.panelCreateTicket.SuspendLayout();
             this.tabPageUserManagement.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
@@ -123,243 +123,15 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
             this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
+            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
-            this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageIncidentManagement.Size = new System.Drawing.Size(792, 414);
             this.tabPageIncidentManagement.TabIndex = 1;
             this.tabPageIncidentManagement.Text = "Incident Management";
             this.tabPageIncidentManagement.UseVisualStyleBackColor = true;
-            // 
-            // panelCreateTicket
-            // 
-            this.panelCreateTicket.Controls.Add(this.lblErroroCreateTicket);
-            this.panelCreateTicket.Controls.Add(this.lblErrorCreateTicket);
-            this.panelCreateTicket.Controls.Add(this.cmbPriorityIncident);
-            this.panelCreateTicket.Controls.Add(this.txtDescriptionIncident);
-            this.panelCreateTicket.Controls.Add(this.cmbDeadlineIncident);
-            this.panelCreateTicket.Controls.Add(this.cmbTypeIncident);
-            this.panelCreateTicket.Controls.Add(this.txtUserNameIncident);
-            this.panelCreateTicket.Controls.Add(this.txtSubjectIncident);
-            this.panelCreateTicket.Controls.Add(this.txtDateReported);
-            this.panelCreateTicket.Controls.Add(this.label2);
-            this.panelCreateTicket.Controls.Add(this.label3);
-            this.panelCreateTicket.Controls.Add(this.label4);
-            this.panelCreateTicket.Controls.Add(this.label5);
-            this.panelCreateTicket.Controls.Add(this.label6);
-            this.panelCreateTicket.Controls.Add(this.label7);
-            this.panelCreateTicket.Controls.Add(this.label8);
-            this.panelCreateTicket.Controls.Add(this.btnCancelCreateTicket);
-            this.panelCreateTicket.Controls.Add(this.btnSubmitTicket);
-            this.panelCreateTicket.Controls.Add(this.label9);
-            this.panelCreateTicket.Location = new System.Drawing.Point(0, 0);
-            this.panelCreateTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelCreateTicket.Name = "panelCreateTicket";
-            this.panelCreateTicket.Size = new System.Drawing.Size(792, 414);
-            this.panelCreateTicket.TabIndex = 12;
-            this.panelCreateTicket.Visible = false;
-            // 
-            // lblErrorCreateTicket
-            // 
-            this.lblErrorCreateTicket.AutoSize = true;
-            this.lblErrorCreateTicket.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorCreateTicket.Location = new System.Drawing.Point(147, 345);
-            this.lblErrorCreateTicket.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblErrorCreateTicket.Name = "lblErrorCreateTicket";
-            this.lblErrorCreateTicket.Size = new System.Drawing.Size(0, 20);
-            this.lblErrorCreateTicket.TabIndex = 25;
-            // 
-            // cmbPriorityIncident
-            // 
-            this.cmbPriorityIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPriorityIncident.FormattingEnabled = true;
-            this.cmbPriorityIncident.Items.AddRange(new object[] {
-            "Low",
-            "Normal",
-            "High"});
-            this.cmbPriorityIncident.Location = new System.Drawing.Point(225, 224);
-            this.cmbPriorityIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmbPriorityIncident.Name = "cmbPriorityIncident";
-            this.cmbPriorityIncident.Size = new System.Drawing.Size(238, 24);
-            this.cmbPriorityIncident.TabIndex = 24;
-            // 
-            // txtDescriptionIncident
-            // 
-            this.txtDescriptionIncident.Location = new System.Drawing.Point(536, 119);
-            this.txtDescriptionIncident.Name = "txtDescriptionIncident";
-            this.txtDescriptionIncident.Size = new System.Drawing.Size(218, 173);
-            this.txtDescriptionIncident.TabIndex = 23;
-            this.txtDescriptionIncident.Text = "";
-            // 
-            // cmbDeadlineIncident
-            // 
-            this.cmbDeadlineIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeadlineIncident.FormattingEnabled = true;
-            this.cmbDeadlineIncident.Items.AddRange(new object[] {
-            "7 days",
-            "14 days",
-            "28 days",
-            "6 months"});
-            this.cmbDeadlineIncident.Location = new System.Drawing.Point(225, 255);
-            this.cmbDeadlineIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmbDeadlineIncident.Name = "cmbDeadlineIncident";
-            this.cmbDeadlineIncident.Size = new System.Drawing.Size(238, 24);
-            this.cmbDeadlineIncident.TabIndex = 22;
-            // 
-            // cmbTypeIncident
-            // 
-            this.cmbTypeIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTypeIncident.FormattingEnabled = true;
-            this.cmbTypeIncident.Items.AddRange(new object[] {
-            "Software",
-            "Hardware",
-            "Service"});
-            this.cmbTypeIncident.Location = new System.Drawing.Point(225, 158);
-            this.cmbTypeIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmbTypeIncident.Name = "cmbTypeIncident";
-            this.cmbTypeIncident.Size = new System.Drawing.Size(238, 24);
-            this.cmbTypeIncident.TabIndex = 21;
-            // 
-            // txtUserNameIncident
-            // 
-            this.txtUserNameIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserNameIncident.Location = new System.Drawing.Point(225, 192);
-            this.txtUserNameIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtUserNameIncident.Name = "txtUserNameIncident";
-            this.txtUserNameIncident.Size = new System.Drawing.Size(238, 23);
-            this.txtUserNameIncident.TabIndex = 18;
-            // 
-            // txtSubjectIncident
-            // 
-            this.txtSubjectIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubjectIncident.Location = new System.Drawing.Point(225, 123);
-            this.txtSubjectIncident.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtSubjectIncident.Name = "txtSubjectIncident";
-            this.txtSubjectIncident.Size = new System.Drawing.Size(238, 23);
-            this.txtSubjectIncident.TabIndex = 17;
-            // 
-            // txtDateReported
-            // 
-            this.txtDateReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateReported.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDateReported.Location = new System.Drawing.Point(225, 94);
-            this.txtDateReported.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtDateReported.Name = "txtDateReported";
-            this.txtDateReported.Size = new System.Drawing.Size(238, 23);
-            this.txtDateReported.TabIndex = 16;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(533, 98);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 17);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Description:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(46, 260);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Deadline/follow up:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 227);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 17);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Priority:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(46, 195);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 17);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Reported by user:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(46, 162);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 17);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Type of incident:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(46, 130);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 17);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Subject of incident:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(46, 98);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 17);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Date/time reported:";
-            // 
-            // btnCancelCreateTicket
-            // 
-            this.btnCancelCreateTicket.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancelCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelCreateTicket.Location = new System.Drawing.Point(420, 340);
-            this.btnCancelCreateTicket.Name = "btnCancelCreateTicket";
-            this.btnCancelCreateTicket.Size = new System.Drawing.Size(93, 32);
-            this.btnCancelCreateTicket.TabIndex = 8;
-            this.btnCancelCreateTicket.Text = "CANCEL";
-            this.btnCancelCreateTicket.UseVisualStyleBackColor = false;
-            this.btnCancelCreateTicket.Click += new System.EventHandler(this.btnCancelCreateTicket_Click);
-            // 
-            // btnSubmitTicket
-            // 
-            this.btnSubmitTicket.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnSubmitTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitTicket.Location = new System.Drawing.Point(519, 340);
-            this.btnSubmitTicket.Name = "btnSubmitTicket";
-            this.btnSubmitTicket.Size = new System.Drawing.Size(98, 32);
-            this.btnSubmitTicket.TabIndex = 7;
-            this.btnSubmitTicket.Text = "SUBMIT TICKET";
-            this.btnSubmitTicket.UseVisualStyleBackColor = false;
-            this.btnSubmitTicket.Click += new System.EventHandler(this.btnSubmitTicket_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(46, 26);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(242, 31);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Create new ticket";
             // 
             // panelTicketsOverview
             // 
@@ -388,6 +160,7 @@
             this.btnLow.TabIndex = 18;
             this.btnLow.Text = "Low";
             this.btnLow.UseVisualStyleBackColor = true;
+            this.btnLow.Click += new System.EventHandler(this.btnLow_Click);
             // 
             // label10
             // 
@@ -404,13 +177,13 @@
             this.btnHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHigh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnHigh.Location = new System.Drawing.Point(378, 20);
-            this.btnHigh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHigh.Margin = new System.Windows.Forms.Padding(2);
             this.btnHigh.Name = "btnHigh";
             this.btnHigh.Size = new System.Drawing.Size(40, 24);
             this.btnHigh.TabIndex = 16;
             this.btnHigh.Text = "High";
             this.btnHigh.UseVisualStyleBackColor = true;
-            this.btnHigh.Click += new System.EventHandler(this.btnFilterByPriority_Click);
+            this.btnHigh.Click += new System.EventHandler(this.btnHigh_Click);
             // 
             // btnResolve
             // 
@@ -556,13 +329,249 @@
             // 
             this.columnHeader15.Text = "priority";
             // 
+            // panelCreateTicket
+            // 
+            this.panelCreateTicket.Controls.Add(this.lblErroroCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.lblErrorCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.cmbPriorityIncident);
+            this.panelCreateTicket.Controls.Add(this.txtDescriptionIncident);
+            this.panelCreateTicket.Controls.Add(this.cmbDeadlineIncident);
+            this.panelCreateTicket.Controls.Add(this.cmbTypeIncident);
+            this.panelCreateTicket.Controls.Add(this.txtUserNameIncident);
+            this.panelCreateTicket.Controls.Add(this.txtSubjectIncident);
+            this.panelCreateTicket.Controls.Add(this.txtDateReported);
+            this.panelCreateTicket.Controls.Add(this.label2);
+            this.panelCreateTicket.Controls.Add(this.label3);
+            this.panelCreateTicket.Controls.Add(this.label4);
+            this.panelCreateTicket.Controls.Add(this.label5);
+            this.panelCreateTicket.Controls.Add(this.label6);
+            this.panelCreateTicket.Controls.Add(this.label7);
+            this.panelCreateTicket.Controls.Add(this.label8);
+            this.panelCreateTicket.Controls.Add(this.btnCancelCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.btnSubmitTicket);
+            this.panelCreateTicket.Controls.Add(this.label9);
+            this.panelCreateTicket.Location = new System.Drawing.Point(0, 0);
+            this.panelCreateTicket.Margin = new System.Windows.Forms.Padding(2);
+            this.panelCreateTicket.Name = "panelCreateTicket";
+            this.panelCreateTicket.Size = new System.Drawing.Size(792, 414);
+            this.panelCreateTicket.TabIndex = 12;
+            this.panelCreateTicket.Visible = false;
+            // 
+            // lblErroroCreateTicket
+            // 
+            this.lblErroroCreateTicket.ForeColor = System.Drawing.Color.Red;
+            this.lblErroroCreateTicket.Location = new System.Drawing.Point(94, 345);
+            this.lblErroroCreateTicket.Name = "lblErroroCreateTicket";
+            this.lblErroroCreateTicket.Size = new System.Drawing.Size(53, 25);
+            this.lblErroroCreateTicket.TabIndex = 26;
+            // 
+            // lblErrorCreateTicket
+            // 
+            this.lblErrorCreateTicket.AutoSize = true;
+            this.lblErrorCreateTicket.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorCreateTicket.Location = new System.Drawing.Point(147, 345);
+            this.lblErrorCreateTicket.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblErrorCreateTicket.Name = "lblErrorCreateTicket";
+            this.lblErrorCreateTicket.Size = new System.Drawing.Size(0, 20);
+            this.lblErrorCreateTicket.TabIndex = 25;
+            // 
+            // cmbPriorityIncident
+            // 
+            this.cmbPriorityIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPriorityIncident.FormattingEnabled = true;
+            this.cmbPriorityIncident.Items.AddRange(new object[] {
+            "Low",
+            "Normal",
+            "High"});
+            this.cmbPriorityIncident.Location = new System.Drawing.Point(225, 224);
+            this.cmbPriorityIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPriorityIncident.Name = "cmbPriorityIncident";
+            this.cmbPriorityIncident.Size = new System.Drawing.Size(238, 24);
+            this.cmbPriorityIncident.TabIndex = 24;
+            // 
+            // txtDescriptionIncident
+            // 
+            this.txtDescriptionIncident.Location = new System.Drawing.Point(536, 119);
+            this.txtDescriptionIncident.Name = "txtDescriptionIncident";
+            this.txtDescriptionIncident.Size = new System.Drawing.Size(218, 173);
+            this.txtDescriptionIncident.TabIndex = 23;
+            this.txtDescriptionIncident.Text = "";
+            // 
+            // cmbDeadlineIncident
+            // 
+            this.cmbDeadlineIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeadlineIncident.FormattingEnabled = true;
+            this.cmbDeadlineIncident.Items.AddRange(new object[] {
+            "7 days",
+            "14 days",
+            "28 days",
+            "6 months"});
+            this.cmbDeadlineIncident.Location = new System.Drawing.Point(225, 255);
+            this.cmbDeadlineIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDeadlineIncident.Name = "cmbDeadlineIncident";
+            this.cmbDeadlineIncident.Size = new System.Drawing.Size(238, 24);
+            this.cmbDeadlineIncident.TabIndex = 22;
+            // 
+            // cmbTypeIncident
+            // 
+            this.cmbTypeIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTypeIncident.FormattingEnabled = true;
+            this.cmbTypeIncident.Items.AddRange(new object[] {
+            "Software",
+            "Hardware",
+            "Service"});
+            this.cmbTypeIncident.Location = new System.Drawing.Point(225, 158);
+            this.cmbTypeIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbTypeIncident.Name = "cmbTypeIncident";
+            this.cmbTypeIncident.Size = new System.Drawing.Size(238, 24);
+            this.cmbTypeIncident.TabIndex = 21;
+            // 
+            // txtUserNameIncident
+            // 
+            this.txtUserNameIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserNameIncident.Location = new System.Drawing.Point(225, 192);
+            this.txtUserNameIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserNameIncident.Name = "txtUserNameIncident";
+            this.txtUserNameIncident.Size = new System.Drawing.Size(238, 23);
+            this.txtUserNameIncident.TabIndex = 18;
+            // 
+            // txtSubjectIncident
+            // 
+            this.txtSubjectIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubjectIncident.Location = new System.Drawing.Point(225, 123);
+            this.txtSubjectIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSubjectIncident.Name = "txtSubjectIncident";
+            this.txtSubjectIncident.Size = new System.Drawing.Size(238, 23);
+            this.txtSubjectIncident.TabIndex = 17;
+            // 
+            // txtDateReported
+            // 
+            this.txtDateReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateReported.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtDateReported.Location = new System.Drawing.Point(225, 94);
+            this.txtDateReported.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDateReported.Name = "txtDateReported";
+            this.txtDateReported.Size = new System.Drawing.Size(238, 23);
+            this.txtDateReported.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(533, 98);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 17);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Description:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(46, 260);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Deadline/follow up:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(46, 227);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Priority:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(46, 195);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 17);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Reported by user:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(46, 162);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Type of incident:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(46, 130);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 17);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Subject of incident:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(46, 98);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(130, 17);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Date/time reported:";
+            // 
+            // btnCancelCreateTicket
+            // 
+            this.btnCancelCreateTicket.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelCreateTicket.Location = new System.Drawing.Point(420, 340);
+            this.btnCancelCreateTicket.Name = "btnCancelCreateTicket";
+            this.btnCancelCreateTicket.Size = new System.Drawing.Size(93, 32);
+            this.btnCancelCreateTicket.TabIndex = 8;
+            this.btnCancelCreateTicket.Text = "CANCEL";
+            this.btnCancelCreateTicket.UseVisualStyleBackColor = false;
+            this.btnCancelCreateTicket.Click += new System.EventHandler(this.btnCancelCreateTicket_Click);
+            // 
+            // btnSubmitTicket
+            // 
+            this.btnSubmitTicket.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnSubmitTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitTicket.Location = new System.Drawing.Point(519, 340);
+            this.btnSubmitTicket.Name = "btnSubmitTicket";
+            this.btnSubmitTicket.Size = new System.Drawing.Size(98, 32);
+            this.btnSubmitTicket.TabIndex = 7;
+            this.btnSubmitTicket.Text = "SUBMIT TICKET";
+            this.btnSubmitTicket.UseVisualStyleBackColor = false;
+            this.btnSubmitTicket.Click += new System.EventHandler(this.btnSubmitTicket_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(46, 26);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(242, 31);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Create new ticket";
+            // 
             // tabPageUserManagement
             // 
             this.tabPageUserManagement.Controls.Add(this.panelUserManagement);
             this.tabPageUserManagement.Controls.Add(this.panelAddUser);
             this.tabPageUserManagement.Location = new System.Drawing.Point(4, 29);
             this.tabPageUserManagement.Name = "tabPageUserManagement";
-            this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageUserManagement.Size = new System.Drawing.Size(792, 414);
             this.tabPageUserManagement.TabIndex = 2;
             this.tabPageUserManagement.Text = "User Management";
@@ -576,7 +585,7 @@
             this.panelUserManagement.Controls.Add(this.textBoxFilterByEmail);
             this.panelUserManagement.Controls.Add(this.listViewUsers);
             this.panelUserManagement.Location = new System.Drawing.Point(0, 0);
-            this.panelUserManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelUserManagement.Margin = new System.Windows.Forms.Padding(2);
             this.panelUserManagement.Name = "panelUserManagement";
             this.panelUserManagement.Size = new System.Drawing.Size(1192, 648);
             this.panelUserManagement.TabIndex = 8;
@@ -586,7 +595,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnAdd.Location = new System.Drawing.Point(669, 70);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(114, 30);
             this.btnAdd.TabIndex = 8;
@@ -678,7 +687,7 @@
             this.panelAddUser.Controls.Add(this.btnAddUser);
             this.panelAddUser.Controls.Add(this.lblAddUser);
             this.panelAddUser.Location = new System.Drawing.Point(0, 0);
-            this.panelAddUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelAddUser.Margin = new System.Windows.Forms.Padding(2);
             this.panelAddUser.Name = "panelAddUser";
             this.panelAddUser.Size = new System.Drawing.Size(795, 422);
             this.panelAddUser.TabIndex = 8;
@@ -693,7 +702,7 @@
             "Amterdam",
             "Utrecht"});
             this.comboLocation.Location = new System.Drawing.Point(225, 255);
-            this.comboLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboLocation.Margin = new System.Windows.Forms.Padding(2);
             this.comboLocation.Name = "comboLocation";
             this.comboLocation.Size = new System.Drawing.Size(238, 24);
             this.comboLocation.TabIndex = 22;
@@ -706,7 +715,7 @@
             "Employee",
             "Service Desk Employee"});
             this.comboType.Location = new System.Drawing.Point(225, 158);
-            this.comboType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboType.Margin = new System.Windows.Forms.Padding(2);
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(238, 24);
             this.comboType.TabIndex = 21;
@@ -715,7 +724,7 @@
             // 
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.Location = new System.Drawing.Point(225, 224);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(238, 23);
             this.txtPhoneNumber.TabIndex = 19;
@@ -724,7 +733,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(225, 192);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(238, 23);
             this.txtEmail.TabIndex = 18;
@@ -733,7 +742,7 @@
             // 
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(225, 123);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(238, 23);
             this.txtLastName.TabIndex = 17;
@@ -743,7 +752,7 @@
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtFirstName.Location = new System.Drawing.Point(225, 94);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(238, 23);
             this.txtFirstName.TabIndex = 16;
@@ -852,19 +861,11 @@
             // 
             this.tabPageDashboard.Location = new System.Drawing.Point(4, 29);
             this.tabPageDashboard.Name = "tabPageDashboard";
-            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDashboard.Size = new System.Drawing.Size(792, 414);
             this.tabPageDashboard.TabIndex = 0;
             this.tabPageDashboard.Text = "Dashboard";
             this.tabPageDashboard.UseVisualStyleBackColor = true;
-            // 
-            // lblErroroCreateTicket
-            // 
-            this.lblErroroCreateTicket.ForeColor = System.Drawing.Color.Red;
-            this.lblErroroCreateTicket.Location = new System.Drawing.Point(94, 345);
-            this.lblErroroCreateTicket.Name = "lblErroroCreateTicket";
-            this.lblErroroCreateTicket.Size = new System.Drawing.Size(53, 25);
-            this.lblErroroCreateTicket.TabIndex = 26;
             // 
             // ServiceDeskEmployeeForm
             // 
@@ -876,10 +877,10 @@
             this.Text = "ServiceDeskEmployeeForm";
             this.tabControl1.ResumeLayout(false);
             this.tabPageIncidentManagement.ResumeLayout(false);
-            this.panelCreateTicket.ResumeLayout(false);
-            this.panelCreateTicket.PerformLayout();
             this.panelTicketsOverview.ResumeLayout(false);
             this.panelTicketsOverview.PerformLayout();
+            this.panelCreateTicket.ResumeLayout(false);
+            this.panelCreateTicket.PerformLayout();
             this.tabPageUserManagement.ResumeLayout(false);
             this.panelUserManagement.ResumeLayout(false);
             this.panelUserManagement.PerformLayout();
