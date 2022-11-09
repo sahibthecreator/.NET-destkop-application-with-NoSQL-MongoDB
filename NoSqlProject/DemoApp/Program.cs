@@ -18,14 +18,14 @@ namespace DemoApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
 
             //Application.Run(new ServiceDeskEmployeeForm());
             //UserService userService = new UserService();
             //User user = userService.getMatchedUser("salah@gmail.com", "test")[0];
             //Application.Run(new RegularEmployeeForm(user));
             
-            //Application.Run(new ServiceDeskEmployeeForm());
+            Application.Run(new ServiceDeskEmployeeForm());
             //Application.Run(new RegularEmployeeForm());
         }
     }
