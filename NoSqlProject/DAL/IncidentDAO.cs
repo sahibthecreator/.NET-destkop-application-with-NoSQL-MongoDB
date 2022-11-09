@@ -50,7 +50,7 @@ namespace DAL
 
         public void editTicket(Incident incident)
         {
-
+            collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
         public void CreateTicket(Incident incident, string type, Status status, Priority priority)
