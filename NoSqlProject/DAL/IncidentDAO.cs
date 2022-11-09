@@ -53,11 +53,8 @@ namespace DAL
 
         }
 
-        public void CreateTicket(Incident incident, string type, Status status, Priority priority)
-        { 
-            incident.Type = type;
-            incident.Status = status;
-            incident.Priority = priority;
+        public void CreateTicket(Incident incident)
+        {
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
     }
