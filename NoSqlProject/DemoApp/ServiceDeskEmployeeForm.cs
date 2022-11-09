@@ -44,6 +44,10 @@ namespace DemoApp
             {
                 comboBox.Click += new EventHandler(comboBox_Click);
             }
+            // load unresolved incidents
+            LoadPBUnresolved(pbUnresolved, Status.open);
+            // load incidents past deadline
+            LoadPBPastDeadline(pbPast, DateTime.Now);
         }
 
 
@@ -484,6 +488,20 @@ namespace DemoApp
             {
                 MessageBox.Show(exp.Message);
             }
+        }
+        // progress bars for dashboard
+        public void LoadPBUnresolved(ProgressBar progressBar, Status status)
+        {
+            List<Incident> unresolvedIncidents = incidentService.GetTicketsWithStatus(status);
+            List<Incident> totalIncidents = incidentService.GetAllIncidents();
+            progressBar.Maximum = incidents.Count;
+            progressBar.Text = $"{unresolvedIncidents.Count.ToString()}/{totalIncidents.Count.ToString()}";
+            
+        }
+        public void LoadPBPastDeadline(ProgressBar progressBar, DateTime dateTime)
+        {
+        List<Incident> incidents = incidentService.GetTicketsPastDeadline(dateTime);
+        progressBar.Text = incidents.Count.ToString();
         }
     }
 }
