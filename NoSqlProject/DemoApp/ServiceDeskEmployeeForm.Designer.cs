@@ -97,8 +97,17 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
             this.tabPageDashboard = new System.Windows.Forms.TabPage();
+
             this.btnLow = new System.Windows.Forms.Button();
             this.btnHigh = new System.Windows.Forms.Button();
+            
+            this.pbPast = new CircularProgressBar.CircularProgressBar();
+            this.pbUnresolved = new CircularProgressBar.CircularProgressBar();
+            this.lblPast1 = new System.Windows.Forms.Label();
+            this.lblPast2 = new System.Windows.Forms.Label();
+            this.lblUnresolved1 = new System.Windows.Forms.Label();
+            this.lblUnresolved2 = new System.Windows.Forms.Label();
+
             this.tabControl1.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
             this.panelTicketsOverview.SuspendLayout();
@@ -106,6 +115,7 @@
             this.tabPageUserManagement.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
+            this.tabPageDashboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -836,7 +846,18 @@
             // 
             // tabPageDashboard
             // 
+
             this.tabPageDashboard.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDashboard.Controls.Add(this.lblUnresolved2);
+            this.tabPageDashboard.Controls.Add(this.lblUnresolved1);
+            this.tabPageDashboard.Controls.Add(this.lblPast2);
+            this.tabPageDashboard.Controls.Add(this.lblPast1);
+            this.tabPageDashboard.Controls.Add(this.pbUnresolved);
+            this.tabPageDashboard.Controls.Add(this.pbPast);
+
+            this.tabPageDashboard.Location = new System.Drawing.Point(4, 34);
+            this.tabPageDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+
             this.tabPageDashboard.Name = "tabPageDashboard";
             this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPageDashboard.Size = new System.Drawing.Size(792, 414);
@@ -844,6 +865,7 @@
             this.tabPageDashboard.Text = "Dashboard";
             this.tabPageDashboard.UseVisualStyleBackColor = true;
             // 
+
             // btnLow
             // 
             this.btnLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -867,6 +889,109 @@
             this.btnHigh.TabIndex = 16;
             this.btnHigh.UseVisualStyleBackColor = true;
             this.btnHigh.Click += new System.EventHandler(this.btnHigh_Click);
+
+            // pbPast
+            // 
+            this.pbPast.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.pbPast.AnimationSpeed = 500;
+            this.pbPast.BackColor = System.Drawing.Color.Transparent;
+            this.pbPast.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbPast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pbPast.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pbPast.InnerMargin = 2;
+            this.pbPast.InnerWidth = -1;
+            this.pbPast.Location = new System.Drawing.Point(627, 161);
+            this.pbPast.MarqueeAnimationSpeed = 2000;
+            this.pbPast.Name = "pbPast";
+            this.pbPast.OuterColor = System.Drawing.Color.Gray;
+            this.pbPast.OuterMargin = -25;
+            this.pbPast.OuterWidth = 26;
+            this.pbPast.ProgressColor = System.Drawing.Color.Red;
+            this.pbPast.ProgressWidth = 25;
+            this.pbPast.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbPast.Size = new System.Drawing.Size(320, 320);
+            this.pbPast.StartAngle = 270;
+            this.pbPast.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbPast.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.pbPast.SubscriptText = "";
+            this.pbPast.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbPast.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.pbPast.SuperscriptText = "";
+            this.pbPast.TabIndex = 0;
+            this.pbPast.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.pbPast.Value = 68;
+            // 
+            // pbUnresolved
+            // 
+            this.pbUnresolved.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.pbUnresolved.AnimationSpeed = 500;
+            this.pbUnresolved.BackColor = System.Drawing.Color.Transparent;
+            this.pbUnresolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbUnresolved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pbUnresolved.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pbUnresolved.InnerMargin = 2;
+            this.pbUnresolved.InnerWidth = -1;
+            this.pbUnresolved.Location = new System.Drawing.Point(83, 161);
+            this.pbUnresolved.MarqueeAnimationSpeed = 2000;
+            this.pbUnresolved.Name = "pbUnresolved";
+            this.pbUnresolved.OuterColor = System.Drawing.Color.Gray;
+            this.pbUnresolved.OuterMargin = -25;
+            this.pbUnresolved.OuterWidth = 26;
+            this.pbUnresolved.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pbUnresolved.ProgressWidth = 25;
+            this.pbUnresolved.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbUnresolved.Size = new System.Drawing.Size(320, 320);
+            this.pbUnresolved.StartAngle = 270;
+            this.pbUnresolved.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbUnresolved.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.pbUnresolved.SubscriptText = ".";
+            this.pbUnresolved.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbUnresolved.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.pbUnresolved.SuperscriptText = "";
+            this.pbUnresolved.TabIndex = 1;
+            this.pbUnresolved.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.pbUnresolved.Value = 68;
+            // 
+            // lblPast1
+            // 
+            this.lblPast1.AutoSize = true;
+            this.lblPast1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPast1.Location = new System.Drawing.Point(639, 37);
+            this.lblPast1.Name = "lblPast1";
+            this.lblPast1.Size = new System.Drawing.Size(343, 36);
+            this.lblPast1.TabIndex = 2;
+            this.lblPast1.Text = "Incidents past deadline";
+            // 
+            // lblPast2
+            // 
+            this.lblPast2.AutoSize = true;
+            this.lblPast2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPast2.Location = new System.Drawing.Point(614, 100);
+            this.lblPast2.Name = "lblPast2";
+            this.lblPast2.Size = new System.Drawing.Size(378, 24);
+            this.lblPast2.TabIndex = 3;
+            this.lblPast2.Text = "These tickets need your immediate attention";
+            // 
+            // lblUnresolved1
+            // 
+            this.lblUnresolved1.AutoSize = true;
+            this.lblUnresolved1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnresolved1.Location = new System.Drawing.Point(89, 37);
+            this.lblUnresolved1.Name = "lblUnresolved1";
+            this.lblUnresolved1.Size = new System.Drawing.Size(314, 36);
+            this.lblUnresolved1.TabIndex = 4;
+            this.lblUnresolved1.Text = "Unresolved incidents";
+            // 
+            // lblUnresolved2
+            // 
+            this.lblUnresolved2.AutoSize = true;
+            this.lblUnresolved2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnresolved2.Location = new System.Drawing.Point(132, 100);
+            this.lblUnresolved2.Name = "lblUnresolved2";
+            this.lblUnresolved2.Size = new System.Drawing.Size(213, 24);
+            this.lblUnresolved2.TabIndex = 5;
+            this.lblUnresolved2.Text = "All tickets currently open";
+
             // 
             // ServiceDeskEmployeeForm
             // 
@@ -887,6 +1012,8 @@
             this.panelUserManagement.PerformLayout();
             this.panelAddUser.ResumeLayout(false);
             this.panelAddUser.PerformLayout();
+            this.tabPageDashboard.ResumeLayout(false);
+            this.tabPageDashboard.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -965,5 +1092,11 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblErrorCreateTicket;
         private System.Windows.Forms.Label lblErroroCreateTicket;
+        private System.Windows.Forms.Label lblUnresolved2;
+        private System.Windows.Forms.Label lblUnresolved1;
+        private System.Windows.Forms.Label lblPast2;
+        private System.Windows.Forms.Label lblPast1;
+        private CircularProgressBar.CircularProgressBar pbUnresolved;
+        private CircularProgressBar.CircularProgressBar pbPast;
     }
 }
