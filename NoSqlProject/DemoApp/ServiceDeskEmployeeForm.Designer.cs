@@ -689,18 +689,8 @@
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(238, 24);
             this.comboType.TabIndex = 21;
-            // 
-            // checkBoxYes
-            // 
-            this.checkBoxYes.AutoSize = true;
-            this.checkBoxYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxYes.Location = new System.Drawing.Point(225, 293);
-            this.checkBoxYes.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxYes.Name = "checkBoxYes";
-            this.checkBoxYes.Size = new System.Drawing.Size(240, 17);
-            this.checkBoxYes.TabIndex = 20;
-            this.checkBoxYes.Text = "yes, a password e-mail will be sent to the user";
-            this.checkBoxYes.UseVisualStyleBackColor = true;
+           
+           
             // 
             // txtPhoneNumber
             // 
@@ -738,17 +728,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(238, 23);
             this.txtFirstName.TabIndex = 16;
-            // 
-            // lblSentPassword
-            // 
-            this.lblSentPassword.AutoSize = true;
-            this.lblSentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSentPassword.Location = new System.Drawing.Point(47, 292);
-            this.lblSentPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSentPassword.Name = "lblSentPassword";
-            this.lblSentPassword.Size = new System.Drawing.Size(113, 17);
-            this.lblSentPassword.TabIndex = 15;
-            this.lblSentPassword.Text = "Send password?";
+            
             // 
             // lblLocation
             // 
@@ -896,16 +876,10 @@
             this.textBoxFilterByEmail.TabIndex = 7;
             this.textBoxFilterByEmail.Text = "Filter by email";
             this.textBoxFilterByEmail.Click += new System.EventHandler(this.textBoxFilterByEmail_Click);
-            this.textBoxFilterByEmail.TextChanged += new System.EventHandler(this.textBoxFilterByEmail_TextChanged);
             // 
             // listViewUsers
             // 
-            this.listViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10});
+           
             this.listViewUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewUsers.HideSelection = false;
             this.listViewUsers.Location = new System.Drawing.Point(70, 189);
