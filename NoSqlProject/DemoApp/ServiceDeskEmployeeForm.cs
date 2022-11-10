@@ -374,6 +374,9 @@ namespace DemoApp
                 ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
                 ticket.Subject = txtSubjectIncident.Text;
                 ticket.Description = txtDescriptionIncident.Text;
+                //ticket.Reporter = checkedListBoxTransfer.CheckedItems.ToString();
+                string[] reporter = checkedListBoxTransfer.CheckedItems.ToString().Split(':');
+                label12.Text = reporter[1];
                 incidentService.EditTicket(ticket);
             }
             else if(label9.Text.Equals("Create new ticket"))
@@ -535,6 +538,7 @@ namespace DemoApp
 
         private void btnEditTicket_Click(object sender, EventArgs e)
         {
+            FillListTransfer();
             if (listViewTickets.SelectedItems.Count == 1)
             {
                 Incident selectedTicket = (Incident)listViewTickets.SelectedItems[0].Tag;
@@ -612,5 +616,15 @@ namespace DemoApp
             progressBar.Maximum = totalIncidents.Count;
             progressBar.Text = $"{pastDeadlineIncidents.Count.ToString()}/{totalIncidents.Count.ToString()}";
         }
+        // transfer ticket 
+        public void FillListTransfer()
+        {
+            List<User> users = userService.GetAllUsers();
+            foreach(User user in users)
+            {
+                checkedListBoxTransfer.Items.Add($"{user.FirstName} {user.LastName} Id:{user.Id}");
+            }
+        }
+
     }
 }
