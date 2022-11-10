@@ -38,7 +38,7 @@
             this.pbPast = new CircularProgressBar.CircularProgressBar();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
             this.panelCreateTicket = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.checkedListBoxTransfer = new System.Windows.Forms.CheckedListBox();
             this.lblErroroCreateTicket = new System.Windows.Forms.Label();
             this.lblErrorCreateTicket = new System.Windows.Forms.Label();
             this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
@@ -112,7 +112,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
-            this.checkedListBoxTransfer = new System.Windows.Forms.CheckedListBox();
+            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageDashboard.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
@@ -273,8 +274,9 @@
             // 
             // panelCreateTicket
             // 
+            this.panelCreateTicket.Controls.Add(this.label13);
+            this.panelCreateTicket.Controls.Add(this.checkBoxTransfer);
             this.panelCreateTicket.Controls.Add(this.checkedListBoxTransfer);
-            this.panelCreateTicket.Controls.Add(this.label12);
             this.panelCreateTicket.Controls.Add(this.lblErroroCreateTicket);
             this.panelCreateTicket.Controls.Add(this.lblErrorCreateTicket);
             this.panelCreateTicket.Controls.Add(this.cmbPriorityIncident);
@@ -301,14 +303,14 @@
             this.panelCreateTicket.TabIndex = 12;
             this.panelCreateTicket.Visible = false;
             // 
-            // label12
+            // checkedListBoxTransfer
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 418);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(141, 25);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Transfer ticket:";
+            this.checkedListBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBoxTransfer.FormattingEnabled = true;
+            this.checkedListBoxTransfer.Location = new System.Drawing.Point(65, 384);
+            this.checkedListBoxTransfer.Name = "checkedListBoxTransfer";
+            this.checkedListBoxTransfer.Size = new System.Drawing.Size(509, 114);
+            this.checkedListBoxTransfer.TabIndex = 28;
             // 
             // lblErroroCreateTicket
             // 
@@ -336,7 +338,7 @@
             "Low",
             "Normal",
             "High"});
-            this.cmbPriorityIncident.Location = new System.Drawing.Point(200, 179);
+            this.cmbPriorityIncident.Location = new System.Drawing.Point(258, 271);
             this.cmbPriorityIncident.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPriorityIncident.Name = "cmbPriorityIncident";
             this.cmbPriorityIncident.Size = new System.Drawing.Size(316, 28);
@@ -360,7 +362,7 @@
             "14 days",
             "28 days",
             "6 months"});
-            this.cmbDeadlineIncident.Location = new System.Drawing.Point(200, 204);
+            this.cmbDeadlineIncident.Location = new System.Drawing.Point(258, 312);
             this.cmbDeadlineIncident.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeadlineIncident.Name = "cmbDeadlineIncident";
             this.cmbDeadlineIncident.Size = new System.Drawing.Size(316, 28);
@@ -374,7 +376,7 @@
             "Software",
             "Hardware",
             "Service"});
-            this.cmbTypeIncident.Location = new System.Drawing.Point(200, 126);
+            this.cmbTypeIncident.Location = new System.Drawing.Point(258, 191);
             this.cmbTypeIncident.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTypeIncident.Name = "cmbTypeIncident";
             this.cmbTypeIncident.Size = new System.Drawing.Size(316, 28);
@@ -383,7 +385,7 @@
             // txtUserNameIncident
             // 
             this.txtUserNameIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserNameIncident.Location = new System.Drawing.Point(200, 154);
+            this.txtUserNameIncident.Location = new System.Drawing.Point(258, 234);
             this.txtUserNameIncident.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserNameIncident.Name = "txtUserNameIncident";
             this.txtUserNameIncident.Size = new System.Drawing.Size(316, 26);
@@ -392,7 +394,7 @@
             // txtSubjectIncident
             // 
             this.txtSubjectIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubjectIncident.Location = new System.Drawing.Point(200, 98);
+            this.txtSubjectIncident.Location = new System.Drawing.Point(258, 153);
             this.txtSubjectIncident.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubjectIncident.Name = "txtSubjectIncident";
             this.txtSubjectIncident.Size = new System.Drawing.Size(316, 26);
@@ -402,7 +404,7 @@
             // 
             this.txtDateReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateReported.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDateReported.Location = new System.Drawing.Point(200, 75);
+            this.txtDateReported.Location = new System.Drawing.Point(258, 115);
             this.txtDateReported.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateReported.Name = "txtDateReported";
             this.txtDateReported.Size = new System.Drawing.Size(316, 26);
@@ -528,8 +530,8 @@
             this.panelTicketsOverview.Controls.Add(this.btnHigh);
             this.panelTicketsOverview.Controls.Add(this.btnResolve);
             this.panelTicketsOverview.Controls.Add(this.btnCloseTicket);
-            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
             this.panelTicketsOverview.Controls.Add(this.btnEditTicket);
+            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
             this.panelTicketsOverview.Controls.Add(this.label1);
             this.panelTicketsOverview.Controls.Add(this.btnCreateTicket);
             this.panelTicketsOverview.Controls.Add(this.textBoxFilterBySubject);
@@ -1093,14 +1095,27 @@
             this.lblAddUser.TabIndex = 5;
             this.lblAddUser.Text = "Create new user";
             // 
-            // checkedListBoxTransfer
+            // checkBoxTransfer
             // 
-            this.checkedListBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBoxTransfer.FormattingEnabled = true;
-            this.checkedListBoxTransfer.Location = new System.Drawing.Point(163, 391);
-            this.checkedListBoxTransfer.Name = "checkedListBoxTransfer";
-            this.checkedListBoxTransfer.Size = new System.Drawing.Size(459, 92);
-            this.checkedListBoxTransfer.TabIndex = 28;
+            this.checkBoxTransfer.AutoSize = true;
+            this.checkBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxTransfer.Location = new System.Drawing.Point(258, 354);
+            this.checkBoxTransfer.Name = "checkBoxTransfer";
+            this.checkBoxTransfer.Size = new System.Drawing.Size(59, 24);
+            this.checkBoxTransfer.TabIndex = 29;
+            this.checkBoxTransfer.Text = "Yes";
+            this.checkBoxTransfer.UseVisualStyleBackColor = true;
+            this.checkBoxTransfer.CheckedChanged += new System.EventHandler(this.checkBoxTransfer_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(61, 355);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 20);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Transfer ticket?";
             // 
             // ServiceDeskEmployeeForm
             // 
@@ -1214,7 +1229,8 @@
         private CircularProgressBar.CircularProgressBar pbUnresolved;
         private CircularProgressBar.CircularProgressBar pbPast;
         private System.Windows.Forms.RadioButton radioButtonNoFilter;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckedListBox checkedListBoxTransfer;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox checkBoxTransfer;
     }
 }
