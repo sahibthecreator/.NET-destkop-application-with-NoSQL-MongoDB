@@ -27,8 +27,9 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-            loadIncidents(string.Empty);
-            loadUsers(string.Empty);
+            incidents = incidentService.GetAllIncidents();
+            LoadIncidents(string.Empty);
+            LoadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
             textBoxes.Add(txtEmail);
@@ -88,10 +89,10 @@ namespace DemoApp
             incidents = incidentService.GetAllIncidents();
             if (status != null)
                 incidents = filteringList.FilterIncidentByStatus(incidents, status);
-            loadIncidents(string.Empty);
+            LoadIncidents(string.Empty);
         }
 
-        private void loadUsers(string str)
+        private void LoadUsers(string str)
         {
             try
             {
@@ -145,7 +146,7 @@ namespace DemoApp
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                loadUsers(textBoxFilterByEmail.Text);
+                LoadUsers(textBoxFilterByEmail.Text);
             }
         }
 
@@ -166,22 +167,22 @@ namespace DemoApp
             panelUserManagement.Visible = true;
             panelAddUser.Visible = false;
 
-            clearBoxes();
+            ClearBoxes();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (!validateTextBoxes(textBoxes) || !validateComboBoxes(comboBoxes))
+            if (!ValidateTextBoxes(textBoxes) || !ValidateComboBoxes(comboBoxes))
             {
-                fillEmptyTextBoxes();
-                fillEmptyComboBoxes();
+                FillEmptyTextBoxes();
+                FillEmptyComboBoxes();
 
-                if (!validateEmail(txtEmail.Text))
+                if (!ValidateEmail(txtEmail.Text))
                 {
                     txtEmail.ForeColor = Color.Red;
                     txtEmail.Text = "Invalid input...";
                 }
-                if (!validatePhoneNumber(txtPhoneNumber.Text))
+                if (!ValidatePhoneNumber(txtPhoneNumber.Text))
                 {
                     txtPhoneNumber.ForeColor = Color.Red;
                     txtPhoneNumber.Text = "Invalid input...";
@@ -189,17 +190,17 @@ namespace DemoApp
             }
             else
             {    
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, hashPassword(), comboType.Text);
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, HashPassword(), comboType.Text);
                 UserService userService = new UserService();
                 userService.AddUser(user);
-                clearBoxes();
+                ClearBoxes();
                 panelUserManagement.Visible = true;
                 panelAddUser.Visible = false;
-                loadUsers("");
+                LoadUsers("");
             }
         }
 
-        public string hashPassword()
+        public string HashPassword()
         {
             Random rand = new Random();
             int passwordLength = rand.Next(6, 12);
@@ -223,7 +224,7 @@ namespace DemoApp
             return Convert.ToBase64String(hashBytes);
         }
 
-        private void fillEmptyTextBoxes()
+        private void FillEmptyTextBoxes()
         {
             foreach (TextBox textBox in textBoxes)
             {
@@ -235,7 +236,7 @@ namespace DemoApp
             }
         }
 
-        private void fillEmptyComboBoxes()
+        private void FillEmptyComboBoxes()
         {
             foreach (ComboBox comboBox in comboBoxes)
             {
@@ -247,7 +248,7 @@ namespace DemoApp
             }
         }
 
-        private bool validateTextBoxes(List<TextBox> textBoxes)
+        private bool ValidateTextBoxes(List<TextBox> textBoxes)
         {
             int count = 0;
 
@@ -261,7 +262,7 @@ namespace DemoApp
             return false;
         }
 
-        private bool validateComboBoxes(List<ComboBox> comboBoxes)
+        private bool ValidateComboBoxes(List<ComboBox> comboBoxes)
         {
             int count = 0;
 
@@ -291,13 +292,13 @@ namespace DemoApp
             cb.ForeColor = Color.Black;
         }
 
-        private bool validateEmail(string email)
+        private bool ValidateEmail(string email)
         {
             if (email.Contains("@gmail.com"))
                 return true;
             return false;
         }
-        private bool validatePhoneNumber(string number)
+        private bool ValidatePhoneNumber(string number)
         {
             int count = 0;
             if (number.Length == 10)
@@ -313,7 +314,7 @@ namespace DemoApp
             return false;
         }
 
-        private void clearBoxes()
+        private void ClearBoxes()
         {
             foreach (TextBox textBox in textBoxes)
             {
@@ -328,12 +329,11 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents(string str)
+        private void LoadIncidents(string str)
         {
             try
             {
-                incidents = incidentService.GetAllIncidents();
-                fillListViewIncident(str);
+                FillListViewIncident(str);
             }
             catch (Exception exp)
             {
@@ -387,7 +387,7 @@ namespace DemoApp
             txtUserNameIncident.Enabled = true;
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
-            loadIncidents(string.Empty);
+            LoadIncidents(string.Empty);
             EmptyIncidentFields();
         }
 
@@ -411,7 +411,7 @@ namespace DemoApp
                         listViewTickets.Items.Remove(item);
                     }
                 }
-                loadIncidents(string.Empty);
+                LoadIncidents(string.Empty);
             }
             catch (Exception exp)
             {
@@ -441,15 +441,15 @@ namespace DemoApp
 
         private void btnCloseTicket_Click(object sender, EventArgs e)
         {
-            updateStatus(Status.closed);
+            UpdateStatus(Status.closed);
         }
 
         private void btnResolve_Click(object sender, EventArgs e)
         {
-            updateStatus(Status.resolved);
+            UpdateStatus(Status.resolved);
         }
 
-        private void updateStatus(Status status)
+        private void UpdateStatus(Status status)
         {
             List<Incident> tickets = new List<Incident>();
             if (listViewTickets.SelectedItems.Count > 0)
@@ -492,11 +492,11 @@ namespace DemoApp
                     MessageBox.Show(message);
                 }
             }
-            loadIncidents(string.Empty);
+            LoadIncidents(string.Empty);
         }
 
 
-        private void fillListViewIncident(string str)
+        private void FillListViewIncident(string str)
         {
             listViewTickets.Items.Clear();
             foreach (Incident incident in incidents)
@@ -522,12 +522,12 @@ namespace DemoApp
         private void btnHigh_Click(object sender, EventArgs e)
         {
             incidents = sortByPriority.SortByHigh(incidents);
-            fillListViewIncident(string.Empty);
+            FillListViewIncident(string.Empty);
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
             incidents = sortByPriority.SortByLow(incidents);
-            fillListViewIncident(string.Empty);
+            FillListViewIncident(string.Empty);
         }
 
         private void btnEditTicket_Click(object sender, EventArgs e)
@@ -568,12 +568,12 @@ namespace DemoApp
         //search bar for incidents and users
         private void textBoxFilterBySubject_TextChanged(object sender, EventArgs e)
         {
-            loadIncidents(textBoxFilterBySubject.Text.ToLower());
+            LoadIncidents(textBoxFilterBySubject.Text.ToLower());
         }
 
         private void textBoxFilterByEmail_TextChanged(object sender, EventArgs e)
         {
-            loadUsers(textBoxFilterByEmail.Text.ToLower());
+            LoadUsers(textBoxFilterByEmail.Text.ToLower());
         }
 
         //add button in the User Management interface
