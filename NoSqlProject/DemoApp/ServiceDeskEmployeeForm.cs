@@ -328,24 +328,7 @@ namespace DemoApp
             {
                 if(incidents == null)
                     incidents = incidentService.GetAllIncidents();
-                listViewTickets.Items.Clear();
-                foreach (Incident incident in incidents)
-                {
-                    User user = userService.getUserById(incident.Reporter);
-
-                    ListViewItem item = new ListViewItem(incident.Id.ToString());
-                    item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
-                    item.SubItems.Add(incident.Subject);
-                    item.SubItems.Add(incident.Type);
-                    item.SubItems.Add(user.FirstName);
-                    item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
-                    item.SubItems.Add(incident.Description);
-                    item.SubItems.Add(incident.Status.ToString());
-                    item.SubItems.Add(incident.Priority.ToString());
-                    item.Tag = incident;
-                    listViewTickets.Items.Add(item);
-
-                }
+                fillListViewIncident();
             }
             catch (Exception exp)
             {
@@ -514,7 +497,24 @@ namespace DemoApp
 
         private void fillListViewIncident()
         {
-            
+            listViewTickets.Items.Clear();
+            foreach (Incident incident in incidents)
+            {
+                User user = userService.getUserById(incident.Reporter);
+
+                ListViewItem item = new ListViewItem(incident.Id.ToString());
+                item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
+                item.SubItems.Add(incident.Subject);
+                item.SubItems.Add(incident.Type);
+                item.SubItems.Add(user.FirstName);
+                item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
+                item.SubItems.Add(incident.Description);
+                item.SubItems.Add(incident.Status.ToString());
+                item.SubItems.Add(incident.Priority.ToString());
+                item.Tag = incident;
+                listViewTickets.Items.Add(item);
+
+            }
         }
 
         private void btnHigh_Click(object sender, EventArgs e)
