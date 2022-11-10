@@ -332,8 +332,7 @@ namespace DemoApp
         {
             try
             {
-                if(incidents == null)
-                    incidents = incidentService.GetAllIncidents();
+                incidents = incidentService.GetAllIncidents();
                 fillListViewIncident(str);
             }
             catch (Exception exp)
@@ -348,7 +347,7 @@ namespace DemoApp
             {
                 panelCreateTicket.Visible = false;
                 panelTicketsOverview.Visible = true;
-                lblErrorCreateTicket.Text = "";
+                EmptyIncidentFields();
             }
             catch (Exception exp)
             {
@@ -359,48 +358,45 @@ namespace DemoApp
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
             Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
-
+            if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
+            {
+                lblErrorCreateTicket.Text = "please fill in the required information!";
+                return;
+            }
+            if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
+                ticket.Deadline = ticket.Date.AddMonths(6);
+            else
+            {
+                string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
+                ticket.Deadline = ticket.Date.AddDays(int.Parse(splitCmbString[0]));
+            }
+            ticket.Date = Convert.ToDateTime(txtDateReported.Text);
+            ticket.Type = (TicketType)cmbTypeIncident.SelectedIndex;
+            ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
+            ticket.Subject = txtSubjectIncident.Text;
+            ticket.Description = txtDescriptionIncident.Text;
             if (label9.Text.Equals("Edit Ticket"))
             {
-                ticket.Date = Convert.ToDateTime(txtDateReported.Text);
-                if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
-                    ticket.Deadline = ticket.Date.AddMonths(6);
-                else
-                {
-                    string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
-                    ticket.Deadline = ticket.Date.AddDays(int.Parse(splitCmbString[0]));
-                }
-                ticket.Type = (TicketType)cmbTypeIncident.SelectedIndex;
-                ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
-                ticket.Subject = txtSubjectIncident.Text;
-                ticket.Description = txtDescriptionIncident.Text;
                 incidentService.EditTicket(ticket);
             }
-            else if(label9.Text.Equals("Create new ticket"))
+            else if (label9.Text.Equals("Create new ticket"))
             {
-                if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
-                {
-                    lblErrorCreateTicket.Text = "please fill in the required information!";
-                    return;
-                }
-                DateTime date = Convert.ToDateTime(txtDateReported.Text);
-                string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
-
-                if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
-                {
-                    ticket.Deadline = date.AddMonths(6);
-                }
-                else
-                {
-                    ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
-                }
-                incidentService.CreateTicket(ticket, (TicketType)cmbTypeIncident.SelectedIndex, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
+                ticket.Status = Status.open;
+                incidentService.CreateTicket(ticket);
             }
             txtUserNameIncident.Enabled = true;
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
-            lblErrorCreateTicket.Text = "";
             loadIncidents(string.Empty);
+            EmptyIncidentFields();
+        }
+
+        private void EmptyIncidentFields()
+        {
+            lblErrorCreateTicket.Text = "";
+            cmbDeadlineIncident.Text = "";
+            cmbPriorityIncident.Text = "";
+            cmbTypeIncident.Text = "";
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -412,6 +408,7 @@ namespace DemoApp
                     foreach (ListViewItem item in listViewTickets.SelectedItems)
                     {
                         incidentService.DeleteTicket((Incident)item.Tag);
+                        listViewTickets.Items.Remove(item);
                     }
                 }
                 loadIncidents(string.Empty);
@@ -554,7 +551,7 @@ namespace DemoApp
                     else if (timeSpan.Days >= 150 && timeSpan.Days <= 200)
                         cmbDeadlineIncident.SelectedItem = "6 month";
 
-                    cmbTypeIncident.SelectedItem = selectedTicket.Type;
+                    cmbTypeIncident.Text = selectedTicket.Type.ToString();
 
                     cmbPriorityIncident.SelectedItem = char.ToUpper(selectedTicket.Priority.ToString()[0]) + selectedTicket.Priority.ToString().Substring(1);
 

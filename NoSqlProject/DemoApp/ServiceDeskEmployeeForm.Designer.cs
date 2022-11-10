@@ -258,8 +258,8 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
+            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 34);
             this.tabPageIncidentManagement.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
@@ -611,7 +611,7 @@
             "Low",
             "Normal",
             "High"});
-            this.cmbPriorityIncident.Location = new System.Drawing.Point(200, 179);
+            this.cmbPriorityIncident.Location = new System.Drawing.Point(238, 275);
             this.cmbPriorityIncident.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPriorityIncident.Name = "cmbPriorityIncident";
             this.cmbPriorityIncident.Size = new System.Drawing.Size(316, 28);
@@ -635,7 +635,7 @@
             "14 days",
             "28 days",
             "6 months"});
-            this.cmbDeadlineIncident.Location = new System.Drawing.Point(200, 204);
+            this.cmbDeadlineIncident.Location = new System.Drawing.Point(238, 320);
             this.cmbDeadlineIncident.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeadlineIncident.Name = "cmbDeadlineIncident";
             this.cmbDeadlineIncident.Size = new System.Drawing.Size(316, 28);
@@ -649,7 +649,7 @@
             "Software",
             "Hardware",
             "Service"});
-            this.cmbTypeIncident.Location = new System.Drawing.Point(200, 126);
+            this.cmbTypeIncident.Location = new System.Drawing.Point(238, 196);
             this.cmbTypeIncident.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTypeIncident.Name = "cmbTypeIncident";
             this.cmbTypeIncident.Size = new System.Drawing.Size(316, 28);
@@ -658,7 +658,7 @@
             // txtUserNameIncident
             // 
             this.txtUserNameIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserNameIncident.Location = new System.Drawing.Point(200, 154);
+            this.txtUserNameIncident.Location = new System.Drawing.Point(238, 234);
             this.txtUserNameIncident.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserNameIncident.Name = "txtUserNameIncident";
             this.txtUserNameIncident.Size = new System.Drawing.Size(316, 26);
@@ -667,7 +667,7 @@
             // txtSubjectIncident
             // 
             this.txtSubjectIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubjectIncident.Location = new System.Drawing.Point(200, 98);
+            this.txtSubjectIncident.Location = new System.Drawing.Point(238, 160);
             this.txtSubjectIncident.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubjectIncident.Name = "txtSubjectIncident";
             this.txtSubjectIncident.Size = new System.Drawing.Size(316, 26);
@@ -677,7 +677,7 @@
             // 
             this.txtDateReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateReported.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDateReported.Location = new System.Drawing.Point(200, 75);
+            this.txtDateReported.Location = new System.Drawing.Point(238, 119);
             this.txtDateReported.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateReported.Name = "txtDateReported";
             this.txtDateReported.Size = new System.Drawing.Size(316, 26);
