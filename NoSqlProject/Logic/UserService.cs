@@ -15,26 +15,30 @@ namespace Logic
         {
             userDAO= new UserDAO(); 
         }
-        public List<User> getAllUsers()
+
+        public List<User> GetAllUsers()
         {
-           return userDAO.getAllUsers();
+           return userDAO.GetAllUsers();
         }
-        public List<User> getMatchedUser(string email, string password)
+
+        public List<User> GetMatchedUser(string email, string password)
         {
-            return userDAO.getMatchedUser(email, password);
+            return userDAO.GetMatchedUser(email, password);
         }
+
         public List<User> GetUserByEmail(string email)
         {
             return userDAO.GetUserByEmail(email);
         }
         
-        public User getUserById(string id)
+        public User GetUserById(string id)
         {
-            return userDAO.getUserById(id);
+            return userDAO.GetUserById(id);
         }
-        public void addUser(User user)
+
+        public void AddUser(User user)
         {
-            userDAO.addUser(user);
+            userDAO.AddUser(user);
         }
 
     }

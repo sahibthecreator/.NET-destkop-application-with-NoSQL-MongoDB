@@ -87,7 +87,7 @@ namespace DemoApp
             FilteringList filteringList = new FilteringList();
             incidents = incidentService.GetAllIncidents();
             if (status != null)
-                incidents = filteringList.filterIncidentByStatus(incidents, status);
+                incidents = filteringList.FilterIncidentByStatus(incidents, status);
             loadIncidents(string.Empty);
         }
 
@@ -95,7 +95,7 @@ namespace DemoApp
         {
             try
             {
-                List<User> users = userService.getAllUsers();
+                List<User> users = userService.GetAllUsers();
                 listViewUsers.Items.Clear();
 
                 foreach (User user in users)
@@ -191,7 +191,7 @@ namespace DemoApp
             {    
                 User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, hashPassword(), comboType.Text);
                 UserService userService = new UserService();
-                userService.addUser(user);
+                userService.AddUser(user);
                 clearBoxes();
                 panelUserManagement.Visible = true;
                 panelAddUser.Visible = false;
@@ -370,11 +370,11 @@ namespace DemoApp
                     string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
                     ticket.Deadline = ticket.Date.AddDays(int.Parse(splitCmbString[0]));
                 }
-                ticket.Type = cmbTypeIncident.SelectedItem.ToString();
+                ticket.Type = (TicketType)cmbTypeIncident.SelectedIndex;
                 ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
                 ticket.Subject = txtSubjectIncident.Text;
                 ticket.Description = txtDescriptionIncident.Text;
-                incidentService.editTicket(ticket);
+                incidentService.EditTicket(ticket);
             }
             else if(label9.Text.Equals("Create new ticket"))
             {
@@ -394,9 +394,7 @@ namespace DemoApp
                 {
                     ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
                 }
-                ticket.Type = cmbTypeIncident.Text;
-                ticket.Status = Status.open;
-                incidentService.CreateTicket(ticket, cmbTypeIncident.Text, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
+                incidentService.CreateTicket(ticket, (TicketType)cmbTypeIncident.SelectedIndex, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
             }
             txtUserNameIncident.Enabled = true;
             panelTicketsOverview.Visible = true;
@@ -413,7 +411,7 @@ namespace DemoApp
                 {
                     foreach (ListViewItem item in listViewTickets.SelectedItems)
                     {
-                        incidentService.deleteTicket((Incident)item.Tag);
+                        incidentService.DeleteTicket((Incident)item.Tag);
                     }
                 }
                 loadIncidents(string.Empty);
@@ -432,7 +430,7 @@ namespace DemoApp
                 if (selcetedIncident.Status == Status.incident)
                 {
                     label9.Text = "Create new ticket";
-                    User user = userService.getUserById(selcetedIncident.Reporter);
+                    User user = userService.GetUserById(selcetedIncident.Reporter);
                     panelTicketsOverview.Visible = false;
                     panelCreateTicket.Visible = true;
                     selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
@@ -463,7 +461,7 @@ namespace DemoApp
                 {
                     if (((Incident)item.Tag).Status == Status.open)
                     {
-                        incidentService.updateStatus(((Incident)item.Tag), status);
+                        incidentService.UpdateStatus(((Incident)item.Tag), status);
                     }
                     else 
                     {
@@ -506,12 +504,12 @@ namespace DemoApp
             listViewTickets.Items.Clear();
             foreach (Incident incident in incidents)
             {
-                User user = userService.getUserById(incident.Reporter);
+                User user = userService.GetUserById(incident.Reporter);
 
                 ListViewItem item = new ListViewItem(incident.Id.ToString());
                 item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                 item.SubItems.Add(incident.Subject);
-                item.SubItems.Add(incident.Type);
+                item.SubItems.Add(incident.Type.ToString());
                 item.SubItems.Add(user.FirstName);
                 item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
                 item.SubItems.Add(incident.Description);
@@ -560,7 +558,7 @@ namespace DemoApp
 
                     cmbPriorityIncident.SelectedItem = char.ToUpper(selectedTicket.Priority.ToString()[0]) + selectedTicket.Priority.ToString().Substring(1);
 
-                    User user = userService.getUserById(selectedTicket.Reporter);
+                    User user = userService.GetUserById(selectedTicket.Reporter);
                     txtUserNameIncident.Text = user.FirstName;
                     txtUserNameIncident.Enabled = false;
                     txtDateReported.Text = selectedTicket.Date.ToString("yyyy MM dd");

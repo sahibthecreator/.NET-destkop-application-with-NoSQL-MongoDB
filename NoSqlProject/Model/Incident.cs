@@ -20,7 +20,7 @@ namespace Model
         public string Subject { get; set; }
 
         [BsonElement("type")]
-        public string Type { get; set; }
+        public TicketType Type { get; set; }
 
         [BsonElement("reporter_id")]
         public string Reporter { get; set; }
@@ -36,7 +36,7 @@ namespace Model
 
         [BsonElement("priority")]
         public Priority Priority { get; set; }
-        public Incident(DateTime date, string subject, string type, string reporter, DateTime deadline, string description, Status status)
+        public Incident(DateTime date, string subject, TicketType type, string reporter, DateTime deadline, string description, Status status)
         {
             Date = date;
             Subject = subject;
@@ -45,7 +45,7 @@ namespace Model
             Deadline = deadline;
             Description = description;
             Status = status;
-            //Priority = null;
+            Priority = Priority.none;
         }
     }
 }

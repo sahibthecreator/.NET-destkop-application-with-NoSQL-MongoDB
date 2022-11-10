@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Priority
-    {
-        low, normal, high, none
-    }
+     public enum TicketType
+     {
+        software, hardware, service, none
+     }
 }

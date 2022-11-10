@@ -22,7 +22,7 @@ namespace DAL
         {
             return collectionIncident.AsQueryable().ToList<Incident>();
         }
-        public void addIncident(Incident incident)
+        public void AddIncident(Incident incident)
         {
             collectionIncident.InsertOne(incident);
         }
@@ -44,23 +44,23 @@ namespace DAL
             return collectionIncident.Find(i => i.Reporter == user.Id).ToList<Incident>();
         }
 
-        public void deleteTicket(Incident incident)
+        public void DeleteTicket(Incident incident)
         {
             collectionIncident.DeleteOne(x => x.Id == incident.Id);
         }
 
-        public void updateStatus(Incident incident, Status status)
+        public void UpdateStatus(Incident incident, Status status)
         {
             incident.Status = status;
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
-        public void editTicket(Incident incident)
+        public void EditTicket(Incident incident)
         {
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
 
-        public void CreateTicket(Incident incident, string type, Status status, Priority priority)
+        public void CreateTicket(Incident incident, TicketType type, Status status, Priority priority)
         {
             incident.Type = type;
             incident.Status = status;

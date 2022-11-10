@@ -18,11 +18,11 @@ namespace DAL
         {
             collectionUsers = Db.GetCollection<User>("Users");
         }
-        public List<User> getAllUsers()
+        public List<User> GetAllUsers()
         {
             return collectionUsers.AsQueryable().ToList<User>();
         }
-        public List<User> getMatchedUser(string email, string password)
+        public List<User> GetMatchedUser(string email, string password)
         {
             return collectionUsers.Find(x => x.Email == email && x.Password == password).ToList<User>();
         }
@@ -31,12 +31,12 @@ namespace DAL
             return collectionUsers.Find(x => x.Email == email).ToList<User>();
         }
 
-        public User getUserById(string id)
+        public User GetUserById(string id)
         {
             return collectionUsers.FindAsync(x => x.Id == id).Result.Single();
         }
 
-        public void addUser(User user)
+        public void AddUser(User user)
         {
             collectionUsers.InsertOne(user);
         }

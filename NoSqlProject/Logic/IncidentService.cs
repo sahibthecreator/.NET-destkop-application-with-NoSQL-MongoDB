@@ -20,9 +20,9 @@ namespace Logic
         {
             return incidentDAO.GetAllIncidents();
         }
-        public void addIncident(Incident incident)
+        public void AddIncident(Incident incident)
         {
-            incidentDAO.addIncident(incident);
+            incidentDAO.AddIncident(incident);
         }
 
 
@@ -36,20 +36,20 @@ namespace Logic
             return incidentDAO.GetAllUserTickets(user);
         }
 
-        public void deleteTicket(Incident incident)
+        public void DeleteTicket(Incident incident)
         {
-            incidentDAO.deleteTicket(incident);
+            incidentDAO.DeleteTicket(incident);
         }
 
-        public void updateStatus(Incident incident, Status status)
+        public void UpdateStatus(Incident incident, Status status)
         {
-            incidentDAO.updateStatus(incident, status);
+            incidentDAO.UpdateStatus(incident, status);
         }
-        public void editTicket(Incident incident)
+        public void EditTicket(Incident incident)
         {
-            incidentDAO.editTicket(incident);
+            incidentDAO.EditTicket(incident);
         }
-        public void CreateTicket(Incident incident, string type, Status status, Priority priority)
+        public void CreateTicket(Incident incident, TicketType type, Status status, Priority priority)
         {
             incidentDAO.CreateTicket(incident, type, status, priority);
         }

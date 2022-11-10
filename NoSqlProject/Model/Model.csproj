@@ -123,6 +123,7 @@
     <Compile Include="Priority.cs" />
     <Compile Include="SortByPriority.cs" />
     <Compile Include="Status.cs" />
+    <Compile Include="TicketType.cs" />
     <Compile Include="UserType.cs" />
     <Compile Include="Incident.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ namespace Model
 {
     public class FilteringList
     {
-        public List<Incident> filterIncidentByStatus(List<Incident> incidents, Status? status)
+        public List<Incident> FilterIncidentByStatus(List<Incident> incidents, Status? status)
         {
             List<Incident> result = new List<Incident>();
             foreach (Incident incident in incidents)

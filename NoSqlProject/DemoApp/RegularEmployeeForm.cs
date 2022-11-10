@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using Logic;
 using Model;
+using MongoDB.Bson;
+
 namespace DemoApp
 {
     public partial class RegularEmployeeForm : Form
@@ -48,7 +50,7 @@ namespace DemoApp
                 li.SubItems.Add(item.Date.ToString("yyyy/MM/dd"));
                 li.SubItems.Add(item.Subject);
                 li.SubItems.Add(item.Description);
-                li.SubItems.Add(item.Type);
+                li.SubItems.Add(item.Type.ToString());
                 li.SubItems.Add(item.Status.ToString());
                 li.SubItems.Add(item.Deadline.ToString("yyyy/MM/dd"));
                 listViewMyTickets.Items.Add(li);
@@ -76,9 +78,8 @@ namespace DemoApp
             }
             else
             {
-                Incident incident = new Incident(DateTime.Now, txtSubject.Text, null, user.Id, DateTime.Now, txtDescription.Text, 0);
-                incidentService = new IncidentService();
-                incidentService.addIncident(incident);
+                Incident incident = new Incident(DateTime.Now, txtSubject.Text, TicketType.none, user.Id, DateTime.Now, txtDescription.Text, Status.incident);
+                incidentService.AddIncident(incident);
             }
             emptyTextBoxes();
         }
