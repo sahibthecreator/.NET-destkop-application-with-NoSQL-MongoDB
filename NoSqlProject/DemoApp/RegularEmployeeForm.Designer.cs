@@ -60,11 +60,11 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(-3, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Location = new System.Drawing.Point(-4, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(794, 416);
+            this.tabControl1.Size = new System.Drawing.Size(1059, 512);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -78,11 +78,11 @@
             this.tabPage1.Controls.Add(this.lblSubject);
             this.tabPage1.Controls.Add(this.lblCreatNewIncident);
             this.tabPage1.Controls.Add(this.txtSubject);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(786, 383);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1051, 474);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Report Incident";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -91,11 +91,11 @@
             // 
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.ForeColor = System.Drawing.Color.LightGray;
-            this.txtDescription.Location = new System.Drawing.Point(290, 171);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescription.Location = new System.Drawing.Point(387, 210);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(220, 155);
+            this.txtDescription.Size = new System.Drawing.Size(292, 190);
             this.txtDescription.TabIndex = 14;
             this.txtDescription.Text = "Briefly explain  the problem you\'re facing...";
             this.txtDescription.Click += new System.EventHandler(this.txtDescription_Click);
@@ -105,20 +105,18 @@
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.DimGray;
-            this.lblUser.Location = new System.Drawing.Point(285, 85);
-            this.lblUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUser.Location = new System.Drawing.Point(380, 105);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(0, 29);
+            this.lblUser.Size = new System.Drawing.Size(0, 36);
             this.lblUser.TabIndex = 13;
             // 
             // lblReported
             // 
             this.lblReported.AutoSize = true;
             this.lblReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReported.Location = new System.Drawing.Point(122, 94);
-            this.lblReported.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblReported.Location = new System.Drawing.Point(163, 116);
             this.lblReported.Name = "lblReported";
-            this.lblReported.Size = new System.Drawing.Size(135, 20);
+            this.lblReported.Size = new System.Drawing.Size(166, 25);
             this.lblReported.TabIndex = 12;
             this.lblReported.Text = "Reported by user:";
             // 
@@ -132,10 +130,10 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(578, 159);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubmit.Location = new System.Drawing.Point(771, 196);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(118, 41);
+            this.btnSubmit.Size = new System.Drawing.Size(157, 50);
             this.btnSubmit.TabIndex = 10;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
@@ -151,10 +149,10 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(578, 107);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Location = new System.Drawing.Point(771, 132);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(118, 41);
+            this.btnCancel.Size = new System.Drawing.Size(157, 50);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -164,10 +162,9 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(122, 171);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDescription.Location = new System.Drawing.Point(163, 210);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(93, 20);
+            this.lblDescription.Size = new System.Drawing.Size(115, 25);
             this.lblDescription.TabIndex = 7;
             this.lblDescription.Text = "Description:";
             // 
@@ -175,10 +172,9 @@
             // 
             this.lblSubject.AutoSize = true;
             this.lblSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubject.Location = new System.Drawing.Point(122, 134);
-            this.lblSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSubject.Location = new System.Drawing.Point(163, 165);
             this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(144, 20);
+            this.lblSubject.Size = new System.Drawing.Size(177, 25);
             this.lblSubject.TabIndex = 5;
             this.lblSubject.Text = "Subject of incident:";
             // 
@@ -186,20 +182,19 @@
             // 
             this.lblCreatNewIncident.AutoSize = true;
             this.lblCreatNewIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatNewIncident.Location = new System.Drawing.Point(120, 30);
-            this.lblCreatNewIncident.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCreatNewIncident.Location = new System.Drawing.Point(160, 37);
             this.lblCreatNewIncident.Name = "lblCreatNewIncident";
-            this.lblCreatNewIncident.Size = new System.Drawing.Size(326, 31);
+            this.lblCreatNewIncident.Size = new System.Drawing.Size(391, 38);
             this.lblCreatNewIncident.TabIndex = 4;
             this.lblCreatNewIncident.Text = "Create new incident ticket";
             // 
             // txtSubject
             // 
             this.txtSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubject.Location = new System.Drawing.Point(290, 132);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSubject.Location = new System.Drawing.Point(387, 162);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(220, 23);
+            this.txtSubject.Size = new System.Drawing.Size(292, 27);
             this.txtSubject.TabIndex = 0;
             // 
             // tabPage2
@@ -208,11 +203,11 @@
             this.tabPage2.Controls.Add(this.lblOpenTicketsText);
             this.tabPage2.Controls.Add(this.cpbClosedTickets);
             this.tabPage2.Controls.Add(this.cpbOpenTickets);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(786, 383);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1051, 474);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dashbord";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -220,20 +215,18 @@
             // lblClosedTicketsText
             // 
             this.lblClosedTicketsText.AutoSize = true;
-            this.lblClosedTicketsText.Location = new System.Drawing.Point(525, 32);
-            this.lblClosedTicketsText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblClosedTicketsText.Location = new System.Drawing.Point(700, 39);
             this.lblClosedTicketsText.Name = "lblClosedTicketsText";
-            this.lblClosedTicketsText.Size = new System.Drawing.Size(112, 20);
+            this.lblClosedTicketsText.Size = new System.Drawing.Size(142, 25);
             this.lblClosedTicketsText.TabIndex = 2;
             this.lblClosedTicketsText.Text = "Closed Tickets";
             // 
             // lblOpenTicketsText
             // 
             this.lblOpenTicketsText.AutoSize = true;
-            this.lblOpenTicketsText.Location = new System.Drawing.Point(157, 32);
-            this.lblOpenTicketsText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOpenTicketsText.Location = new System.Drawing.Point(209, 39);
             this.lblOpenTicketsText.Name = "lblOpenTicketsText";
-            this.lblOpenTicketsText.Size = new System.Drawing.Size(102, 20);
+            this.lblOpenTicketsText.Size = new System.Drawing.Size(129, 25);
             this.lblOpenTicketsText.TabIndex = 1;
             this.lblOpenTicketsText.Text = "Open Tickets";
             // 
@@ -247,8 +240,8 @@
             this.cpbClosedTickets.InnerColor = System.Drawing.Color.White;
             this.cpbClosedTickets.InnerMargin = 2;
             this.cpbClosedTickets.InnerWidth = -1;
-            this.cpbClosedTickets.Location = new System.Drawing.Point(476, 73);
-            this.cpbClosedTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cpbClosedTickets.Location = new System.Drawing.Point(635, 90);
+            this.cpbClosedTickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cpbClosedTickets.MarqueeAnimationSpeed = 2000;
             this.cpbClosedTickets.Name = "cpbClosedTickets";
             this.cpbClosedTickets.OuterColor = System.Drawing.Color.Gray;
@@ -257,7 +250,7 @@
             this.cpbClosedTickets.ProgressColor = System.Drawing.Color.Red;
             this.cpbClosedTickets.ProgressWidth = 25;
             this.cpbClosedTickets.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.cpbClosedTickets.Size = new System.Drawing.Size(210, 225);
+            this.cpbClosedTickets.Size = new System.Drawing.Size(280, 277);
             this.cpbClosedTickets.StartAngle = 270;
             this.cpbClosedTickets.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.cpbClosedTickets.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
@@ -279,8 +272,8 @@
             this.cpbOpenTickets.InnerColor = System.Drawing.Color.White;
             this.cpbOpenTickets.InnerMargin = 2;
             this.cpbOpenTickets.InnerWidth = -1;
-            this.cpbOpenTickets.Location = new System.Drawing.Point(101, 73);
-            this.cpbOpenTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cpbOpenTickets.Location = new System.Drawing.Point(135, 90);
+            this.cpbOpenTickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cpbOpenTickets.MarqueeAnimationSpeed = 2000;
             this.cpbOpenTickets.Name = "cpbOpenTickets";
             this.cpbOpenTickets.OuterColor = System.Drawing.Color.Gray;
@@ -289,7 +282,7 @@
             this.cpbOpenTickets.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.cpbOpenTickets.ProgressWidth = 25;
             this.cpbOpenTickets.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.cpbOpenTickets.Size = new System.Drawing.Size(210, 225);
+            this.cpbOpenTickets.Size = new System.Drawing.Size(280, 277);
             this.cpbOpenTickets.StartAngle = 270;
             this.cpbOpenTickets.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.cpbOpenTickets.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
@@ -305,11 +298,11 @@
             // 
             this.tabPage3.Controls.Add(this.listViewMyTickets);
             this.tabPage3.Controls.Add(this.lblTicketsHead);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Size = new System.Drawing.Size(786, 383);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage3.Size = new System.Drawing.Size(1051, 474);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "My tickets";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -319,30 +312,30 @@
             this.listViewMyTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Id});
             this.listViewMyTickets.HideSelection = false;
-            this.listViewMyTickets.Location = new System.Drawing.Point(19, 72);
-            this.listViewMyTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewMyTickets.Location = new System.Drawing.Point(25, 89);
+            this.listViewMyTickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewMyTickets.Name = "listViewMyTickets";
-            this.listViewMyTickets.Size = new System.Drawing.Size(755, 226);
+            this.listViewMyTickets.Size = new System.Drawing.Size(1005, 277);
             this.listViewMyTickets.TabIndex = 1;
             this.listViewMyTickets.UseCompatibleStateImageBehavior = false;
             // 
             // lblTicketsHead
             // 
             this.lblTicketsHead.AutoSize = true;
-            this.lblTicketsHead.Location = new System.Drawing.Point(20, 21);
-            this.lblTicketsHead.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTicketsHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.lblTicketsHead.Location = new System.Drawing.Point(27, 26);
             this.lblTicketsHead.Name = "lblTicketsHead";
-            this.lblTicketsHead.Size = new System.Drawing.Size(59, 20);
+            this.lblTicketsHead.Size = new System.Drawing.Size(132, 39);
             this.lblTicketsHead.TabIndex = 0;
             this.lblTicketsHead.Text = "Tickets";
             // 
             // RegularEmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegularEmployeeForm";
             this.Text = "RegularEmployee";
             this.Load += new System.EventHandler(this.RegularEmployeeForm_Load);
