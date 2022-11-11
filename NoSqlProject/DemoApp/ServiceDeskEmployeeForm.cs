@@ -23,7 +23,8 @@ namespace DemoApp
         List<TextBox> textBoxes = new List<TextBox>();
         List<ComboBox> comboBoxes = new List<ComboBox>();
         List<RadioButton> radioButtons = new List<RadioButton>();
-        SortByPriority sortByPriority = new SortByPriority();   
+        SortByPriority sortByPriority = new SortByPriority();
+        TransferTicket transferTicket = new TransferTicket();
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
@@ -377,6 +378,9 @@ namespace DemoApp
             ticket.Description = txtDescriptionIncident.Text;
             if (label9.Text.Equals("Edit Ticket"))
             {
+                string[] reporter = checkedListBoxTransfer.CheckedItems[0].ToString().Split(':');
+                ticket.Reporter = reporter[1];
+                // edit ticket
                 incidentService.EditTicket(ticket);
             }
             else if (label9.Text.Equals("Create new ticket"))
@@ -532,6 +536,8 @@ namespace DemoApp
 
         private void btnEditTicket_Click(object sender, EventArgs e)
         {
+            FillListTransfer();
+            checkedListBoxTransfer.Visible = false;
             if (listViewTickets.SelectedItems.Count == 1)
             {
                 Incident selectedTicket = (Incident)listViewTickets.SelectedItems[0].Tag;
@@ -608,6 +614,20 @@ namespace DemoApp
             progressBar.Value = pastDeadlineIncidents.Count;
             progressBar.Maximum = totalIncidents.Count;
             progressBar.Text = $"{pastDeadlineIncidents.Count.ToString()}/{totalIncidents.Count.ToString()}";
+        }
+        // transfer ticket 
+        public void FillListTransfer()
+        {
+            List<User> users = userService.GetAllUsers();
+            foreach(User user in users)
+            {
+                checkedListBoxTransfer.Items.Add($"{user.FirstName} {user.LastName} Id:{user.Id}");
+            }
+        }
+
+        private void checkBoxTransfer_CheckedChanged(object sender, EventArgs e)
+        {
+            transferTicket.DisplayUsers(checkBoxTransfer, checkedListBoxTransfer);
         }
     }
 }
