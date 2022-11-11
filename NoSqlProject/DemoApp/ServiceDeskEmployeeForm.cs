@@ -386,9 +386,12 @@ namespace DemoApp
             ticket.Description = txtDescriptionIncident.Text;
             if (label9.Text.Equals("Edit Ticket"))
             {
-                // transfer ticket
-                string[] reporter = checkedListBoxTransfer.CheckedItems[0].ToString().Split(':');
-                ticket.Reporter = reporter[1];
+                if(checkBoxTransfer.Checked == true)
+                {
+                    // transfer ticket
+                    string[] reporter = checkedListBoxTransfer.CheckedItems[0].ToString().Split(':');
+                    ticket.Reporter = reporter[1];
+                }
                 // edit ticket
                 incidentService.EditTicket(ticket);
             }
