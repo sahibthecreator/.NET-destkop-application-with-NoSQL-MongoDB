@@ -62,9 +62,6 @@ namespace DAL
 
         public void CreateTicket(Incident incident)
         {
-            //incident.Type = type;
-            //incident.Status = status;
-            //incident.Priority = priority;
             collectionIncident.ReplaceOne(x => x.Id == incident.Id, incident);
         }
     }
