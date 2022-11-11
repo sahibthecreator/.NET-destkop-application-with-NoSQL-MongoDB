@@ -37,6 +37,27 @@
             this.pbUnresolved = new CircularProgressBar.CircularProgressBar();
             this.pbPast = new CircularProgressBar.CircularProgressBar();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
+            this.panelCreateTicket = new System.Windows.Forms.Panel();
+            this.checkedListBoxTransfer = new System.Windows.Forms.CheckedListBox();
+            this.lblErroroCreateTicket = new System.Windows.Forms.Label();
+            this.lblErrorCreateTicket = new System.Windows.Forms.Label();
+            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
+            this.txtDescriptionIncident = new System.Windows.Forms.RichTextBox();
+            this.cmbDeadlineIncident = new System.Windows.Forms.ComboBox();
+            this.cmbTypeIncident = new System.Windows.Forms.ComboBox();
+            this.txtUserNameIncident = new System.Windows.Forms.TextBox();
+            this.txtSubjectIncident = new System.Windows.Forms.TextBox();
+            this.txtDateReported = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
+            this.btnSubmitTicket = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.panelTicketsOverview = new System.Windows.Forms.Panel();
             this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.radioButtonResolved = new System.Windows.Forms.RadioButton();
@@ -64,26 +85,6 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panelCreateTicket = new System.Windows.Forms.Panel();
-            this.lblErroroCreateTicket = new System.Windows.Forms.Label();
-            this.lblErrorCreateTicket = new System.Windows.Forms.Label();
-            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
-            this.txtDescriptionIncident = new System.Windows.Forms.RichTextBox();
-            this.cmbDeadlineIncident = new System.Windows.Forms.ComboBox();
-            this.cmbTypeIncident = new System.Windows.Forms.ComboBox();
-            this.txtUserNameIncident = new System.Windows.Forms.TextBox();
-            this.txtSubjectIncident = new System.Windows.Forms.TextBox();
-            this.txtDateReported = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
-            this.btnSubmitTicket = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
             this.panelUserManagement = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -111,11 +112,13 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
+            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageDashboard.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
-            this.panelTicketsOverview.SuspendLayout();
             this.panelCreateTicket.SuspendLayout();
+            this.panelTicketsOverview.SuspendLayout();
             this.tabPageUserManagement.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
@@ -158,7 +161,7 @@
             this.lblUnresolved2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnresolved2.Location = new System.Drawing.Point(117, 80);
             this.lblUnresolved2.Name = "lblUnresolved2";
-            this.lblUnresolved2.Size = new System.Drawing.Size(205, 22);
+            this.lblUnresolved2.Size = new System.Drawing.Size(213, 24);
             this.lblUnresolved2.TabIndex = 5;
             this.lblUnresolved2.Text = "All tickets currently open";
             // 
@@ -178,7 +181,7 @@
             this.lblPast2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPast2.Location = new System.Drawing.Point(559, 80);
             this.lblPast2.Name = "lblPast2";
-            this.lblPast2.Size = new System.Drawing.Size(362, 22);
+            this.lblPast2.Size = new System.Drawing.Size(378, 24);
             this.lblPast2.TabIndex = 3;
             this.lblPast2.Text = "These tickets need your immediate attention";
             // 
@@ -258,8 +261,8 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
+            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 34);
             this.tabPageIncidentManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
@@ -268,6 +271,251 @@
             this.tabPageIncidentManagement.TabIndex = 1;
             this.tabPageIncidentManagement.Text = "Incident Management";
             this.tabPageIncidentManagement.UseVisualStyleBackColor = true;
+            // 
+            // panelCreateTicket
+            // 
+            this.panelCreateTicket.Controls.Add(this.label13);
+            this.panelCreateTicket.Controls.Add(this.checkBoxTransfer);
+            this.panelCreateTicket.Controls.Add(this.checkedListBoxTransfer);
+            this.panelCreateTicket.Controls.Add(this.lblErroroCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.lblErrorCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.cmbPriorityIncident);
+            this.panelCreateTicket.Controls.Add(this.txtDescriptionIncident);
+            this.panelCreateTicket.Controls.Add(this.cmbDeadlineIncident);
+            this.panelCreateTicket.Controls.Add(this.cmbTypeIncident);
+            this.panelCreateTicket.Controls.Add(this.txtUserNameIncident);
+            this.panelCreateTicket.Controls.Add(this.txtSubjectIncident);
+            this.panelCreateTicket.Controls.Add(this.txtDateReported);
+            this.panelCreateTicket.Controls.Add(this.label2);
+            this.panelCreateTicket.Controls.Add(this.label3);
+            this.panelCreateTicket.Controls.Add(this.label4);
+            this.panelCreateTicket.Controls.Add(this.label5);
+            this.panelCreateTicket.Controls.Add(this.label6);
+            this.panelCreateTicket.Controls.Add(this.label7);
+            this.panelCreateTicket.Controls.Add(this.label8);
+            this.panelCreateTicket.Controls.Add(this.btnCancelCreateTicket);
+            this.panelCreateTicket.Controls.Add(this.btnSubmitTicket);
+            this.panelCreateTicket.Controls.Add(this.label9);
+            this.panelCreateTicket.Location = new System.Drawing.Point(0, 0);
+            this.panelCreateTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelCreateTicket.Name = "panelCreateTicket";
+            this.panelCreateTicket.Size = new System.Drawing.Size(1056, 510);
+            this.panelCreateTicket.TabIndex = 12;
+            this.panelCreateTicket.Visible = false;
+            // 
+            // checkedListBoxTransfer
+            // 
+            this.checkedListBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBoxTransfer.FormattingEnabled = true;
+            this.checkedListBoxTransfer.Location = new System.Drawing.Point(65, 384);
+            this.checkedListBoxTransfer.Name = "checkedListBoxTransfer";
+            this.checkedListBoxTransfer.Size = new System.Drawing.Size(509, 114);
+            this.checkedListBoxTransfer.TabIndex = 28;
+            // 
+            // lblErroroCreateTicket
+            // 
+            this.lblErroroCreateTicket.ForeColor = System.Drawing.Color.Red;
+            this.lblErroroCreateTicket.Location = new System.Drawing.Point(125, 425);
+            this.lblErroroCreateTicket.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblErroroCreateTicket.Name = "lblErroroCreateTicket";
+            this.lblErroroCreateTicket.Size = new System.Drawing.Size(71, 30);
+            this.lblErroroCreateTicket.TabIndex = 26;
+            // 
+            // lblErrorCreateTicket
+            // 
+            this.lblErrorCreateTicket.AutoSize = true;
+            this.lblErrorCreateTicket.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorCreateTicket.Location = new System.Drawing.Point(196, 425);
+            this.lblErrorCreateTicket.Name = "lblErrorCreateTicket";
+            this.lblErrorCreateTicket.Size = new System.Drawing.Size(0, 25);
+            this.lblErrorCreateTicket.TabIndex = 25;
+            // 
+            // cmbPriorityIncident
+            // 
+            this.cmbPriorityIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPriorityIncident.FormattingEnabled = true;
+            this.cmbPriorityIncident.Items.AddRange(new object[] {
+            "Low",
+            "Normal",
+            "High"});
+            this.cmbPriorityIncident.Location = new System.Drawing.Point(258, 271);
+            this.cmbPriorityIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPriorityIncident.Name = "cmbPriorityIncident";
+            this.cmbPriorityIncident.Size = new System.Drawing.Size(316, 28);
+            this.cmbPriorityIncident.TabIndex = 24;
+            // 
+            // txtDescriptionIncident
+            // 
+            this.txtDescriptionIncident.Location = new System.Drawing.Point(715, 146);
+            this.txtDescriptionIncident.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescriptionIncident.Name = "txtDescriptionIncident";
+            this.txtDescriptionIncident.Size = new System.Drawing.Size(289, 212);
+            this.txtDescriptionIncident.TabIndex = 23;
+            this.txtDescriptionIncident.Text = "";
+            // 
+            // cmbDeadlineIncident
+            // 
+            this.cmbDeadlineIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeadlineIncident.FormattingEnabled = true;
+            this.cmbDeadlineIncident.Items.AddRange(new object[] {
+            "7 days",
+            "14 days",
+            "28 days",
+            "6 months"});
+            this.cmbDeadlineIncident.Location = new System.Drawing.Point(258, 312);
+            this.cmbDeadlineIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDeadlineIncident.Name = "cmbDeadlineIncident";
+            this.cmbDeadlineIncident.Size = new System.Drawing.Size(316, 28);
+            this.cmbDeadlineIncident.TabIndex = 22;
+            // 
+            // cmbTypeIncident
+            // 
+            this.cmbTypeIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTypeIncident.FormattingEnabled = true;
+            this.cmbTypeIncident.Items.AddRange(new object[] {
+            "Software",
+            "Hardware",
+            "Service"});
+            this.cmbTypeIncident.Location = new System.Drawing.Point(258, 191);
+            this.cmbTypeIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbTypeIncident.Name = "cmbTypeIncident";
+            this.cmbTypeIncident.Size = new System.Drawing.Size(316, 28);
+            this.cmbTypeIncident.TabIndex = 21;
+            // 
+            // txtUserNameIncident
+            // 
+            this.txtUserNameIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserNameIncident.Location = new System.Drawing.Point(258, 234);
+            this.txtUserNameIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserNameIncident.Name = "txtUserNameIncident";
+            this.txtUserNameIncident.Size = new System.Drawing.Size(316, 26);
+            this.txtUserNameIncident.TabIndex = 18;
+            // 
+            // txtSubjectIncident
+            // 
+            this.txtSubjectIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubjectIncident.Location = new System.Drawing.Point(258, 153);
+            this.txtSubjectIncident.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSubjectIncident.Name = "txtSubjectIncident";
+            this.txtSubjectIncident.Size = new System.Drawing.Size(316, 26);
+            this.txtSubjectIncident.TabIndex = 17;
+            // 
+            // txtDateReported
+            // 
+            this.txtDateReported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateReported.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtDateReported.Location = new System.Drawing.Point(258, 115);
+            this.txtDateReported.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDateReported.Name = "txtDateReported";
+            this.txtDateReported.Size = new System.Drawing.Size(316, 26);
+            this.txtDateReported.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(711, 121);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Description:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(61, 320);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(151, 20);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Deadline/follow up:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(61, 279);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Priority:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(61, 240);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(142, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Reported by user:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(61, 199);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(132, 20);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Type of incident:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(61, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 20);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Subject of incident:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(61, 121);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 20);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Date/time reported:";
+            // 
+            // btnCancelCreateTicket
+            // 
+            this.btnCancelCreateTicket.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelCreateTicket.Location = new System.Drawing.Point(741, 391);
+            this.btnCancelCreateTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelCreateTicket.Name = "btnCancelCreateTicket";
+            this.btnCancelCreateTicket.Size = new System.Drawing.Size(124, 39);
+            this.btnCancelCreateTicket.TabIndex = 8;
+            this.btnCancelCreateTicket.Text = "CANCEL";
+            this.btnCancelCreateTicket.UseVisualStyleBackColor = false;
+            this.btnCancelCreateTicket.Click += new System.EventHandler(this.btnCancelCreateTicket_Click);
+            // 
+            // btnSubmitTicket
+            // 
+            this.btnSubmitTicket.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnSubmitTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitTicket.Location = new System.Drawing.Point(873, 391);
+            this.btnSubmitTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubmitTicket.Name = "btnSubmitTicket";
+            this.btnSubmitTicket.Size = new System.Drawing.Size(131, 39);
+            this.btnSubmitTicket.TabIndex = 7;
+            this.btnSubmitTicket.Text = "SUBMIT TICKET";
+            this.btnSubmitTicket.UseVisualStyleBackColor = false;
+            this.btnSubmitTicket.Click += new System.EventHandler(this.btnSubmitTicket_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(61, 32);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(296, 39);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Create new ticket";
             // 
             // panelTicketsOverview
             // 
@@ -282,8 +530,8 @@
             this.panelTicketsOverview.Controls.Add(this.btnHigh);
             this.panelTicketsOverview.Controls.Add(this.btnResolve);
             this.panelTicketsOverview.Controls.Add(this.btnCloseTicket);
-            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
             this.panelTicketsOverview.Controls.Add(this.btnEditTicket);
+            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
             this.panelTicketsOverview.Controls.Add(this.label1);
             this.panelTicketsOverview.Controls.Add(this.btnCreateTicket);
             this.panelTicketsOverview.Controls.Add(this.textBoxFilterBySubject);
@@ -557,6 +805,7 @@
             // 
             this.columnHeader15.Text = "priority";
             // 
+
             // panelCreateTicket
             // 
             this.panelCreateTicket.Controls.Add(this.lblErroroCreateTicket);
@@ -1080,6 +1329,28 @@
             this.lblAddUser.TabIndex = 5;
             this.lblAddUser.Text = "Create new user";
             // 
+            // checkBoxTransfer
+            // 
+            this.checkBoxTransfer.AutoSize = true;
+            this.checkBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxTransfer.Location = new System.Drawing.Point(258, 354);
+            this.checkBoxTransfer.Name = "checkBoxTransfer";
+            this.checkBoxTransfer.Size = new System.Drawing.Size(59, 24);
+            this.checkBoxTransfer.TabIndex = 29;
+            this.checkBoxTransfer.Text = "Yes";
+            this.checkBoxTransfer.UseVisualStyleBackColor = true;
+            this.checkBoxTransfer.CheckedChanged += new System.EventHandler(this.checkBoxTransfer_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(61, 355);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 20);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Transfer ticket?";
+            // 
             // ServiceDeskEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1093,10 +1364,10 @@
             this.tabPageDashboard.ResumeLayout(false);
             this.tabPageDashboard.PerformLayout();
             this.tabPageIncidentManagement.ResumeLayout(false);
-            this.panelTicketsOverview.ResumeLayout(false);
-            this.panelTicketsOverview.PerformLayout();
             this.panelCreateTicket.ResumeLayout(false);
             this.panelCreateTicket.PerformLayout();
+            this.panelTicketsOverview.ResumeLayout(false);
+            this.panelTicketsOverview.PerformLayout();
             this.tabPageUserManagement.ResumeLayout(false);
             this.panelUserManagement.ResumeLayout(false);
             this.panelUserManagement.PerformLayout();
@@ -1192,5 +1463,8 @@
         private CircularProgressBar.CircularProgressBar pbUnresolved;
         private CircularProgressBar.CircularProgressBar pbPast;
         private System.Windows.Forms.RadioButton radioButtonNoFilter;
+        private System.Windows.Forms.CheckedListBox checkedListBoxTransfer;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox checkBoxTransfer;
     }
 }
