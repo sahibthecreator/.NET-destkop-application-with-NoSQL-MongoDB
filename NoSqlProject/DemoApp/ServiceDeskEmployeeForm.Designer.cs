@@ -38,6 +38,8 @@
             this.pbPast = new CircularProgressBar.CircularProgressBar();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
             this.panelCreateTicket = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
             this.checkedListBoxTransfer = new System.Windows.Forms.CheckedListBox();
             this.lblErroroCreateTicket = new System.Windows.Forms.Label();
             this.lblErrorCreateTicket = new System.Windows.Forms.Label();
@@ -70,8 +72,8 @@
             this.btnHigh = new System.Windows.Forms.Button();
             this.btnResolve = new System.Windows.Forms.Button();
             this.btnCloseTicket = new System.Windows.Forms.Button();
-            this.btnDeleteTicket = new System.Windows.Forms.Button();
             this.btnEditTicket = new System.Windows.Forms.Button();
+            this.btnDeleteTicket = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCreateTicket = new System.Windows.Forms.Button();
             this.textBoxFilterBySubject = new System.Windows.Forms.TextBox();
@@ -112,8 +114,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblAddUser = new System.Windows.Forms.Label();
-            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageDashboard.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
@@ -134,7 +134,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1067, 550);
+            this.tabControl1.Size = new System.Drawing.Size(1306, 550);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tabControl1_KeyPress);
             // 
@@ -150,7 +150,7 @@
             this.tabPageDashboard.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabPageDashboard.Name = "tabPageDashboard";
             this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageDashboard.Size = new System.Drawing.Size(1059, 512);
+            this.tabPageDashboard.Size = new System.Drawing.Size(1298, 512);
             this.tabPageDashboard.TabIndex = 0;
             this.tabPageDashboard.Text = "Dashboard";
             this.tabPageDashboard.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@
             this.lblUnresolved2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnresolved2.Location = new System.Drawing.Point(117, 80);
             this.lblUnresolved2.Name = "lblUnresolved2";
-            this.lblUnresolved2.Size = new System.Drawing.Size(213, 24);
+            this.lblUnresolved2.Size = new System.Drawing.Size(205, 22);
             this.lblUnresolved2.TabIndex = 5;
             this.lblUnresolved2.Text = "All tickets currently open";
             // 
@@ -181,7 +181,7 @@
             this.lblPast2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPast2.Location = new System.Drawing.Point(559, 80);
             this.lblPast2.Name = "lblPast2";
-            this.lblPast2.Size = new System.Drawing.Size(378, 24);
+            this.lblPast2.Size = new System.Drawing.Size(362, 22);
             this.lblPast2.TabIndex = 3;
             this.lblPast2.Text = "These tickets need your immediate attention";
             // 
@@ -261,13 +261,13 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
             this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
+            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 34);
             this.tabPageIncidentManagement.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
             this.tabPageIncidentManagement.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageIncidentManagement.Size = new System.Drawing.Size(1059, 512);
+            this.tabPageIncidentManagement.Size = new System.Drawing.Size(1298, 512);
             this.tabPageIncidentManagement.TabIndex = 1;
             this.tabPageIncidentManagement.Text = "Incident Management";
             this.tabPageIncidentManagement.UseVisualStyleBackColor = true;
@@ -299,9 +299,31 @@
             this.panelCreateTicket.Location = new System.Drawing.Point(0, 0);
             this.panelCreateTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelCreateTicket.Name = "panelCreateTicket";
-            this.panelCreateTicket.Size = new System.Drawing.Size(1056, 510);
+            this.panelCreateTicket.Size = new System.Drawing.Size(1298, 510);
             this.panelCreateTicket.TabIndex = 12;
             this.panelCreateTicket.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(61, 355);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 20);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Transfer ticket?";
+            // 
+            // checkBoxTransfer
+            // 
+            this.checkBoxTransfer.AutoSize = true;
+            this.checkBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxTransfer.Location = new System.Drawing.Point(258, 354);
+            this.checkBoxTransfer.Name = "checkBoxTransfer";
+            this.checkBoxTransfer.Size = new System.Drawing.Size(59, 24);
+            this.checkBoxTransfer.TabIndex = 29;
+            this.checkBoxTransfer.Text = "Yes";
+            this.checkBoxTransfer.UseVisualStyleBackColor = true;
+            this.checkBoxTransfer.CheckedChanged += new System.EventHandler(this.checkBoxTransfer_CheckedChanged);
             // 
             // checkedListBoxTransfer
             // 
@@ -309,7 +331,7 @@
             this.checkedListBoxTransfer.FormattingEnabled = true;
             this.checkedListBoxTransfer.Location = new System.Drawing.Point(65, 384);
             this.checkedListBoxTransfer.Name = "checkedListBoxTransfer";
-            this.checkedListBoxTransfer.Size = new System.Drawing.Size(509, 114);
+            this.checkedListBoxTransfer.Size = new System.Drawing.Size(509, 99);
             this.checkedListBoxTransfer.TabIndex = 28;
             // 
             // lblErroroCreateTicket
@@ -539,7 +561,7 @@
             this.panelTicketsOverview.Location = new System.Drawing.Point(0, 0);
             this.panelTicketsOverview.Margin = new System.Windows.Forms.Padding(4);
             this.panelTicketsOverview.Name = "panelTicketsOverview";
-            this.panelTicketsOverview.Size = new System.Drawing.Size(1056, 510);
+            this.panelTicketsOverview.Size = new System.Drawing.Size(1294, 510);
             this.panelTicketsOverview.TabIndex = 0;
             // 
             // radioButtonNoFilter
@@ -678,19 +700,6 @@
             this.btnCloseTicket.UseVisualStyleBackColor = false;
             this.btnCloseTicket.Click += new System.EventHandler(this.btnCloseTicket_Click);
             // 
-            // btnDeleteTicket
-            // 
-            this.btnDeleteTicket.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteTicket.Location = new System.Drawing.Point(696, 85);
-            this.btnDeleteTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteTicket.Name = "btnDeleteTicket";
-            this.btnDeleteTicket.Size = new System.Drawing.Size(100, 41);
-            this.btnDeleteTicket.TabIndex = 13;
-            this.btnDeleteTicket.Text = "DELETE";
-            this.btnDeleteTicket.UseVisualStyleBackColor = false;
-            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
-            // 
             // btnEditTicket
             // 
             this.btnEditTicket.BackColor = System.Drawing.Color.Gray;
@@ -704,11 +713,24 @@
             this.btnEditTicket.UseVisualStyleBackColor = false;
             this.btnEditTicket.Click += new System.EventHandler(this.btnEditTicket_Click);
             // 
+            // btnDeleteTicket
+            // 
+            this.btnDeleteTicket.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTicket.Location = new System.Drawing.Point(696, 85);
+            this.btnDeleteTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteTicket.Name = "btnDeleteTicket";
+            this.btnDeleteTicket.Size = new System.Drawing.Size(100, 41);
+            this.btnDeleteTicket.TabIndex = 13;
+            this.btnDeleteTicket.Text = "DELETE";
+            this.btnDeleteTicket.UseVisualStyleBackColor = false;
+            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 25);
+            this.label1.Location = new System.Drawing.Point(32, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(285, 39);
@@ -732,7 +754,7 @@
             // 
             this.textBoxFilterBySubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFilterBySubject.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxFilterBySubject.Location = new System.Drawing.Point(164, 96);
+            this.textBoxFilterBySubject.Location = new System.Drawing.Point(37, 97);
             this.textBoxFilterBySubject.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFilterBySubject.Name = "textBoxFilterBySubject";
             this.textBoxFilterBySubject.Size = new System.Drawing.Size(215, 29);
@@ -756,10 +778,10 @@
             this.listViewTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewTickets.FullRowSelect = true;
             this.listViewTickets.HideSelection = false;
-            this.listViewTickets.Location = new System.Drawing.Point(164, 151);
+            this.listViewTickets.Location = new System.Drawing.Point(164, 159);
             this.listViewTickets.Margin = new System.Windows.Forms.Padding(4);
             this.listViewTickets.Name = "listViewTickets";
-            this.listViewTickets.Size = new System.Drawing.Size(880, 347);
+            this.listViewTickets.Size = new System.Drawing.Size(1088, 347);
             this.listViewTickets.TabIndex = 9;
             this.listViewTickets.UseCompatibleStateImageBehavior = false;
             this.listViewTickets.View = System.Windows.Forms.View.Details;
@@ -813,7 +835,7 @@
             this.tabPageUserManagement.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageUserManagement.Name = "tabPageUserManagement";
             this.tabPageUserManagement.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageUserManagement.Size = new System.Drawing.Size(1059, 512);
+            this.tabPageUserManagement.Size = new System.Drawing.Size(1298, 512);
             this.tabPageUserManagement.TabIndex = 2;
             this.tabPageUserManagement.Text = "User Management";
             this.tabPageUserManagement.UseVisualStyleBackColor = true;
@@ -1095,33 +1117,11 @@
             this.lblAddUser.TabIndex = 5;
             this.lblAddUser.Text = "Create new user";
             // 
-            // checkBoxTransfer
-            // 
-            this.checkBoxTransfer.AutoSize = true;
-            this.checkBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxTransfer.Location = new System.Drawing.Point(258, 354);
-            this.checkBoxTransfer.Name = "checkBoxTransfer";
-            this.checkBoxTransfer.Size = new System.Drawing.Size(59, 24);
-            this.checkBoxTransfer.TabIndex = 29;
-            this.checkBoxTransfer.Text = "Yes";
-            this.checkBoxTransfer.UseVisualStyleBackColor = true;
-            this.checkBoxTransfer.CheckedChanged += new System.EventHandler(this.checkBoxTransfer_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(61, 355);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(126, 20);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "Transfer ticket?";
-            // 
             // ServiceDeskEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1319, 554);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ServiceDeskEmployeeForm";
