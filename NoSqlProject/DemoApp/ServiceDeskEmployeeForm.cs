@@ -28,8 +28,9 @@ namespace DemoApp
         public ServiceDeskEmployeeForm()
         {
             InitializeComponent();
-            loadIncidents(string.Empty);
-            loadUsers(string.Empty);
+            incidents = incidentService.GetAllIncidents();
+            LoadIncidents(string.Empty);
+            LoadUsers(string.Empty);
             textBoxes.Add(txtFirstName);
             textBoxes.Add(txtLastName);
             textBoxes.Add(txtEmail);
@@ -89,10 +90,10 @@ namespace DemoApp
             incidents = incidentService.GetAllIncidents();
             if (status != null)
                 incidents = filteringList.FilterIncidentByStatus(incidents, status);
-            loadIncidents(string.Empty);
+            LoadIncidents(string.Empty);
         }
 
-        private void loadUsers(string str)
+        private void LoadUsers(string str)
         {
             try
             {
@@ -146,7 +147,7 @@ namespace DemoApp
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                loadUsers(textBoxFilterByEmail.Text);
+                LoadUsers(textBoxFilterByEmail.Text);
             }
         }
 
@@ -167,22 +168,22 @@ namespace DemoApp
             panelUserManagement.Visible = true;
             panelAddUser.Visible = false;
 
-            clearBoxes();
+            ClearBoxes();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (!validateTextBoxes(textBoxes) || !validateComboBoxes(comboBoxes))
+            if (!ValidateTextBoxes(textBoxes) || !ValidateComboBoxes(comboBoxes))
             {
-                fillEmptyTextBoxes();
-                fillEmptyComboBoxes();
+                FillEmptyTextBoxes();
+                FillEmptyComboBoxes();
 
-                if (!validateEmail(txtEmail.Text))
+                if (!ValidateEmail(txtEmail.Text))
                 {
                     txtEmail.ForeColor = Color.Red;
                     txtEmail.Text = "Invalid input...";
                 }
-                if (!validatePhoneNumber(txtPhoneNumber.Text))
+                if (!ValidatePhoneNumber(txtPhoneNumber.Text))
                 {
                     txtPhoneNumber.ForeColor = Color.Red;
                     txtPhoneNumber.Text = "Invalid input...";
@@ -190,17 +191,17 @@ namespace DemoApp
             }
             else
             {    
-                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, hashPassword(), comboType.Text);
+                User user = new User(txtFirstName.Text, txtLastName.Text, comboLocation.Text, txtPhoneNumber.Text, txtEmail.Text, HashPassword(), comboType.Text);
                 UserService userService = new UserService();
                 userService.AddUser(user);
-                clearBoxes();
+                ClearBoxes();
                 panelUserManagement.Visible = true;
                 panelAddUser.Visible = false;
-                loadUsers("");
+                LoadUsers("");
             }
         }
 
-        public string hashPassword()
+        public string HashPassword()
         {
             Random rand = new Random();
             int passwordLength = rand.Next(6, 12);
@@ -224,7 +225,7 @@ namespace DemoApp
             return Convert.ToBase64String(hashBytes);
         }
 
-        private void fillEmptyTextBoxes()
+        private void FillEmptyTextBoxes()
         {
             foreach (TextBox textBox in textBoxes)
             {
@@ -236,7 +237,7 @@ namespace DemoApp
             }
         }
 
-        private void fillEmptyComboBoxes()
+        private void FillEmptyComboBoxes()
         {
             foreach (ComboBox comboBox in comboBoxes)
             {
@@ -248,7 +249,7 @@ namespace DemoApp
             }
         }
 
-        private bool validateTextBoxes(List<TextBox> textBoxes)
+        private bool ValidateTextBoxes(List<TextBox> textBoxes)
         {
             int count = 0;
 
@@ -262,7 +263,7 @@ namespace DemoApp
             return false;
         }
 
-        private bool validateComboBoxes(List<ComboBox> comboBoxes)
+        private bool ValidateComboBoxes(List<ComboBox> comboBoxes)
         {
             int count = 0;
 
@@ -292,13 +293,13 @@ namespace DemoApp
             cb.ForeColor = Color.Black;
         }
 
-        private bool validateEmail(string email)
+        private bool ValidateEmail(string email)
         {
             if (email.Contains("@gmail.com"))
                 return true;
             return false;
         }
-        private bool validatePhoneNumber(string number)
+        private bool ValidatePhoneNumber(string number)
         {
             int count = 0;
             if (number.Length == 10)
@@ -314,7 +315,7 @@ namespace DemoApp
             return false;
         }
 
-        private void clearBoxes()
+        private void ClearBoxes()
         {
             foreach (TextBox textBox in textBoxes)
             {
@@ -329,13 +330,11 @@ namespace DemoApp
             }
         }
 
-        private void loadIncidents(string str)
+        private void LoadIncidents(string str)
         {
             try
             {
-                if(incidents == null)
-                    incidents = incidentService.GetAllIncidents();
-                fillListViewIncident(str);
+                FillListViewIncident(str);
             }
             catch (Exception exp)
             {
@@ -349,7 +348,7 @@ namespace DemoApp
             {
                 panelCreateTicket.Visible = false;
                 panelTicketsOverview.Visible = true;
-                lblErrorCreateTicket.Text = "";
+                EmptyIncidentFields();
             }
             catch (Exception exp)
             {
@@ -360,52 +359,48 @@ namespace DemoApp
         private void btnSubmitTicket_Click(object sender, EventArgs e)
         {
             Incident ticket = (Incident)listViewTickets.SelectedItems[0].Tag;
-
+            if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
+            {
+                lblErrorCreateTicket.Text = "please fill in the required information!";
+                return;
+            }
+            if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
+                ticket.Deadline = ticket.Date.AddMonths(6);
+            else
+            {
+                string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
+                ticket.Deadline = ticket.Date.AddDays(int.Parse(splitCmbString[0]));
+            }
+            ticket.Date = Convert.ToDateTime(txtDateReported.Text);
+            ticket.Type = (TicketType)cmbTypeIncident.SelectedIndex;
+            ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
+            ticket.Subject = txtSubjectIncident.Text;
+            ticket.Description = txtDescriptionIncident.Text;
             if (label9.Text.Equals("Edit Ticket"))
             {
-                ticket.Date = Convert.ToDateTime(txtDateReported.Text);
-                if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
-                    ticket.Deadline = ticket.Date.AddMonths(6);
-                else
-                {
-                    string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
-                    ticket.Deadline = ticket.Date.AddDays(int.Parse(splitCmbString[0]));
-                }
-                ticket.Type = (TicketType)cmbTypeIncident.SelectedIndex;
-                ticket.Priority = (Priority)cmbPriorityIncident.SelectedIndex;
-                ticket.Subject = txtSubjectIncident.Text;
-                ticket.Description = txtDescriptionIncident.Text;
-                // transfer ticket
                 string[] reporter = checkedListBoxTransfer.CheckedItems[0].ToString().Split(':');
                 ticket.Reporter = reporter[1];
                 // edit ticket
                 incidentService.EditTicket(ticket);
             }
-            else if(label9.Text.Equals("Create new ticket"))
+            else if (label9.Text.Equals("Create new ticket"))
             {
-                if (cmbDeadlineIncident.Text.Length == 0 || cmbPriorityIncident.Text.Length == 0 || cmbTypeIncident.Text.Length == 0)
-                {
-                    lblErrorCreateTicket.Text = "please fill in the required information!";
-                    return;
-                }
-                DateTime date = Convert.ToDateTime(txtDateReported.Text);
-                string[] splitCmbString = cmbDeadlineIncident.SelectedItem.ToString().Split(' ');
-
-                if (cmbDeadlineIncident.SelectedItem.ToString() == "6 months")
-                {
-                    ticket.Deadline = date.AddMonths(6);
-                }
-                else
-                {
-                    ticket.Deadline = date.AddDays(int.Parse(splitCmbString[0]));
-                }
-                incidentService.CreateTicket(ticket, (TicketType)cmbTypeIncident.SelectedIndex, Status.open, (Priority)Enum.Parse(typeof(Priority), cmbPriorityIncident.Text, true));
+                ticket.Status = Status.open;
+                incidentService.CreateTicket(ticket);
             }
             txtUserNameIncident.Enabled = true;
             panelTicketsOverview.Visible = true;
             panelCreateTicket.Visible = false;
+            LoadIncidents(string.Empty);
+            EmptyIncidentFields();
+        }
+
+        private void EmptyIncidentFields()
+        {
             lblErrorCreateTicket.Text = "";
-            loadIncidents(string.Empty);
+            cmbDeadlineIncident.Text = "";
+            cmbPriorityIncident.Text = "";
+            cmbTypeIncident.Text = "";
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -417,9 +412,10 @@ namespace DemoApp
                     foreach (ListViewItem item in listViewTickets.SelectedItems)
                     {
                         incidentService.DeleteTicket((Incident)item.Tag);
+                        listViewTickets.Items.Remove(item);
                     }
                 }
-                loadIncidents(string.Empty);
+                LoadIncidents(string.Empty);
             }
             catch (Exception exp)
             {
@@ -449,15 +445,15 @@ namespace DemoApp
 
         private void btnCloseTicket_Click(object sender, EventArgs e)
         {
-            updateStatus(Status.closed);
+            UpdateStatus(Status.closed);
         }
 
         private void btnResolve_Click(object sender, EventArgs e)
         {
-            updateStatus(Status.resolved);
+            UpdateStatus(Status.resolved);
         }
 
-        private void updateStatus(Status status)
+        private void UpdateStatus(Status status)
         {
             List<Incident> tickets = new List<Incident>();
             if (listViewTickets.SelectedItems.Count > 0)
@@ -500,11 +496,11 @@ namespace DemoApp
                     MessageBox.Show(message);
                 }
             }
-            loadIncidents(string.Empty);
+            LoadIncidents(string.Empty);
         }
 
 
-        private void fillListViewIncident(string str)
+        private void FillListViewIncident(string str)
         {
             listViewTickets.Items.Clear();
             foreach (Incident incident in incidents)
@@ -530,12 +526,12 @@ namespace DemoApp
         private void btnHigh_Click(object sender, EventArgs e)
         {
             incidents = sortByPriority.SortByHigh(incidents);
-            fillListViewIncident(string.Empty);
+            FillListViewIncident(string.Empty);
         }
         private void btnLow_Click(object sender, EventArgs e)
         {
             incidents = sortByPriority.SortByLow(incidents);
-            fillListViewIncident(string.Empty);
+            FillListViewIncident(string.Empty);
         }
 
         private void btnEditTicket_Click(object sender, EventArgs e)
@@ -561,7 +557,7 @@ namespace DemoApp
                     else if (timeSpan.Days >= 150 && timeSpan.Days <= 200)
                         cmbDeadlineIncident.SelectedItem = "6 month";
 
-                    cmbTypeIncident.SelectedItem = selectedTicket.Type;
+                    cmbTypeIncident.Text = selectedTicket.Type.ToString();
 
                     cmbPriorityIncident.SelectedItem = char.ToUpper(selectedTicket.Priority.ToString()[0]) + selectedTicket.Priority.ToString().Substring(1);
 
@@ -578,12 +574,12 @@ namespace DemoApp
         //search bar for incidents and users
         private void textBoxFilterBySubject_TextChanged(object sender, EventArgs e)
         {
-            loadIncidents(textBoxFilterBySubject.Text.ToLower());
+            LoadIncidents(textBoxFilterBySubject.Text.ToLower());
         }
 
         private void textBoxFilterByEmail_TextChanged(object sender, EventArgs e)
         {
-            loadUsers(textBoxFilterByEmail.Text.ToLower());
+            LoadUsers(textBoxFilterByEmail.Text.ToLower());
         }
 
         //add button in the User Management interface
