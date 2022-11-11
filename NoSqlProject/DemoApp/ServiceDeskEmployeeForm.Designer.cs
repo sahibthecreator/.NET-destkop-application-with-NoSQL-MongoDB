@@ -37,29 +37,6 @@
             this.pbUnresolved = new CircularProgressBar.CircularProgressBar();
             this.pbPast = new CircularProgressBar.CircularProgressBar();
             this.tabPageIncidentManagement = new System.Windows.Forms.TabPage();
-            this.panelCreateTicket = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
-            this.checkedListBoxTransfer = new System.Windows.Forms.CheckedListBox();
-            this.lblErroroCreateTicket = new System.Windows.Forms.Label();
-            this.lblErrorCreateTicket = new System.Windows.Forms.Label();
-            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
-            this.txtDescriptionIncident = new System.Windows.Forms.RichTextBox();
-            this.cmbDeadlineIncident = new System.Windows.Forms.ComboBox();
-            this.cmbTypeIncident = new System.Windows.Forms.ComboBox();
-            this.txtUserNameIncident = new System.Windows.Forms.TextBox();
-            this.txtSubjectIncident = new System.Windows.Forms.TextBox();
-            this.txtDateReported = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
-            this.btnSubmitTicket = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.panelTicketsOverview = new System.Windows.Forms.Panel();
             this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.radioButtonResolved = new System.Windows.Forms.RadioButton();
@@ -87,6 +64,29 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panelCreateTicket = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
+            this.checkedListBoxTransfer = new System.Windows.Forms.CheckedListBox();
+            this.lblErroroCreateTicket = new System.Windows.Forms.Label();
+            this.lblErrorCreateTicket = new System.Windows.Forms.Label();
+            this.cmbPriorityIncident = new System.Windows.Forms.ComboBox();
+            this.txtDescriptionIncident = new System.Windows.Forms.RichTextBox();
+            this.cmbDeadlineIncident = new System.Windows.Forms.ComboBox();
+            this.cmbTypeIncident = new System.Windows.Forms.ComboBox();
+            this.txtUserNameIncident = new System.Windows.Forms.TextBox();
+            this.txtSubjectIncident = new System.Windows.Forms.TextBox();
+            this.txtDateReported = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelCreateTicket = new System.Windows.Forms.Button();
+            this.btnSubmitTicket = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabPageUserManagement = new System.Windows.Forms.TabPage();
             this.panelUserManagement = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -117,8 +117,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPageDashboard.SuspendLayout();
             this.tabPageIncidentManagement.SuspendLayout();
-            this.panelCreateTicket.SuspendLayout();
             this.panelTicketsOverview.SuspendLayout();
+            this.panelCreateTicket.SuspendLayout();
             this.tabPageUserManagement.SuspendLayout();
             this.panelUserManagement.SuspendLayout();
             this.panelAddUser.SuspendLayout();
@@ -161,7 +161,7 @@
             this.lblUnresolved2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnresolved2.Location = new System.Drawing.Point(117, 80);
             this.lblUnresolved2.Name = "lblUnresolved2";
-            this.lblUnresolved2.Size = new System.Drawing.Size(205, 22);
+            this.lblUnresolved2.Size = new System.Drawing.Size(213, 24);
             this.lblUnresolved2.TabIndex = 5;
             this.lblUnresolved2.Text = "All tickets currently open";
             // 
@@ -181,7 +181,7 @@
             this.lblPast2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPast2.Location = new System.Drawing.Point(559, 80);
             this.lblPast2.Name = "lblPast2";
-            this.lblPast2.Size = new System.Drawing.Size(362, 22);
+            this.lblPast2.Size = new System.Drawing.Size(378, 24);
             this.lblPast2.TabIndex = 3;
             this.lblPast2.Text = "These tickets need your immediate attention";
             // 
@@ -261,8 +261,8 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
+            this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 34);
             this.tabPageIncidentManagement.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
@@ -271,6 +271,296 @@
             this.tabPageIncidentManagement.TabIndex = 1;
             this.tabPageIncidentManagement.Text = "Incident Management";
             this.tabPageIncidentManagement.UseVisualStyleBackColor = true;
+            // 
+            // panelTicketsOverview
+            // 
+            this.panelTicketsOverview.Controls.Add(this.radioButtonNoFilter);
+            this.panelTicketsOverview.Controls.Add(this.radioButtonResolved);
+            this.panelTicketsOverview.Controls.Add(this.radioButtonClosed);
+            this.panelTicketsOverview.Controls.Add(this.radioButtonOpen);
+            this.panelTicketsOverview.Controls.Add(this.radioButtonIncident);
+            this.panelTicketsOverview.Controls.Add(this.label11);
+            this.panelTicketsOverview.Controls.Add(this.btnLow);
+            this.panelTicketsOverview.Controls.Add(this.label10);
+            this.panelTicketsOverview.Controls.Add(this.btnHigh);
+            this.panelTicketsOverview.Controls.Add(this.btnResolve);
+            this.panelTicketsOverview.Controls.Add(this.btnCloseTicket);
+            this.panelTicketsOverview.Controls.Add(this.btnEditTicket);
+            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
+            this.panelTicketsOverview.Controls.Add(this.label1);
+            this.panelTicketsOverview.Controls.Add(this.btnCreateTicket);
+            this.panelTicketsOverview.Controls.Add(this.textBoxFilterBySubject);
+            this.panelTicketsOverview.Controls.Add(this.listViewTickets);
+            this.panelTicketsOverview.Location = new System.Drawing.Point(0, 0);
+            this.panelTicketsOverview.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTicketsOverview.Name = "panelTicketsOverview";
+            this.panelTicketsOverview.Size = new System.Drawing.Size(1294, 510);
+            this.panelTicketsOverview.TabIndex = 0;
+            // 
+            // radioButtonNoFilter
+            // 
+            this.radioButtonNoFilter.AutoSize = true;
+            this.radioButtonNoFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radioButtonNoFilter.Location = new System.Drawing.Point(12, 354);
+            this.radioButtonNoFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
+            this.radioButtonNoFilter.Size = new System.Drawing.Size(77, 22);
+            this.radioButtonNoFilter.TabIndex = 24;
+            this.radioButtonNoFilter.TabStop = true;
+            this.radioButtonNoFilter.Text = "no filter";
+            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonResolved
+            // 
+            this.radioButtonResolved.AutoSize = true;
+            this.radioButtonResolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radioButtonResolved.Location = new System.Drawing.Point(12, 329);
+            this.radioButtonResolved.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButtonResolved.Name = "radioButtonResolved";
+            this.radioButtonResolved.Size = new System.Drawing.Size(85, 22);
+            this.radioButtonResolved.TabIndex = 23;
+            this.radioButtonResolved.TabStop = true;
+            this.radioButtonResolved.Text = "resolved";
+            this.radioButtonResolved.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonClosed
+            // 
+            this.radioButtonClosed.AutoSize = true;
+            this.radioButtonClosed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radioButtonClosed.Location = new System.Drawing.Point(12, 305);
+            this.radioButtonClosed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButtonClosed.Name = "radioButtonClosed";
+            this.radioButtonClosed.Size = new System.Drawing.Size(73, 22);
+            this.radioButtonClosed.TabIndex = 22;
+            this.radioButtonClosed.TabStop = true;
+            this.radioButtonClosed.Text = "closed";
+            this.radioButtonClosed.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonOpen
+            // 
+            this.radioButtonOpen.AutoSize = true;
+            this.radioButtonOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radioButtonOpen.Location = new System.Drawing.Point(12, 279);
+            this.radioButtonOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButtonOpen.Name = "radioButtonOpen";
+            this.radioButtonOpen.Size = new System.Drawing.Size(62, 22);
+            this.radioButtonOpen.TabIndex = 21;
+            this.radioButtonOpen.TabStop = true;
+            this.radioButtonOpen.Text = "open";
+            this.radioButtonOpen.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonIncident
+            // 
+            this.radioButtonIncident.AutoSize = true;
+            this.radioButtonIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radioButtonIncident.Location = new System.Drawing.Point(12, 254);
+            this.radioButtonIncident.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButtonIncident.Name = "radioButtonIncident";
+            this.radioButtonIncident.Size = new System.Drawing.Size(79, 22);
+            this.radioButtonIncident.TabIndex = 20;
+            this.radioButtonIncident.TabStop = true;
+            this.radioButtonIncident.Text = "incident";
+            this.radioButtonIncident.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label11.Location = new System.Drawing.Point(7, 230);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 24);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Filter by status";
+            // 
+            // btnLow
+            // 
+            this.btnLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLow.Image = global::DemoApp.Properties.Resources.Down;
+            this.btnLow.Location = new System.Drawing.Point(53, 182);
+            this.btnLow.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLow.Name = "btnLow";
+            this.btnLow.Size = new System.Drawing.Size(36, 30);
+            this.btnLow.TabIndex = 18;
+            this.btnLow.UseVisualStyleBackColor = true;
+            this.btnLow.Click += new System.EventHandler(this.btnLow_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label10.Location = new System.Drawing.Point(7, 155);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(128, 24);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Sort by priority";
+            // 
+            // btnHigh
+            // 
+            this.btnHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHigh.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnHigh.Image = global::DemoApp.Properties.Resources.Up;
+            this.btnHigh.Location = new System.Drawing.Point(12, 182);
+            this.btnHigh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHigh.Name = "btnHigh";
+            this.btnHigh.Size = new System.Drawing.Size(36, 30);
+            this.btnHigh.TabIndex = 16;
+            this.btnHigh.UseVisualStyleBackColor = true;
+            this.btnHigh.Click += new System.EventHandler(this.btnHigh_Click);
+            // 
+            // btnResolve
+            // 
+            this.btnResolve.BackColor = System.Drawing.Color.Yellow;
+            this.btnResolve.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResolve.Location = new System.Drawing.Point(947, 85);
+            this.btnResolve.Margin = new System.Windows.Forms.Padding(4);
+            this.btnResolve.Name = "btnResolve";
+            this.btnResolve.Size = new System.Drawing.Size(100, 41);
+            this.btnResolve.TabIndex = 15;
+            this.btnResolve.Text = "RESOLVE";
+            this.btnResolve.UseVisualStyleBackColor = false;
+            this.btnResolve.Click += new System.EventHandler(this.btnResolve_Click);
+            // 
+            // btnCloseTicket
+            // 
+            this.btnCloseTicket.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCloseTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseTicket.Location = new System.Drawing.Point(819, 85);
+            this.btnCloseTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCloseTicket.Name = "btnCloseTicket";
+            this.btnCloseTicket.Size = new System.Drawing.Size(100, 41);
+            this.btnCloseTicket.TabIndex = 14;
+            this.btnCloseTicket.Text = "CLOSE";
+            this.btnCloseTicket.UseVisualStyleBackColor = false;
+            this.btnCloseTicket.Click += new System.EventHandler(this.btnCloseTicket_Click);
+            // 
+            // btnEditTicket
+            // 
+            this.btnEditTicket.BackColor = System.Drawing.Color.Gray;
+            this.btnEditTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditTicket.Location = new System.Drawing.Point(573, 85);
+            this.btnEditTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditTicket.Name = "btnEditTicket";
+            this.btnEditTicket.Size = new System.Drawing.Size(100, 41);
+            this.btnEditTicket.TabIndex = 12;
+            this.btnEditTicket.Text = "EDIT";
+            this.btnEditTicket.UseVisualStyleBackColor = false;
+            this.btnEditTicket.Click += new System.EventHandler(this.btnEditTicket_Click);
+            // 
+            // btnDeleteTicket
+            // 
+            this.btnDeleteTicket.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTicket.Location = new System.Drawing.Point(696, 85);
+            this.btnDeleteTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteTicket.Name = "btnDeleteTicket";
+            this.btnDeleteTicket.Size = new System.Drawing.Size(100, 41);
+            this.btnDeleteTicket.TabIndex = 13;
+            this.btnDeleteTicket.Text = "DELETE";
+            this.btnDeleteTicket.UseVisualStyleBackColor = false;
+            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(32, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(461, 39);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Incidents / Tickets overview";
+            // 
+            // btnCreateTicket
+            // 
+            this.btnCreateTicket.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateTicket.Location = new System.Drawing.Point(405, 85);
+            this.btnCreateTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateTicket.Name = "btnCreateTicket";
+            this.btnCreateTicket.Size = new System.Drawing.Size(149, 41);
+            this.btnCreateTicket.TabIndex = 10;
+            this.btnCreateTicket.Text = "CREATE TICKET";
+            this.btnCreateTicket.UseVisualStyleBackColor = false;
+            this.btnCreateTicket.Click += new System.EventHandler(this.btnCreateTicket_Click);
+            // 
+            // textBoxFilterBySubject
+            // 
+            this.textBoxFilterBySubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFilterBySubject.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxFilterBySubject.Location = new System.Drawing.Point(37, 97);
+            this.textBoxFilterBySubject.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFilterBySubject.Name = "textBoxFilterBySubject";
+            this.textBoxFilterBySubject.Size = new System.Drawing.Size(215, 29);
+            this.textBoxFilterBySubject.TabIndex = 11;
+            this.textBoxFilterBySubject.Text = "Filter by email";
+            this.textBoxFilterBySubject.Click += new System.EventHandler(this.textBoxFilterBySubject_Click);
+            this.textBoxFilterBySubject.TextChanged += new System.EventHandler(this.textBoxFilterBySubject_TextChanged);
+            // 
+            // listViewTickets
+            // 
+            this.listViewTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader11,
+            this.columnHeader2,
+            this.columnHeader12,
+            this.columnHeader3,
+            this.columnHeader14,
+            this.columnHeader13,
+            this.columnHeader5,
+            this.columnHeader15});
+            this.listViewTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewTickets.FullRowSelect = true;
+            this.listViewTickets.HideSelection = false;
+            this.listViewTickets.Location = new System.Drawing.Point(164, 159);
+            this.listViewTickets.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewTickets.Name = "listViewTickets";
+            this.listViewTickets.Size = new System.Drawing.Size(1088, 347);
+            this.listViewTickets.TabIndex = 9;
+            this.listViewTickets.UseCompatibleStateImageBehavior = false;
+            this.listViewTickets.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 80;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "date";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Subject";
+            this.columnHeader2.Width = 80;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Type";
+            this.columnHeader12.Width = 80;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "User";
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "deadline";
+            this.columnHeader14.Width = 120;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Description";
+            this.columnHeader13.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Status";
+            this.columnHeader5.Width = 75;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "priority";
             // 
             // panelCreateTicket
             // 
@@ -327,6 +617,8 @@
             // 
             // checkedListBoxTransfer
             // 
+            this.checkedListBoxTransfer.CausesValidation = false;
+            this.checkedListBoxTransfer.CheckOnClick = true;
             this.checkedListBoxTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListBoxTransfer.FormattingEnabled = true;
             this.checkedListBoxTransfer.Location = new System.Drawing.Point(65, 384);
@@ -538,294 +830,6 @@
             this.label9.Size = new System.Drawing.Size(296, 39);
             this.label9.TabIndex = 5;
             this.label9.Text = "Create new ticket";
-            // 
-            // panelTicketsOverview
-            // 
-            this.panelTicketsOverview.Controls.Add(this.radioButtonNoFilter);
-            this.panelTicketsOverview.Controls.Add(this.radioButtonResolved);
-            this.panelTicketsOverview.Controls.Add(this.radioButtonClosed);
-            this.panelTicketsOverview.Controls.Add(this.radioButtonOpen);
-            this.panelTicketsOverview.Controls.Add(this.radioButtonIncident);
-            this.panelTicketsOverview.Controls.Add(this.label11);
-            this.panelTicketsOverview.Controls.Add(this.btnLow);
-            this.panelTicketsOverview.Controls.Add(this.label10);
-            this.panelTicketsOverview.Controls.Add(this.btnHigh);
-            this.panelTicketsOverview.Controls.Add(this.btnResolve);
-            this.panelTicketsOverview.Controls.Add(this.btnCloseTicket);
-            this.panelTicketsOverview.Controls.Add(this.btnEditTicket);
-            this.panelTicketsOverview.Controls.Add(this.btnDeleteTicket);
-            this.panelTicketsOverview.Controls.Add(this.label1);
-            this.panelTicketsOverview.Controls.Add(this.btnCreateTicket);
-            this.panelTicketsOverview.Controls.Add(this.textBoxFilterBySubject);
-            this.panelTicketsOverview.Controls.Add(this.listViewTickets);
-            this.panelTicketsOverview.Location = new System.Drawing.Point(0, 0);
-            this.panelTicketsOverview.Margin = new System.Windows.Forms.Padding(4);
-            this.panelTicketsOverview.Name = "panelTicketsOverview";
-            this.panelTicketsOverview.Size = new System.Drawing.Size(1294, 510);
-            this.panelTicketsOverview.TabIndex = 0;
-            // 
-            // radioButtonNoFilter
-            // 
-            this.radioButtonNoFilter.AutoSize = true;
-            this.radioButtonNoFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.radioButtonNoFilter.Location = new System.Drawing.Point(12, 354);
-            this.radioButtonNoFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
-            this.radioButtonNoFilter.Size = new System.Drawing.Size(77, 22);
-            this.radioButtonNoFilter.TabIndex = 24;
-            this.radioButtonNoFilter.TabStop = true;
-            this.radioButtonNoFilter.Text = "no filter";
-            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonResolved
-            // 
-            this.radioButtonResolved.AutoSize = true;
-            this.radioButtonResolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.radioButtonResolved.Location = new System.Drawing.Point(12, 329);
-            this.radioButtonResolved.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButtonResolved.Name = "radioButtonResolved";
-            this.radioButtonResolved.Size = new System.Drawing.Size(85, 22);
-            this.radioButtonResolved.TabIndex = 23;
-            this.radioButtonResolved.TabStop = true;
-            this.radioButtonResolved.Text = "resolved";
-            this.radioButtonResolved.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonClosed
-            // 
-            this.radioButtonClosed.AutoSize = true;
-            this.radioButtonClosed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.radioButtonClosed.Location = new System.Drawing.Point(12, 305);
-            this.radioButtonClosed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButtonClosed.Name = "radioButtonClosed";
-            this.radioButtonClosed.Size = new System.Drawing.Size(73, 22);
-            this.radioButtonClosed.TabIndex = 22;
-            this.radioButtonClosed.TabStop = true;
-            this.radioButtonClosed.Text = "closed";
-            this.radioButtonClosed.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonOpen
-            // 
-            this.radioButtonOpen.AutoSize = true;
-            this.radioButtonOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.radioButtonOpen.Location = new System.Drawing.Point(12, 279);
-            this.radioButtonOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButtonOpen.Name = "radioButtonOpen";
-            this.radioButtonOpen.Size = new System.Drawing.Size(62, 22);
-            this.radioButtonOpen.TabIndex = 21;
-            this.radioButtonOpen.TabStop = true;
-            this.radioButtonOpen.Text = "open";
-            this.radioButtonOpen.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonIncident
-            // 
-            this.radioButtonIncident.AutoSize = true;
-            this.radioButtonIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.radioButtonIncident.Location = new System.Drawing.Point(12, 254);
-            this.radioButtonIncident.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButtonIncident.Name = "radioButtonIncident";
-            this.radioButtonIncident.Size = new System.Drawing.Size(79, 22);
-            this.radioButtonIncident.TabIndex = 20;
-            this.radioButtonIncident.TabStop = true;
-            this.radioButtonIncident.Text = "incident";
-            this.radioButtonIncident.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label11.Location = new System.Drawing.Point(7, 230);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 24);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Filter by status";
-            // 
-            // btnLow
-            // 
-            this.btnLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLow.Image = global::DemoApp.Properties.Resources.Down;
-            this.btnLow.Location = new System.Drawing.Point(53, 182);
-            this.btnLow.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLow.Name = "btnLow";
-            this.btnLow.Size = new System.Drawing.Size(36, 30);
-            this.btnLow.TabIndex = 18;
-            this.btnLow.UseVisualStyleBackColor = true;
-            this.btnLow.Click += new System.EventHandler(this.btnLow_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label10.Location = new System.Drawing.Point(7, 155);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(128, 24);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Sort by priority";
-            // 
-            // btnHigh
-            // 
-            this.btnHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHigh.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnHigh.Image = global::DemoApp.Properties.Resources.Up;
-            this.btnHigh.Location = new System.Drawing.Point(12, 182);
-            this.btnHigh.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHigh.Name = "btnHigh";
-            this.btnHigh.Size = new System.Drawing.Size(36, 30);
-            this.btnHigh.TabIndex = 16;
-            this.btnHigh.UseVisualStyleBackColor = true;
-            this.btnHigh.Click += new System.EventHandler(this.btnHigh_Click);
-            // 
-            // btnResolve
-            // 
-            this.btnResolve.BackColor = System.Drawing.Color.Yellow;
-            this.btnResolve.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResolve.Location = new System.Drawing.Point(947, 85);
-            this.btnResolve.Margin = new System.Windows.Forms.Padding(4);
-            this.btnResolve.Name = "btnResolve";
-            this.btnResolve.Size = new System.Drawing.Size(100, 41);
-            this.btnResolve.TabIndex = 15;
-            this.btnResolve.Text = "RESOLVE";
-            this.btnResolve.UseVisualStyleBackColor = false;
-            this.btnResolve.Click += new System.EventHandler(this.btnResolve_Click);
-            // 
-            // btnCloseTicket
-            // 
-            this.btnCloseTicket.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnCloseTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseTicket.Location = new System.Drawing.Point(819, 85);
-            this.btnCloseTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCloseTicket.Name = "btnCloseTicket";
-            this.btnCloseTicket.Size = new System.Drawing.Size(100, 41);
-            this.btnCloseTicket.TabIndex = 14;
-            this.btnCloseTicket.Text = "CLOSE";
-            this.btnCloseTicket.UseVisualStyleBackColor = false;
-            this.btnCloseTicket.Click += new System.EventHandler(this.btnCloseTicket_Click);
-            // 
-            // btnEditTicket
-            // 
-            this.btnEditTicket.BackColor = System.Drawing.Color.Gray;
-            this.btnEditTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditTicket.Location = new System.Drawing.Point(573, 85);
-            this.btnEditTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEditTicket.Name = "btnEditTicket";
-            this.btnEditTicket.Size = new System.Drawing.Size(100, 41);
-            this.btnEditTicket.TabIndex = 12;
-            this.btnEditTicket.Text = "EDIT";
-            this.btnEditTicket.UseVisualStyleBackColor = false;
-            this.btnEditTicket.Click += new System.EventHandler(this.btnEditTicket_Click);
-            // 
-            // btnDeleteTicket
-            // 
-            this.btnDeleteTicket.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteTicket.Location = new System.Drawing.Point(696, 85);
-            this.btnDeleteTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteTicket.Name = "btnDeleteTicket";
-            this.btnDeleteTicket.Size = new System.Drawing.Size(100, 41);
-            this.btnDeleteTicket.TabIndex = 13;
-            this.btnDeleteTicket.Text = "DELETE";
-            this.btnDeleteTicket.UseVisualStyleBackColor = false;
-            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 39);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Tickets overview";
-            // 
-            // btnCreateTicket
-            // 
-            this.btnCreateTicket.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTicket.Location = new System.Drawing.Point(405, 85);
-            this.btnCreateTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCreateTicket.Name = "btnCreateTicket";
-            this.btnCreateTicket.Size = new System.Drawing.Size(149, 41);
-            this.btnCreateTicket.TabIndex = 10;
-            this.btnCreateTicket.Text = "CREATE TICKET";
-            this.btnCreateTicket.UseVisualStyleBackColor = false;
-            this.btnCreateTicket.Click += new System.EventHandler(this.btnCreateTicket_Click);
-            // 
-            // textBoxFilterBySubject
-            // 
-            this.textBoxFilterBySubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFilterBySubject.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxFilterBySubject.Location = new System.Drawing.Point(37, 97);
-            this.textBoxFilterBySubject.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxFilterBySubject.Name = "textBoxFilterBySubject";
-            this.textBoxFilterBySubject.Size = new System.Drawing.Size(215, 29);
-            this.textBoxFilterBySubject.TabIndex = 11;
-            this.textBoxFilterBySubject.Text = "Filter by email";
-            this.textBoxFilterBySubject.Click += new System.EventHandler(this.textBoxFilterBySubject_Click);
-            this.textBoxFilterBySubject.TextChanged += new System.EventHandler(this.textBoxFilterBySubject_TextChanged);
-            // 
-            // listViewTickets
-            // 
-            this.listViewTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader11,
-            this.columnHeader2,
-            this.columnHeader12,
-            this.columnHeader3,
-            this.columnHeader14,
-            this.columnHeader13,
-            this.columnHeader5,
-            this.columnHeader15});
-            this.listViewTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewTickets.FullRowSelect = true;
-            this.listViewTickets.HideSelection = false;
-            this.listViewTickets.Location = new System.Drawing.Point(164, 159);
-            this.listViewTickets.Margin = new System.Windows.Forms.Padding(4);
-            this.listViewTickets.Name = "listViewTickets";
-            this.listViewTickets.Size = new System.Drawing.Size(1088, 347);
-            this.listViewTickets.TabIndex = 9;
-            this.listViewTickets.UseCompatibleStateImageBehavior = false;
-            this.listViewTickets.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 80;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "date";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Subject";
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Type";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "User";
-            this.columnHeader3.Width = 120;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "deadline";
-            this.columnHeader14.Width = 100;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Description";
-            this.columnHeader13.Width = 100;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Status";
-            this.columnHeader5.Width = 80;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "priority";
             // 
             // tabPageUserManagement
             // 
@@ -1130,10 +1134,10 @@
             this.tabPageDashboard.ResumeLayout(false);
             this.tabPageDashboard.PerformLayout();
             this.tabPageIncidentManagement.ResumeLayout(false);
-            this.panelCreateTicket.ResumeLayout(false);
-            this.panelCreateTicket.PerformLayout();
             this.panelTicketsOverview.ResumeLayout(false);
             this.panelTicketsOverview.PerformLayout();
+            this.panelCreateTicket.ResumeLayout(false);
+            this.panelCreateTicket.PerformLayout();
             this.tabPageUserManagement.ResumeLayout(false);
             this.panelUserManagement.ResumeLayout(false);
             this.panelUserManagement.PerformLayout();

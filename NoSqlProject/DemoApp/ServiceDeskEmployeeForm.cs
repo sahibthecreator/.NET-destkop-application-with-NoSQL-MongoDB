@@ -350,6 +350,7 @@ namespace DemoApp
                 panelCreateTicket.Visible = false;
                 panelTicketsOverview.Visible = true;
                 lblErrorCreateTicket.Text = "";
+                checkBoxTransfer.Checked = false;
             }
             catch (Exception exp)
             {
@@ -406,6 +407,11 @@ namespace DemoApp
             panelCreateTicket.Visible = false;
             lblErrorCreateTicket.Text = "";
             loadIncidents(string.Empty);
+            checkBoxTransfer.Checked = false;
+            // load unresolved incidents
+            LoadPBUnresolved(pbUnresolved, Status.open);
+            // load incidents past deadline
+            LoadPBPastDeadline(pbPast, DateTime.Now);
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
@@ -429,6 +435,9 @@ namespace DemoApp
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
+            checkBoxTransfer.Visible = false;
+            checkedListBoxTransfer.Visible = false;
+            label13.Visible = false;
             if (listViewTickets.SelectedItems.Count == 1)
             {
                 Incident selcetedIncident = (Incident)listViewTickets.SelectedItems[0].Tag;
@@ -455,6 +464,10 @@ namespace DemoApp
         private void btnResolve_Click(object sender, EventArgs e)
         {
             updateStatus(Status.resolved);
+            // load unresolved incidents
+            LoadPBUnresolved(pbUnresolved, Status.open);
+            // load incidents past deadline
+            LoadPBPastDeadline(pbPast, DateTime.Now);
         }
 
         private void updateStatus(Status status)
@@ -515,7 +528,7 @@ namespace DemoApp
                 item.SubItems.Add(incident.Date.ToString("dd MMMM yyyy"));
                 item.SubItems.Add(incident.Subject);
                 item.SubItems.Add(incident.Type.ToString());
-                item.SubItems.Add(user.FirstName);
+                item.SubItems.Add(user.FirstName + " " + user.LastName);
                 item.SubItems.Add(incident.Deadline.ToString("dd MMMM yyyy"));
                 item.SubItems.Add(incident.Description);
                 item.SubItems.Add(incident.Status.ToString());
@@ -541,6 +554,8 @@ namespace DemoApp
         private void btnEditTicket_Click(object sender, EventArgs e)
         {
             FillListTransfer();
+            checkBoxTransfer.Visible = true;
+            label13.Visible = true;
             checkedListBoxTransfer.Visible = false;
             if (listViewTickets.SelectedItems.Count == 1)
             {
@@ -579,11 +594,13 @@ namespace DemoApp
         private void textBoxFilterBySubject_TextChanged(object sender, EventArgs e)
         {
             loadIncidents(textBoxFilterBySubject.Text.ToLower());
+            textBoxFilterBySubject.ForeColor = Color.Black;
         }
 
         private void textBoxFilterByEmail_TextChanged(object sender, EventArgs e)
         {
             loadUsers(textBoxFilterByEmail.Text.ToLower());
+            textBoxFilterByEmail.ForeColor = Color.Black;
         }
 
         //add button in the User Management interface

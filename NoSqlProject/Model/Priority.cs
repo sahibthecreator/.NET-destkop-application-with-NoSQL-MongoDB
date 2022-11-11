@@ -8,6 +8,6 @@ namespace Model
 {
     public enum Priority
     {
-        low, normal, high, none
+        none, low, normal, high
     }
 }
