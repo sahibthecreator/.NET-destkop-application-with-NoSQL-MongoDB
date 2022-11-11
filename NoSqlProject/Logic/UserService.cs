@@ -21,6 +21,11 @@ namespace Logic
            return userDAO.GetAllUsers();
         }
 
+        public List<User> GetMatchedUser(string email, string password)
+        {
+            return userDAO.GetMatchedUser(email, password);
+        }
+
         public List<User> GetUserByEmail(string email)
         {
             return userDAO.GetUserByEmail(email);

@@ -49,9 +49,9 @@ namespace Logic
         {
             incidentDAO.EditTicket(incident);
         }
-        public void CreateTicket(Incident incident)
+        public void CreateTicket(Incident incident, TicketType type, Status status, Priority priority)
         {
-            incidentDAO.CreateTicket(incident);
+            incidentDAO.CreateTicket(incident, type, status, priority);
         }
         public List<Incident> GetTicketsWithStatus( Status status)
         {

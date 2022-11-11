@@ -28,6 +28,7 @@ namespace DemoApp
 
             LoadCPB(cpbOpenTickets, Status.open);
             LoadCPB(cpbClosedTickets, Status.closed);
+            //LoadCPB(cpbResolvedTickets,Status.resolved);
 
             DisplayTickets();
         }
@@ -71,7 +72,7 @@ namespace DemoApp
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!ValidateTextBoxes(txtBoxes))
+            if (!validateTextBoxes(txtBoxes))
             {
                 //...
             }
@@ -80,14 +81,14 @@ namespace DemoApp
                 Incident incident = new Incident(DateTime.Now, txtSubject.Text, TicketType.none, user.Id, DateTime.Now, txtDescription.Text, Status.incident);
                 incidentService.AddIncident(incident);
             }
-            EmptyTextBoxes();
+            emptyTextBoxes();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            EmptyTextBoxes();
+            emptyTextBoxes();
         }
-        private bool ValidateTextBoxes(List<TextBox> txtBoxes)
+        private bool validateTextBoxes(List<TextBox> txtBoxes)
         {
             foreach (TextBox txtBox in txtBoxes)
             {
@@ -110,7 +111,7 @@ namespace DemoApp
                 MessageBox.Show(exp.Message);
             }
         }
-        private void EmptyTextBoxes()
+        private void emptyTextBoxes()
         {
             foreach (TextBox txtBox in txtBoxes)
             {
