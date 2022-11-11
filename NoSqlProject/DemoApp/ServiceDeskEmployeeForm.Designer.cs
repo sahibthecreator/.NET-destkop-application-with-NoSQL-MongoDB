@@ -261,8 +261,8 @@
             // 
             // tabPageIncidentManagement
             // 
-            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
             this.tabPageIncidentManagement.Controls.Add(this.panelTicketsOverview);
+            this.tabPageIncidentManagement.Controls.Add(this.panelCreateTicket);
             this.tabPageIncidentManagement.Location = new System.Drawing.Point(4, 34);
             this.tabPageIncidentManagement.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageIncidentManagement.Name = "tabPageIncidentManagement";
@@ -521,12 +521,12 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Text = "Id";
             this.columnHeader1.Width = 80;
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "date";
+            this.columnHeader11.Text = "Date";
             // 
             // columnHeader2
             // 
@@ -541,12 +541,12 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "User";
-            this.columnHeader3.Width = 120;
+            this.columnHeader3.Width = 130;
             // 
             // columnHeader14
             // 
-            this.columnHeader14.Text = "deadline";
-            this.columnHeader14.Width = 120;
+            this.columnHeader14.Text = "Deadline";
+            this.columnHeader14.Width = 150;
             // 
             // columnHeader13
             // 
@@ -560,7 +560,7 @@
             // 
             // columnHeader15
             // 
-            this.columnHeader15.Text = "priority";
+            this.columnHeader15.Text = "Priority";
             // 
             // panelCreateTicket
             // 
