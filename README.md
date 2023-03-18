@@ -1,2 +1,2 @@
-# NoSQL_Project2.1
-NoSQL Project for year 2 term 1
+# .NET destkop application with NoSQL MongoDB
+Desktop Application for managing employees and tickets for service desk administrators 
